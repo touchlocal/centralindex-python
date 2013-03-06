@@ -47,7 +47,7 @@ class CentralIndex:
 
 			
 			r = requests.get(url, params=data)
-			return r.text
+			return r.json
 
 			
 		else:
@@ -60,7 +60,7 @@ class CentralIndex:
 				r = requests.delete(url, data=data)
 						
 			
-			return r.text
+			return r.json
 		
 		
 	'''
