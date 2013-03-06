@@ -3,10 +3,10 @@
 '''
 Central Index
 
-The Central Index PHP Library
+The Central Index Python Library
 
 @package 	CentralIndex
-@author  	Glynn Bird
+@author  	Daniel Ord
 @link    	http://centralindex.com
 @since   	Version 1.0
 '''
@@ -67,7 +67,7 @@ class CentralIndex:
 	Confirms that the API is active, and returns the current version number
 	@return - the data from the api
 	'''
-	def getStatus(self,):
+	def getStatus(self):
 		params = {}
 		return self.doCurl("GET","/status",params)
   
@@ -483,7 +483,7 @@ class CentralIndex:
 	Force refresh of search indexes
 	@return - the data from the api
 	'''
-	def getToolsReindex(self,):
+	def getToolsReindex(self):
 		params = {}
 		return self.doCurl("GET","/tools/reindex",params)
   
