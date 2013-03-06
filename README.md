@@ -18,10 +18,12 @@ You'll need to put the CentralIndex.py file alongside your code.
 Then your first script could look something like:  
 
 ```
+import CentralIndex
+from CentralIndex import *
 
+ci = CentralIndex('<insert api key here>')
+print ci.getEntity('379236608286720')
 ```
-
-You'll find further examples in the "[examples](https://github.com/touchlocal/centralindex-python/tree/master/examples)" subdirectory.
 
 ## Function reference
 
