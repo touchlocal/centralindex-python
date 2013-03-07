@@ -36,6 +36,8 @@ class CentralIndex:
 
 	def doCurl(self, method, path, data):
 
+		debugMode = True
+		
 		api_url = "http://api.centralindex.com/v1"
 		
 		data['api_key'] = apiKey
@@ -44,11 +46,8 @@ class CentralIndex:
 		url = api_url + path
 		
 		if method == "GET":
-
 			
 			r = requests.get(url, params=data)
-			return r.json()
-
 			
 		else:
 			
@@ -59,8 +58,15 @@ class CentralIndex:
 			if(method == "DELETE"):
 				r = requests.delete(url, data=data)
 						
-			
-			return r.json()
+		if(debugMode):
+			print "METHOD = %s\n" % method
+			print "URL = %s\n" % url
+			print ("Data:\n")
+			print data
+			print "Output:\n"        
+			print r.json();
+		
+		return r.json()
 		
 		
 	'''
