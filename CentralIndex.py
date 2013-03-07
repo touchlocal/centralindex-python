@@ -47,7 +47,7 @@ class CentralIndex:
 
 			
 			r = requests.get(url, params=data)
-			return r.json
+			return r.json()
 
 			
 		else:
@@ -60,7 +60,7 @@ class CentralIndex:
 				r = requests.delete(url, data=data)
 						
 			
-			return r.json
+			return r.json()
 		
 		
 	'''
@@ -81,7 +81,7 @@ class CentralIndex:
 	@param d
 	@return - the data from the api
 	'''
-	def getLogo(self,a,b,c,d):
+	def getLogo(self,a='',b='',c='',d=''):
 		params = {}
 		params['a'] = a
 		params['b'] = b
@@ -96,7 +96,7 @@ class CentralIndex:
 	@param a
 	@return - the data from the api
 	'''
-	def putLogo(self,a):
+	def putLogo(self,a=''):
 		params = {}
 		params['a'] = a
 		return self.doCurl("PUT","/logo",params)
@@ -108,7 +108,7 @@ class CentralIndex:
 	@param filedata
 	@return - the data from the api
 	'''
-	def postEntityBulkCsv(self,filedata):
+	def postEntityBulkCsv(self,filedata=''):
 		params = {}
 		params['filedata'] = filedata
 		return self.doCurl("POST","/entity/bulk/csv",params)
@@ -120,7 +120,7 @@ class CentralIndex:
 	@param upload_id
 	@return - the data from the api
 	'''
-	def getEntityBulkCsvStatus(self,upload_id):
+	def getEntityBulkCsvStatus(self,upload_id=''):
 		params = {}
 		params['upload_id'] = upload_id
 		return self.doCurl("GET","/entity/bulk/csv/status",params)
@@ -136,7 +136,7 @@ class CentralIndex:
 	@param our_data
 	@return - the data from the api
 	'''
-	def putEntity(self,type,scope,country,trust,our_data):
+	def putEntity(self,type='',scope='',country='',trust='',our_data=''):
 		params = {}
 		params['type'] = type
 		params['scope'] = scope
@@ -152,7 +152,7 @@ class CentralIndex:
 	@param supplier_id - The Supplier ID
 	@return - the data from the api
 	'''
-	def getEntityBy_supplier_id(self,supplier_id):
+	def getEntityBy_supplier_id(self,supplier_id=''):
 		params = {}
 		params['supplier_id'] = supplier_id
 		return self.doCurl("GET","/entity/by_supplier_id",params)
@@ -172,7 +172,7 @@ class CentralIndex:
 	@param language
 	@return - the data from the api
 	'''
-	def getEntitySearch(self,what,entity_name,where,per_page,page,longitude,latitude,country,language):
+	def getEntitySearch(self,what='',entity_name='',where='',per_page='',page='',longitude='',latitude='',country='',language=''):
 		params = {}
 		params['what'] = what
 		params['entity_name'] = entity_name
@@ -197,7 +197,7 @@ class CentralIndex:
 	@param language - An ISO compatible language code, E.g. en
 	@return - the data from the api
 	'''
-	def getEntitySearchWhatBylocation(self,what,where,per_page,page,country,language):
+	def getEntitySearchWhatBylocation(self,what='',where='',per_page='',page='',country='',language=''):
 		params = {}
 		params['what'] = what
 		params['where'] = where
@@ -222,7 +222,7 @@ class CentralIndex:
 	@param language
 	@return - the data from the api
 	'''
-	def getEntitySearchWhatByboundingbox(self,what,latitude_1,longitude_1,latitude_2,longitude_2,per_page,page,country,language):
+	def getEntitySearchWhatByboundingbox(self,what='',latitude_1='',longitude_1='',latitude_2='',longitude_2='',per_page='',page='',country='',language=''):
 		params = {}
 		params['what'] = what
 		params['latitude_1'] = latitude_1
@@ -249,7 +249,7 @@ class CentralIndex:
 	@param country
 	@return - the data from the api
 	'''
-	def getEntitySearchWhoByboundingbox(self,who,latitude_1,longitude_1,latitude_2,longitude_2,per_page,page,country):
+	def getEntitySearchWhoByboundingbox(self,who='',latitude_1='',longitude_1='',latitude_2='',longitude_2='',per_page='',page='',country=''):
 		params = {}
 		params['who'] = who
 		params['latitude_1'] = latitude_1
@@ -272,7 +272,7 @@ class CentralIndex:
 	@param country - Which country to return results for. An ISO compatible country code, E.g. ie e.g. ie
 	@return - the data from the api
 	'''
-	def getEntitySearchWhoBylocation(self,who,where,per_page,page,country):
+	def getEntitySearchWhoBylocation(self,who='',where='',per_page='',page='',country=''):
 		params = {}
 		params['who'] = who
 		params['where'] = where
@@ -292,7 +292,7 @@ class CentralIndex:
 	@param language - An ISO compatible language code, E.g. en
 	@return - the data from the api
 	'''
-	def getEntitySearchWhat(self,what,per_page,page,country,language):
+	def getEntitySearchWhat(self,what='',per_page='',page='',country='',language=''):
 		params = {}
 		params['what'] = what
 		params['per_page'] = per_page
@@ -311,7 +311,7 @@ class CentralIndex:
 	@param country - Which country to return results for. An ISO compatible country code, E.g. ie e.g. ie
 	@return - the data from the api
 	'''
-	def getEntitySearchWho(self,who,per_page,page,country):
+	def getEntitySearchWho(self,who='',per_page='',page='',country=''):
 		params = {}
 		params['who'] = who
 		params['per_page'] = per_page
@@ -330,7 +330,7 @@ class CentralIndex:
 	@param language - An ISO compatible language code, E.g. en
 	@return - the data from the api
 	'''
-	def getEntitySearchBylocation(self,where,per_page,page,country,language):
+	def getEntitySearchBylocation(self,where='',per_page='',page='',country='',language=''):
 		params = {}
 		params['where'] = where
 		params['per_page'] = per_page
@@ -353,7 +353,7 @@ class CentralIndex:
 	@param language
 	@return - the data from the api
 	'''
-	def getEntitySearchByboundingbox(self,latitude_1,longitude_1,latitude_2,longitude_2,per_page,page,country,language):
+	def getEntitySearchByboundingbox(self,latitude_1='',longitude_1='',latitude_2='',longitude_2='',per_page='',page='',country='',language=''):
 		params = {}
 		params['latitude_1'] = latitude_1
 		params['longitude_1'] = longitude_1
@@ -376,7 +376,7 @@ class CentralIndex:
 	@param language - An ISO compatible language code, E.g. en
 	@return - the data from the api
 	'''
-	def getEntityAdvertisers(self,tag,where,limit,country,language):
+	def getEntityAdvertisers(self,tag='',where='',limit='',country='',language=''):
 		params = {}
 		params['tag'] = tag
 		params['where'] = where
@@ -392,7 +392,7 @@ class CentralIndex:
 	@param entity_id - The unique entity ID e.g. 379236608286720
 	@return - the data from the api
 	'''
-	def getEntity(self,entity_id):
+	def getEntity(self,entity_id=''):
 		params = {}
 		params['entity_id'] = entity_id
 		return self.doCurl("GET","/entity",params)
@@ -404,7 +404,7 @@ class CentralIndex:
 	@param user_id - The unique user ID of the user with claimed entities e.g. 379236608286720
 	@return - the data from the api
 	'''
-	def getEntityBy_user_id(self,user_id):
+	def getEntityBy_user_id(self,user_id=''):
 		params = {}
 		params['user_id'] = user_id
 		return self.doCurl("GET","/entity/by_user_id",params)
@@ -416,7 +416,7 @@ class CentralIndex:
 	@param entity_id
 	@return - the data from the api
 	'''
-	def getEntityRevisions(self,entity_id):
+	def getEntityRevisions(self,entity_id=''):
 		params = {}
 		params['entity_id'] = entity_id
 		return self.doCurl("GET","/entity/revisions",params)
@@ -429,7 +429,7 @@ class CentralIndex:
 	@param revision_id
 	@return - the data from the api
 	'''
-	def getEntityRevisionsByRevisionID(self,entity_id,revision_id):
+	def getEntityRevisionsByRevisionID(self,entity_id='',revision_id=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['revision_id'] = revision_id
@@ -444,7 +444,7 @@ class CentralIndex:
 	@param supplier_id
 	@return - the data from the api
 	'''
-	def postEntityUnmerge(self,entity_id,supplier_masheryid,supplier_id):
+	def postEntityUnmerge(self,entity_id='',supplier_masheryid='',supplier_id=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['supplier_masheryid'] = supplier_masheryid
@@ -458,7 +458,7 @@ class CentralIndex:
 	@param entity_id
 	@return - the data from the api
 	'''
-	def getEntityChangelog(self,entity_id):
+	def getEntityChangelog(self,entity_id=''):
 		params = {}
 		params['entity_id'] = entity_id
 		return self.doCurl("GET","/entity/changelog",params)
@@ -471,7 +471,7 @@ class CentralIndex:
 	@param to
 	@return - the data from the api
 	'''
-	def postEntityMerge(self,from2,to):
+	def postEntityMerge(self,from2='',to=''):
 		params = {}
 		params['from2'] = from2
 		params['to'] = to
@@ -496,7 +496,7 @@ class CentralIndex:
 	@param language
 	@return - the data from the api
 	'''
-	def getEntityReport(self,entity_id,gen_id,language):
+	def getEntityReport(self,entity_id='',gen_id='',language=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['gen_id'] = gen_id
@@ -510,7 +510,7 @@ class CentralIndex:
 	@param token
 	@return - the data from the api
 	'''
-	def getToolsDecodereport(self,token):
+	def getToolsDecodereport(self,token=''):
 		params = {}
 		params['token'] = token
 		return self.doCurl("GET","/tools/decodereport",params)
@@ -524,7 +524,7 @@ class CentralIndex:
 	@param limit
 	@return - the data from the api
 	'''
-	def postEntityMigrate_category(self,from2,to,limit):
+	def postEntityMigrate_category(self,from2='',to='',limit=''):
 		params = {}
 		params['from2'] = from2
 		params['to'] = to
@@ -555,7 +555,7 @@ class CentralIndex:
 	@param category_name
 	@return - the data from the api
 	'''
-	def putBusiness(self,name,address1,address2,address3,district,town,county,postcode,country,latitude,longitude,timezone,telephone_number,telephone_type,email,website,category_id,category_name):
+	def putBusiness(self,name='',address1='',address2='',address3='',district='',town='',county='',postcode='',country='',latitude='',longitude='',timezone='',telephone_number='',telephone_type='',email='',website='',category_id='',category_name=''):
 		params = {}
 		params['name'] = name
 		params['address1'] = address1
@@ -584,7 +584,7 @@ class CentralIndex:
 	@param language - The language to use to render the add path
 	@return - the data from the api
 	'''
-	def getEntityAdd(self,language):
+	def getEntityAdd(self,language=''):
 		params = {}
 		params['language'] = language
 		return self.doCurl("GET","/entity/add",params)
@@ -597,7 +597,7 @@ class CentralIndex:
 	@param country
 	@return - the data from the api
 	'''
-	def getLookupLocation(self,string,country):
+	def getLookupLocation(self,string='',country=''):
 		params = {}
 		params['string'] = string
 		params['country'] = country
@@ -611,7 +611,7 @@ class CentralIndex:
 	@param language - An ISO compatible language code, E.g. en
 	@return - the data from the api
 	'''
-	def getLookupCategory(self,string,language):
+	def getLookupCategory(self,string='',language=''):
 		params = {}
 		params['string'] = string
 		params['language'] = language
@@ -625,7 +625,7 @@ class CentralIndex:
 	@param type
 	@return - the data from the api
 	'''
-	def getLookupLegacyCategory(self,id,type):
+	def getLookupLegacyCategory(self,id='',type=''):
 		params = {}
 		params['id'] = id
 		params['type'] = type
@@ -640,7 +640,7 @@ class CentralIndex:
 	@param formal_name
 	@return - the data from the api
 	'''
-	def postEntityName(self,entity_id,name,formal_name):
+	def postEntityName(self,entity_id='',name='',formal_name=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['name'] = name
@@ -660,7 +660,7 @@ class CentralIndex:
 	@param registered_company_number
 	@return - the data from the api
 	'''
-	def postEntityBackground(self,entity_id,number_of_employees,turnover,net_profit,vat_number,duns_number,registered_company_number):
+	def postEntityBackground(self,entity_id='',number_of_employees='',turnover='',net_profit='',vat_number='',duns_number='',registered_company_number=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['number_of_employees'] = number_of_employees
@@ -685,7 +685,7 @@ class CentralIndex:
 	@param phone_number
 	@return - the data from the api
 	'''
-	def postEntityEmployee(self,entity_id,title,forename,surname,job_title,description,email,phone_number):
+	def postEntityEmployee(self,entity_id='',title='',forename='',surname='',job_title='',description='',email='',phone_number=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['title'] = title
@@ -705,7 +705,7 @@ class CentralIndex:
 	@param gen_id
 	@return - the data from the api
 	'''
-	def deleteEntityEmployee(self,entity_id,gen_id):
+	def deleteEntityEmployee(self,entity_id='',gen_id=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['gen_id'] = gen_id
@@ -724,7 +724,7 @@ class CentralIndex:
 	@param ctps
 	@return - the data from the api
 	'''
-	def postEntityPhone(self,entity_id,number,description,premium_rate,telephone_type,tps,ctps):
+	def postEntityPhone(self,entity_id='',number='',description='',premium_rate='',telephone_type='',tps='',ctps=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['number'] = number
@@ -743,7 +743,7 @@ class CentralIndex:
 	@param gen_id
 	@return - the data from the api
 	'''
-	def deleteEntityPhone(self,entity_id,gen_id):
+	def deleteEntityPhone(self,entity_id='',gen_id=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['gen_id'] = gen_id
@@ -759,7 +759,7 @@ class CentralIndex:
 	@param premium_rate
 	@return - the data from the api
 	'''
-	def postEntityFax(self,entity_id,number,description,premium_rate):
+	def postEntityFax(self,entity_id='',number='',description='',premium_rate=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['number'] = number
@@ -775,7 +775,7 @@ class CentralIndex:
 	@param gen_id
 	@return - the data from the api
 	'''
-	def deleteEntityFax(self,entity_id,gen_id):
+	def deleteEntityFax(self,entity_id='',gen_id=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['gen_id'] = gen_id
@@ -790,7 +790,7 @@ class CentralIndex:
 	@param name
 	@return - the data from the api
 	'''
-	def putCategory(self,category_id,language,name):
+	def putCategory(self,category_id='',language='',name=''):
 		params = {}
 		params['category_id'] = category_id
 		params['language'] = language
@@ -807,7 +807,7 @@ class CentralIndex:
 	@param name
 	@return - the data from the api
 	'''
-	def postCategoryMappings(self,category_id,type,id,name):
+	def postCategoryMappings(self,category_id='',type='',id='',name=''):
 		params = {}
 		params['category_id'] = category_id
 		params['type'] = type
@@ -824,7 +824,7 @@ class CentralIndex:
 	@param language
 	@return - the data from the api
 	'''
-	def postCategorySynonym(self,category_id,synonym,language):
+	def postCategorySynonym(self,category_id='',synonym='',language=''):
 		params = {}
 		params['category_id'] = category_id
 		params['synonym'] = synonym
@@ -840,7 +840,7 @@ class CentralIndex:
 	@param language
 	@return - the data from the api
 	'''
-	def deleteCategorySynonym(self,category_id,synonym,language):
+	def deleteCategorySynonym(self,category_id='',synonym='',language=''):
 		params = {}
 		params['category_id'] = category_id
 		params['synonym'] = synonym
@@ -855,7 +855,7 @@ class CentralIndex:
 	@param to
 	@return - the data from the api
 	'''
-	def postCategoryMerge(self,from2,to):
+	def postCategoryMerge(self,from2='',to=''):
 		params = {}
 		params['from2'] = from2
 		params['to'] = to
@@ -870,7 +870,7 @@ class CentralIndex:
 	@param category_name
 	@return - the data from the api
 	'''
-	def postEntityCategory(self,entity_id,category_id,category_name):
+	def postEntityCategory(self,entity_id='',category_id='',category_name=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['category_id'] = category_id
@@ -885,7 +885,7 @@ class CentralIndex:
 	@param gen_id
 	@return - the data from the api
 	'''
-	def deleteEntityCategory(self,entity_id,gen_id):
+	def deleteEntityCategory(self,entity_id='',gen_id=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['gen_id'] = gen_id
@@ -901,7 +901,7 @@ class CentralIndex:
 	@param accuracy
 	@return - the data from the api
 	'''
-	def postEntityGeopoint(self,entity_id,longitude,latitude,accuracy):
+	def postEntityGeopoint(self,entity_id='',longitude='',latitude='',accuracy=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['longitude'] = longitude
@@ -921,7 +921,7 @@ class CentralIndex:
 	@param location_strictness
 	@return - the data from the api
 	'''
-	def getMatchByphone(self,phone,company_name,latitude,longitude,name_strictness,location_strictness):
+	def getMatchByphone(self,phone='',company_name='',latitude='',longitude='',name_strictness='',location_strictness=''):
 		params = {}
 		params['phone'] = phone
 		params['company_name'] = company_name
@@ -942,7 +942,7 @@ class CentralIndex:
 	@param location_strictness
 	@return - the data from the api
 	'''
-	def getMatchBylocation(self,company_name,latitude,longitude,name_strictness,location_strictness):
+	def getMatchBylocation(self,company_name='',latitude='',longitude='',name_strictness='',location_strictness=''):
 		params = {}
 		params['company_name'] = company_name
 		params['latitude'] = latitude
@@ -958,7 +958,7 @@ class CentralIndex:
 	@param text
 	@return - the data from the api
 	'''
-	def getToolsStopwords(self,text):
+	def getToolsStopwords(self,text=''):
 		params = {}
 		params['text'] = text
 		return self.doCurl("GET","/tools/stopwords",params)
@@ -970,7 +970,7 @@ class CentralIndex:
 	@param text
 	@return - the data from the api
 	'''
-	def getToolsStem(self,text):
+	def getToolsStem(self,text=''):
 		params = {}
 		params['text'] = text
 		return self.doCurl("GET","/tools/stem",params)
@@ -982,7 +982,7 @@ class CentralIndex:
 	@param text
 	@return - the data from the api
 	'''
-	def getToolsPhonetic(self,text):
+	def getToolsPhonetic(self,text=''):
 		params = {}
 		params['text'] = text
 		return self.doCurl("GET","/tools/phonetic",params)
@@ -994,7 +994,7 @@ class CentralIndex:
 	@param text
 	@return - the data from the api
 	'''
-	def getToolsProcess_string(self,text):
+	def getToolsProcess_string(self,text=''):
 		params = {}
 		params['text'] = text
 		return self.doCurl("GET","/tools/process_string",params)
@@ -1006,7 +1006,7 @@ class CentralIndex:
 	@param number
 	@return - the data from the api
 	'''
-	def getToolsProcess_phone(self,number):
+	def getToolsProcess_phone(self,number=''):
 		params = {}
 		params['number'] = number
 		return self.doCurl("GET","/tools/process_phone",params)
@@ -1018,7 +1018,7 @@ class CentralIndex:
 	@param url
 	@return - the data from the api
 	'''
-	def getToolsSpider(self,url):
+	def getToolsSpider(self,url=''):
 		params = {}
 		params['url'] = url
 		return self.doCurl("GET","/tools/spider",params)
@@ -1030,7 +1030,7 @@ class CentralIndex:
 	@param address
 	@return - the data from the api
 	'''
-	def getToolsGeocode(self,address):
+	def getToolsGeocode(self,address=''):
 		params = {}
 		params['address'] = address
 		return self.doCurl("GET","/tools/geocode",params)
@@ -1045,7 +1045,7 @@ class CentralIndex:
 	@param doctype - Mashery has two forms of JSON to describe API methods; one on github, the other on its customer dashboard
 	@return - the data from the api
 	'''
-	def getToolsIodocs(self,mode,path,endpoint,doctype):
+	def getToolsIodocs(self,mode='',path='',endpoint='',doctype=''):
 		params = {}
 		params['mode'] = mode
 		params['path'] = path
@@ -1061,7 +1061,7 @@ class CentralIndex:
 	@param format - The format of the returned data eg. JSON or HTML
 	@return - the data from the api
 	'''
-	def getToolsDocs(self,object,format):
+	def getToolsDocs(self,object='',format=''):
 		params = {}
 		params['object'] = object
 		params['format'] = format
@@ -1075,7 +1075,7 @@ class CentralIndex:
 	@param country - The country where the telephone number is based
 	@return - the data from the api
 	'''
-	def getToolsFormatPhone(self,number,country):
+	def getToolsFormatPhone(self,number='',country=''):
 		params = {}
 		params['number'] = number
 		params['country'] = country
@@ -1096,7 +1096,7 @@ class CentralIndex:
 	@param address_type
 	@return - the data from the api
 	'''
-	def postEntityInvoice_address(self,entity_id,address1,address2,address3,district,town,county,postcode,address_type):
+	def postEntityInvoice_address(self,entity_id='',address1='',address2='',address3='',district='',town='',county='',postcode='',address_type=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['address1'] = address1
@@ -1116,7 +1116,7 @@ class CentralIndex:
 	@param entity_id
 	@return - the data from the api
 	'''
-	def deleteEntityInvoice_address(self,entity_id):
+	def deleteEntityInvoice_address(self,entity_id=''):
 		params = {}
 		params['entity_id'] = entity_id
 		return self.doCurl("DELETE","/entity/invoice_address",params)
@@ -1130,7 +1130,7 @@ class CentralIndex:
 	@param language
 	@return - the data from the api
 	'''
-	def postEntityTag(self,entity_id,tag,language):
+	def postEntityTag(self,entity_id='',tag='',language=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['tag'] = tag
@@ -1145,7 +1145,7 @@ class CentralIndex:
 	@param gen_id
 	@return - the data from the api
 	'''
-	def deleteEntityTag(self,entity_id,gen_id):
+	def deleteEntityTag(self,entity_id='',gen_id=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['gen_id'] = gen_id
@@ -1166,7 +1166,7 @@ class CentralIndex:
 	@param address_type
 	@return - the data from the api
 	'''
-	def postEntityPostal_address(self,entity_id,address1,address2,address3,district,town,county,postcode,address_type):
+	def postEntityPostal_address(self,entity_id='',address1='',address2='',address3='',district='',town='',county='',postcode='',address_type=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['address1'] = address1
@@ -1191,7 +1191,7 @@ class CentralIndex:
 	@param language
 	@return - the data from the api
 	'''
-	def postEntityAdvertiser(self,entity_id,tags,locations,expiry,is_national,language):
+	def postEntityAdvertiser(self,entity_id='',tags='',locations='',expiry='',is_national='',language=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['tags'] = tags
@@ -1209,7 +1209,7 @@ class CentralIndex:
 	@param gen_id
 	@return - the data from the api
 	'''
-	def deleteEntityAdvertiser(self,entity_id,gen_id):
+	def deleteEntityAdvertiser(self,entity_id='',gen_id=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['gen_id'] = gen_id
@@ -1224,7 +1224,7 @@ class CentralIndex:
 	@param email_description
 	@return - the data from the api
 	'''
-	def postEntityEmail(self,entity_id,email_address,email_description):
+	def postEntityEmail(self,entity_id='',email_address='',email_description=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['email_address'] = email_address
@@ -1239,7 +1239,7 @@ class CentralIndex:
 	@param gen_id
 	@return - the data from the api
 	'''
-	def deleteEntityEmail(self,entity_id,gen_id):
+	def deleteEntityEmail(self,entity_id='',gen_id=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['gen_id'] = gen_id
@@ -1255,7 +1255,7 @@ class CentralIndex:
 	@param website_description
 	@return - the data from the api
 	'''
-	def postEntityWebsite(self,entity_id,website_url,display_url,website_description):
+	def postEntityWebsite(self,entity_id='',website_url='',display_url='',website_description=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['website_url'] = website_url
@@ -1271,7 +1271,7 @@ class CentralIndex:
 	@param gen_id
 	@return - the data from the api
 	'''
-	def deleteEntityWebsite(self,entity_id,gen_id):
+	def deleteEntityWebsite(self,entity_id='',gen_id=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['gen_id'] = gen_id
@@ -1286,7 +1286,7 @@ class CentralIndex:
 	@param image_name
 	@return - the data from the api
 	'''
-	def postEntityImage(self,entity_id,filedata,image_name):
+	def postEntityImage(self,entity_id='',filedata='',image_name=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['filedata'] = filedata
@@ -1301,7 +1301,7 @@ class CentralIndex:
 	@param gen_id
 	@return - the data from the api
 	'''
-	def deleteEntityImage(self,entity_id,gen_id):
+	def deleteEntityImage(self,entity_id='',gen_id=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['gen_id'] = gen_id
@@ -1314,7 +1314,7 @@ class CentralIndex:
 	@param location_id
 	@return - the data from the api
 	'''
-	def getLocation(self,location_id):
+	def getLocation(self,location_id=''):
 		params = {}
 		params['location_id'] = location_id
 		return self.doCurl("GET","/location",params)
@@ -1337,7 +1337,7 @@ class CentralIndex:
 	@param is_default
 	@return - the data from the api
 	'''
-	def postLocation(self,location_id,name,formal_name,latitude,longitude,resolution,country,population,description,timezone,is_duplicate,is_default):
+	def postLocation(self,location_id='',name='',formal_name='',latitude='',longitude='',resolution='',country='',population='',description='',timezone='',is_duplicate='',is_default=''):
 		params = {}
 		params['location_id'] = location_id
 		params['name'] = name
@@ -1362,7 +1362,7 @@ class CentralIndex:
 	@param language
 	@return - the data from the api
 	'''
-	def postLocationSynonym(self,location_id,synonym,language):
+	def postLocationSynonym(self,location_id='',synonym='',language=''):
 		params = {}
 		params['location_id'] = location_id
 		params['synonym'] = synonym
@@ -1378,7 +1378,7 @@ class CentralIndex:
 	@param language
 	@return - the data from the api
 	'''
-	def deleteLocationSynonym(self,location_id,synonym,language):
+	def deleteLocationSynonym(self,location_id='',synonym='',language=''):
 		params = {}
 		params['location_id'] = location_id
 		params['synonym'] = synonym
@@ -1395,7 +1395,7 @@ class CentralIndex:
 	@param ref
 	@return - the data from the api
 	'''
-	def postLocationSource(self,location_id,type,url,ref):
+	def postLocationSource(self,location_id='',type='',url='',ref=''):
 		params = {}
 		params['location_id'] = location_id
 		params['type'] = type
@@ -1411,7 +1411,7 @@ class CentralIndex:
 	@param status
 	@return - the data from the api
 	'''
-	def postEntityStatus(self,entity_id,status):
+	def postEntityStatus(self,entity_id='',status=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['status'] = status
@@ -1426,7 +1426,7 @@ class CentralIndex:
 	@param logo_name
 	@return - the data from the api
 	'''
-	def postEntityLogo(self,entity_id,filedata,logo_name):
+	def postEntityLogo(self,entity_id='',filedata='',logo_name=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['filedata'] = filedata
@@ -1441,7 +1441,7 @@ class CentralIndex:
 	@param gen_id
 	@return - the data from the api
 	'''
-	def deleteEntityLogo(self,entity_id,gen_id):
+	def deleteEntityLogo(self,entity_id='',gen_id=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['gen_id'] = gen_id
@@ -1458,7 +1458,7 @@ class CentralIndex:
 	@param embed_code
 	@return - the data from the api
 	'''
-	def postEntityVideo(self,entity_id,title,description,thumbnail,embed_code):
+	def postEntityVideo(self,entity_id='',title='',description='',thumbnail='',embed_code=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['title'] = title
@@ -1475,7 +1475,7 @@ class CentralIndex:
 	@param gen_id
 	@return - the data from the api
 	'''
-	def deleteEntityVideo(self,entity_id,gen_id):
+	def deleteEntityVideo(self,entity_id='',gen_id=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['gen_id'] = gen_id
@@ -1492,7 +1492,7 @@ class CentralIndex:
 	@param affiliate_logo
 	@return - the data from the api
 	'''
-	def postEntityAffiliate_link(self,entity_id,affiliate_name,affiliate_link,affiliate_message,affiliate_logo):
+	def postEntityAffiliate_link(self,entity_id='',affiliate_name='',affiliate_link='',affiliate_message='',affiliate_logo=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['affiliate_name'] = affiliate_name
@@ -1509,7 +1509,7 @@ class CentralIndex:
 	@param gen_id
 	@return - the data from the api
 	'''
-	def deleteEntityAffiliate_link(self,entity_id,gen_id):
+	def deleteEntityAffiliate_link(self,entity_id='',gen_id=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['gen_id'] = gen_id
@@ -1524,7 +1524,7 @@ class CentralIndex:
 	@param body
 	@return - the data from the api
 	'''
-	def postEntityDescription(self,entity_id,headline,body):
+	def postEntityDescription(self,entity_id='',headline='',body=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['headline'] = headline
@@ -1539,7 +1539,7 @@ class CentralIndex:
 	@param gen_id
 	@return - the data from the api
 	'''
-	def deleteEntityDescription(self,entity_id,gen_id):
+	def deleteEntityDescription(self,entity_id='',gen_id=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['gen_id'] = gen_id
@@ -1554,7 +1554,7 @@ class CentralIndex:
 	@param body
 	@return - the data from the api
 	'''
-	def postEntityList(self,entity_id,headline,body):
+	def postEntityList(self,entity_id='',headline='',body=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['headline'] = headline
@@ -1569,7 +1569,7 @@ class CentralIndex:
 	@param entity_id
 	@return - the data from the api
 	'''
-	def deleteEntityList(self,gen_id,entity_id):
+	def deleteEntityList(self,gen_id='',entity_id=''):
 		params = {}
 		params['gen_id'] = gen_id
 		params['entity_id'] = entity_id
@@ -1584,7 +1584,7 @@ class CentralIndex:
 	@param filedata
 	@return - the data from the api
 	'''
-	def postEntityDocument(self,entity_id,name,filedata):
+	def postEntityDocument(self,entity_id='',name='',filedata=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['name'] = name
@@ -1599,7 +1599,7 @@ class CentralIndex:
 	@param gen_id
 	@return - the data from the api
 	'''
-	def deleteEntityDocument(self,entity_id,gen_id):
+	def deleteEntityDocument(self,entity_id='',gen_id=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['gen_id'] = gen_id
@@ -1616,7 +1616,7 @@ class CentralIndex:
 	@param testifier_name
 	@return - the data from the api
 	'''
-	def postEntityTestimonial(self,entity_id,title,text,date,testifier_name):
+	def postEntityTestimonial(self,entity_id='',title='',text='',date='',testifier_name=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['title'] = title
@@ -1633,7 +1633,7 @@ class CentralIndex:
 	@param gen_id
 	@return - the data from the api
 	'''
-	def deleteEntityTestimonial(self,entity_id,gen_id):
+	def deleteEntityTestimonial(self,entity_id='',gen_id=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['gen_id'] = gen_id
@@ -1655,7 +1655,7 @@ class CentralIndex:
 	@param closed_public_holidays - whether the entity is closed on public holidays
 	@return - the data from the api
 	'''
-	def postEntityOpening_times(self,entity_id,monday,tuesday,wednesday,thursday,friday,saturday,sunday,closed,closed_public_holidays):
+	def postEntityOpening_times(self,entity_id='',monday='',tuesday='',wednesday='',thursday='',friday='',saturday='',sunday='',closed='',closed_public_holidays=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['monday'] = monday
@@ -1683,7 +1683,7 @@ class CentralIndex:
 	@param image_url
 	@return - the data from the api
 	'''
-	def postEntitySpecial_offer(self,entity_id,title,description,terms,start_date,expiry_date,url,image_url):
+	def postEntitySpecial_offer(self,entity_id='',title='',description='',terms='',start_date='',expiry_date='',url='',image_url=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['title'] = title
@@ -1703,7 +1703,7 @@ class CentralIndex:
 	@param gen_id
 	@return - the data from the api
 	'''
-	def deleteEntitySpecial_offer(self,entity_id,gen_id):
+	def deleteEntitySpecial_offer(self,entity_id='',gen_id=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['gen_id'] = gen_id
@@ -1724,7 +1724,7 @@ class CentralIndex:
 	@param social_network_id
 	@return - the data from the api
 	'''
-	def postUser(self,email,first_name,last_name,active,trust,creation_date,user_type,social_network,social_network_id):
+	def postUser(self,email='',first_name='',last_name='',active='',trust='',creation_date='',user_type='',social_network='',social_network_id=''):
 		params = {}
 		params['email'] = email
 		params['first_name'] = first_name
@@ -1744,7 +1744,7 @@ class CentralIndex:
 	@param email
 	@return - the data from the api
 	'''
-	def getUserBy_email(self,email):
+	def getUserBy_email(self,email=''):
 		params = {}
 		params['email'] = email
 		return self.doCurl("GET","/user/by_email",params)
@@ -1756,7 +1756,7 @@ class CentralIndex:
 	@param user_id
 	@return - the data from the api
 	'''
-	def getUser(self,user_id):
+	def getUser(self,user_id=''):
 		params = {}
 		params['user_id'] = user_id
 		return self.doCurl("GET","/user",params)
@@ -1769,7 +1769,7 @@ class CentralIndex:
 	@param id
 	@return - the data from the api
 	'''
-	def getUserBy_social_media(self,name,id):
+	def getUserBy_social_media(self,name='',id=''):
 		params = {}
 		params['name'] = name
 		params['id'] = id
@@ -1783,7 +1783,7 @@ class CentralIndex:
 	@param language - An ISO compatible language code, E.g. en e.g. en
 	@return - the data from the api
 	'''
-	def getAutocompleteCategory(self,str,language):
+	def getAutocompleteCategory(self,str='',language=''):
 		params = {}
 		params['str'] = str
 		params['language'] = language
@@ -1797,7 +1797,7 @@ class CentralIndex:
 	@param country - Which country to return results for. An ISO compatible country code, E.g. ie e.g. ie
 	@return - the data from the api
 	'''
-	def getAutocompleteLocation(self,str,country):
+	def getAutocompleteLocation(self,str='',country=''):
 		params = {}
 		params['str'] = str
 		params['country'] = country
@@ -1811,7 +1811,7 @@ class CentralIndex:
 	@param data
 	@return - the data from the api
 	'''
-	def putQueue(self,queue_name,data):
+	def putQueue(self,queue_name='',data=''):
 		params = {}
 		params['queue_name'] = queue_name
 		params['data'] = data
@@ -1824,7 +1824,7 @@ class CentralIndex:
 	@param queue_id
 	@return - the data from the api
 	'''
-	def deleteQueue(self,queue_id):
+	def deleteQueue(self,queue_id=''):
 		params = {}
 		params['queue_id'] = queue_id
 		return self.doCurl("DELETE","/queue",params)
@@ -1837,7 +1837,7 @@ class CentralIndex:
 	@param queue_name
 	@return - the data from the api
 	'''
-	def getQueue(self,limit,queue_name):
+	def getQueue(self,limit='',queue_name=''):
 		params = {}
 		params['limit'] = limit
 		params['queue_name'] = queue_name
@@ -1851,7 +1851,7 @@ class CentralIndex:
 	@param seconds
 	@return - the data from the api
 	'''
-	def postQueueUnlock(self,queue_name,seconds):
+	def postQueueUnlock(self,queue_name='',seconds=''):
 		params = {}
 		params['queue_name'] = queue_name
 		params['seconds'] = seconds
@@ -1865,7 +1865,7 @@ class CentralIndex:
 	@param error
 	@return - the data from the api
 	'''
-	def postQueueError(self,queue_id,error):
+	def postQueueError(self,queue_id='',error=''):
 		params = {}
 		params['queue_id'] = queue_id
 		params['error'] = error
@@ -1879,7 +1879,7 @@ class CentralIndex:
 	@param id
 	@return - the data from the api
 	'''
-	def getQueueSearch(self,type,id):
+	def getQueueSearch(self,type='',id=''):
 		params = {}
 		params['type'] = type
 		params['id'] = id
@@ -1897,7 +1897,7 @@ class CentralIndex:
 	@param notes
 	@return - the data from the api
 	'''
-	def putTransaction(self,entity_id,user_id,basket_total,basket,currency,notes):
+	def putTransaction(self,entity_id='',user_id='',basket_total='',basket='',currency='',notes=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['user_id'] = user_id
@@ -1915,7 +1915,7 @@ class CentralIndex:
 	@param paypal_setexpresscheckout
 	@return - the data from the api
 	'''
-	def postTransactionInprogress(self,transaction_id,paypal_setexpresscheckout):
+	def postTransactionInprogress(self,transaction_id='',paypal_setexpresscheckout=''):
 		params = {}
 		params['transaction_id'] = transaction_id
 		params['paypal_setexpresscheckout'] = paypal_setexpresscheckout
@@ -1929,7 +1929,7 @@ class CentralIndex:
 	@param paypal_getexpresscheckoutdetails
 	@return - the data from the api
 	'''
-	def postTransactionAuthorised(self,transaction_id,paypal_getexpresscheckoutdetails):
+	def postTransactionAuthorised(self,transaction_id='',paypal_getexpresscheckoutdetails=''):
 		params = {}
 		params['transaction_id'] = transaction_id
 		params['paypal_getexpresscheckoutdetails'] = paypal_getexpresscheckoutdetails
@@ -1945,7 +1945,7 @@ class CentralIndex:
 	@param entity_id
 	@return - the data from the api
 	'''
-	def postTransactionComplete(self,transaction_id,paypal_doexpresscheckoutpayment,user_id,entity_id):
+	def postTransactionComplete(self,transaction_id='',paypal_doexpresscheckoutpayment='',user_id='',entity_id=''):
 		params = {}
 		params['transaction_id'] = transaction_id
 		params['paypal_doexpresscheckoutpayment'] = paypal_doexpresscheckoutpayment
@@ -1960,7 +1960,7 @@ class CentralIndex:
 	@param transaction_id
 	@return - the data from the api
 	'''
-	def postTransactionCancelled(self,transaction_id):
+	def postTransactionCancelled(self,transaction_id=''):
 		params = {}
 		params['transaction_id'] = transaction_id
 		return self.doCurl("POST","/transaction/cancelled",params)
@@ -1972,7 +1972,7 @@ class CentralIndex:
 	@param transaction_id
 	@return - the data from the api
 	'''
-	def getTransaction(self,transaction_id):
+	def getTransaction(self,transaction_id=''):
 		params = {}
 		params['transaction_id'] = transaction_id
 		return self.doCurl("GET","/transaction",params)
@@ -1984,7 +1984,7 @@ class CentralIndex:
 	@param paypal_transaction_id
 	@return - the data from the api
 	'''
-	def getTransactionBy_paypal_transaction_id(self,paypal_transaction_id):
+	def getTransactionBy_paypal_transaction_id(self,paypal_transaction_id=''):
 		params = {}
 		params['paypal_transaction_id'] = paypal_transaction_id
 		return self.doCurl("GET","/transaction/by_paypal_transaction_id",params)
@@ -1998,7 +1998,7 @@ class CentralIndex:
 	@param claimed_date
 	@return - the data from the api
 	'''
-	def postEntityClaim(self,entity_id,claimed_user_id,claimed_date):
+	def postEntityClaim(self,entity_id='',claimed_user_id='',claimed_date=''):
 		params = {}
 		params['entity_id'] = entity_id
 		params['claimed_user_id'] = claimed_user_id
