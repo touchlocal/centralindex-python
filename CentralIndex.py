@@ -36,7 +36,7 @@ class CentralIndex:
 
 	def doCurl(self, method, path, data):
 
-		debugMode = True
+		debugMode = False
 		
 		api_url = "http://api.centralindex.com/v1"
 		
@@ -64,9 +64,9 @@ class CentralIndex:
 			print ("Data:\n")
 			print data
 			print "Output:\n"        
-			print r.json();
+			print r.text
 		
-		return r.json()
+		return r.text
 		
 		
 	'''
