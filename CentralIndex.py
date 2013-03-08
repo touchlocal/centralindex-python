@@ -89,10 +89,14 @@ class CentralIndex:
 	'''
 	def getLogo(self,a='',b='',c='',d=''):
 		params = {}
-		params['a'] = a
-		params['b'] = b
-		params['c'] = c
-		params['d'] = d
+		if(a != ''): 
+			params['a'] = a
+		if(b != ''): 
+			params['b'] = b
+		if(c != ''): 
+			params['c'] = c
+		if(d != ''): 
+			params['d'] = d
 		return self.doCurl("GET","/logo",params)
   
 
@@ -104,7 +108,8 @@ class CentralIndex:
 	'''
 	def putLogo(self,a=''):
 		params = {}
-		params['a'] = a
+		if(a != ''): 
+			params['a'] = a
 		return self.doCurl("PUT","/logo",params)
   
 
@@ -116,7 +121,8 @@ class CentralIndex:
 	'''
 	def postEntityBulkCsv(self,filedata=''):
 		params = {}
-		params['filedata'] = filedata
+		if(filedata != ''): 
+			params['filedata'] = filedata
 		return self.doCurl("POST","/entity/bulk/csv",params)
   
 
@@ -128,7 +134,8 @@ class CentralIndex:
 	'''
 	def getEntityBulkCsvStatus(self,upload_id=''):
 		params = {}
-		params['upload_id'] = upload_id
+		if(upload_id != ''): 
+			params['upload_id'] = upload_id
 		return self.doCurl("GET","/entity/bulk/csv/status",params)
   
 
@@ -144,11 +151,16 @@ class CentralIndex:
 	'''
 	def putEntity(self,type='',scope='',country='',trust='',our_data=''):
 		params = {}
-		params['type'] = type
-		params['scope'] = scope
-		params['country'] = country
-		params['trust'] = trust
-		params['our_data'] = our_data
+		if(type != ''): 
+			params['type'] = type
+		if(scope != ''): 
+			params['scope'] = scope
+		if(country != ''): 
+			params['country'] = country
+		if(trust != ''): 
+			params['trust'] = trust
+		if(our_data != ''): 
+			params['our_data'] = our_data
 		return self.doCurl("PUT","/entity",params)
   
 
@@ -160,7 +172,8 @@ class CentralIndex:
 	'''
 	def getEntityBy_supplier_id(self,supplier_id=''):
 		params = {}
-		params['supplier_id'] = supplier_id
+		if(supplier_id != ''): 
+			params['supplier_id'] = supplier_id
 		return self.doCurl("GET","/entity/by_supplier_id",params)
   
 
@@ -180,15 +193,24 @@ class CentralIndex:
 	'''
 	def getEntitySearch(self,what='',entity_name='',where='',per_page='',page='',longitude='',latitude='',country='',language=''):
 		params = {}
-		params['what'] = what
-		params['entity_name'] = entity_name
-		params['where'] = where
-		params['per_page'] = per_page
-		params['page'] = page
-		params['longitude'] = longitude
-		params['latitude'] = latitude
-		params['country'] = country
-		params['language'] = language
+		if(what != ''): 
+			params['what'] = what
+		if(entity_name != ''): 
+			params['entity_name'] = entity_name
+		if(where != ''): 
+			params['where'] = where
+		if(per_page != ''): 
+			params['per_page'] = per_page
+		if(page != ''): 
+			params['page'] = page
+		if(longitude != ''): 
+			params['longitude'] = longitude
+		if(latitude != ''): 
+			params['latitude'] = latitude
+		if(country != ''): 
+			params['country'] = country
+		if(language != ''): 
+			params['language'] = language
 		return self.doCurl("GET","/entity/search",params)
   
 
@@ -205,12 +227,18 @@ class CentralIndex:
 	'''
 	def getEntitySearchWhatBylocation(self,what='',where='',per_page='',page='',country='',language=''):
 		params = {}
-		params['what'] = what
-		params['where'] = where
-		params['per_page'] = per_page
-		params['page'] = page
-		params['country'] = country
-		params['language'] = language
+		if(what != ''): 
+			params['what'] = what
+		if(where != ''): 
+			params['where'] = where
+		if(per_page != ''): 
+			params['per_page'] = per_page
+		if(page != ''): 
+			params['page'] = page
+		if(country != ''): 
+			params['country'] = country
+		if(language != ''): 
+			params['language'] = language
 		return self.doCurl("GET","/entity/search/what/bylocation",params)
   
 
@@ -230,15 +258,24 @@ class CentralIndex:
 	'''
 	def getEntitySearchWhatByboundingbox(self,what='',latitude_1='',longitude_1='',latitude_2='',longitude_2='',per_page='',page='',country='',language=''):
 		params = {}
-		params['what'] = what
-		params['latitude_1'] = latitude_1
-		params['longitude_1'] = longitude_1
-		params['latitude_2'] = latitude_2
-		params['longitude_2'] = longitude_2
-		params['per_page'] = per_page
-		params['page'] = page
-		params['country'] = country
-		params['language'] = language
+		if(what != ''): 
+			params['what'] = what
+		if(latitude_1 != ''): 
+			params['latitude_1'] = latitude_1
+		if(longitude_1 != ''): 
+			params['longitude_1'] = longitude_1
+		if(latitude_2 != ''): 
+			params['latitude_2'] = latitude_2
+		if(longitude_2 != ''): 
+			params['longitude_2'] = longitude_2
+		if(per_page != ''): 
+			params['per_page'] = per_page
+		if(page != ''): 
+			params['page'] = page
+		if(country != ''): 
+			params['country'] = country
+		if(language != ''): 
+			params['language'] = language
 		return self.doCurl("GET","/entity/search/what/byboundingbox",params)
   
 
@@ -257,14 +294,22 @@ class CentralIndex:
 	'''
 	def getEntitySearchWhoByboundingbox(self,who='',latitude_1='',longitude_1='',latitude_2='',longitude_2='',per_page='',page='',country=''):
 		params = {}
-		params['who'] = who
-		params['latitude_1'] = latitude_1
-		params['longitude_1'] = longitude_1
-		params['latitude_2'] = latitude_2
-		params['longitude_2'] = longitude_2
-		params['per_page'] = per_page
-		params['page'] = page
-		params['country'] = country
+		if(who != ''): 
+			params['who'] = who
+		if(latitude_1 != ''): 
+			params['latitude_1'] = latitude_1
+		if(longitude_1 != ''): 
+			params['longitude_1'] = longitude_1
+		if(latitude_2 != ''): 
+			params['latitude_2'] = latitude_2
+		if(longitude_2 != ''): 
+			params['longitude_2'] = longitude_2
+		if(per_page != ''): 
+			params['per_page'] = per_page
+		if(page != ''): 
+			params['page'] = page
+		if(country != ''): 
+			params['country'] = country
 		return self.doCurl("GET","/entity/search/who/byboundingbox",params)
   
 
@@ -280,11 +325,16 @@ class CentralIndex:
 	'''
 	def getEntitySearchWhoBylocation(self,who='',where='',per_page='',page='',country=''):
 		params = {}
-		params['who'] = who
-		params['where'] = where
-		params['per_page'] = per_page
-		params['page'] = page
-		params['country'] = country
+		if(who != ''): 
+			params['who'] = who
+		if(where != ''): 
+			params['where'] = where
+		if(per_page != ''): 
+			params['per_page'] = per_page
+		if(page != ''): 
+			params['page'] = page
+		if(country != ''): 
+			params['country'] = country
 		return self.doCurl("GET","/entity/search/who/bylocation",params)
   
 
@@ -300,11 +350,16 @@ class CentralIndex:
 	'''
 	def getEntitySearchWhat(self,what='',per_page='',page='',country='',language=''):
 		params = {}
-		params['what'] = what
-		params['per_page'] = per_page
-		params['page'] = page
-		params['country'] = country
-		params['language'] = language
+		if(what != ''): 
+			params['what'] = what
+		if(per_page != ''): 
+			params['per_page'] = per_page
+		if(page != ''): 
+			params['page'] = page
+		if(country != ''): 
+			params['country'] = country
+		if(language != ''): 
+			params['language'] = language
 		return self.doCurl("GET","/entity/search/what",params)
   
 
@@ -319,10 +374,14 @@ class CentralIndex:
 	'''
 	def getEntitySearchWho(self,who='',per_page='',page='',country=''):
 		params = {}
-		params['who'] = who
-		params['per_page'] = per_page
-		params['page'] = page
-		params['country'] = country
+		if(who != ''): 
+			params['who'] = who
+		if(per_page != ''): 
+			params['per_page'] = per_page
+		if(page != ''): 
+			params['page'] = page
+		if(country != ''): 
+			params['country'] = country
 		return self.doCurl("GET","/entity/search/who",params)
   
 
@@ -338,11 +397,16 @@ class CentralIndex:
 	'''
 	def getEntitySearchBylocation(self,where='',per_page='',page='',country='',language=''):
 		params = {}
-		params['where'] = where
-		params['per_page'] = per_page
-		params['page'] = page
-		params['country'] = country
-		params['language'] = language
+		if(where != ''): 
+			params['where'] = where
+		if(per_page != ''): 
+			params['per_page'] = per_page
+		if(page != ''): 
+			params['page'] = page
+		if(country != ''): 
+			params['country'] = country
+		if(language != ''): 
+			params['language'] = language
 		return self.doCurl("GET","/entity/search/bylocation",params)
   
 
@@ -361,14 +425,22 @@ class CentralIndex:
 	'''
 	def getEntitySearchByboundingbox(self,latitude_1='',longitude_1='',latitude_2='',longitude_2='',per_page='',page='',country='',language=''):
 		params = {}
-		params['latitude_1'] = latitude_1
-		params['longitude_1'] = longitude_1
-		params['latitude_2'] = latitude_2
-		params['longitude_2'] = longitude_2
-		params['per_page'] = per_page
-		params['page'] = page
-		params['country'] = country
-		params['language'] = language
+		if(latitude_1 != ''): 
+			params['latitude_1'] = latitude_1
+		if(longitude_1 != ''): 
+			params['longitude_1'] = longitude_1
+		if(latitude_2 != ''): 
+			params['latitude_2'] = latitude_2
+		if(longitude_2 != ''): 
+			params['longitude_2'] = longitude_2
+		if(per_page != ''): 
+			params['per_page'] = per_page
+		if(page != ''): 
+			params['page'] = page
+		if(country != ''): 
+			params['country'] = country
+		if(language != ''): 
+			params['language'] = language
 		return self.doCurl("GET","/entity/search/byboundingbox",params)
   
 
@@ -384,11 +456,16 @@ class CentralIndex:
 	'''
 	def getEntityAdvertisers(self,tag='',where='',limit='',country='',language=''):
 		params = {}
-		params['tag'] = tag
-		params['where'] = where
-		params['limit'] = limit
-		params['country'] = country
-		params['language'] = language
+		if(tag != ''): 
+			params['tag'] = tag
+		if(where != ''): 
+			params['where'] = where
+		if(limit != ''): 
+			params['limit'] = limit
+		if(country != ''): 
+			params['country'] = country
+		if(language != ''): 
+			params['language'] = language
 		return self.doCurl("GET","/entity/advertisers",params)
   
 
@@ -400,7 +477,8 @@ class CentralIndex:
 	'''
 	def getEntity(self,entity_id=''):
 		params = {}
-		params['entity_id'] = entity_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
 		return self.doCurl("GET","/entity",params)
   
 
@@ -412,7 +490,8 @@ class CentralIndex:
 	'''
 	def getEntityBy_user_id(self,user_id=''):
 		params = {}
-		params['user_id'] = user_id
+		if(user_id != ''): 
+			params['user_id'] = user_id
 		return self.doCurl("GET","/entity/by_user_id",params)
   
 
@@ -424,7 +503,8 @@ class CentralIndex:
 	'''
 	def getEntityRevisions(self,entity_id=''):
 		params = {}
-		params['entity_id'] = entity_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
 		return self.doCurl("GET","/entity/revisions",params)
   
 
@@ -437,8 +517,10 @@ class CentralIndex:
 	'''
 	def getEntityRevisionsByRevisionID(self,entity_id='',revision_id=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['revision_id'] = revision_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(revision_id != ''): 
+			params['revision_id'] = revision_id
 		return self.doCurl("GET","/entity/revisions/byRevisionID",params)
   
 
@@ -452,9 +534,12 @@ class CentralIndex:
 	'''
 	def postEntityUnmerge(self,entity_id='',supplier_masheryid='',supplier_id=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['supplier_masheryid'] = supplier_masheryid
-		params['supplier_id'] = supplier_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(supplier_masheryid != ''): 
+			params['supplier_masheryid'] = supplier_masheryid
+		if(supplier_id != ''): 
+			params['supplier_id'] = supplier_id
 		return self.doCurl("POST","/entity/unmerge",params)
   
 
@@ -466,7 +551,8 @@ class CentralIndex:
 	'''
 	def getEntityChangelog(self,entity_id=''):
 		params = {}
-		params['entity_id'] = entity_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
 		return self.doCurl("GET","/entity/changelog",params)
   
 
@@ -479,8 +565,10 @@ class CentralIndex:
 	'''
 	def postEntityMerge(self,from2='',to=''):
 		params = {}
-		params['from2'] = from2
-		params['to'] = to
+		if(from2 != ''): 
+			params['from2'] = from2
+		if(to != ''): 
+			params['to'] = to
 		return self.doCurl("POST","/entity/merge",params)
   
 
@@ -504,9 +592,12 @@ class CentralIndex:
 	'''
 	def getEntityReport(self,entity_id='',gen_id='',language=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['gen_id'] = gen_id
-		params['language'] = language
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
+		if(language != ''): 
+			params['language'] = language
 		return self.doCurl("GET","/entity/report",params)
   
 
@@ -518,7 +609,8 @@ class CentralIndex:
 	'''
 	def getToolsDecodereport(self,token=''):
 		params = {}
-		params['token'] = token
+		if(token != ''): 
+			params['token'] = token
 		return self.doCurl("GET","/tools/decodereport",params)
   
 
@@ -532,9 +624,12 @@ class CentralIndex:
 	'''
 	def postEntityMigrate_category(self,from2='',to='',limit=''):
 		params = {}
-		params['from2'] = from2
-		params['to'] = to
-		params['limit'] = limit
+		if(from2 != ''): 
+			params['from2'] = from2
+		if(to != ''): 
+			params['to'] = to
+		if(limit != ''): 
+			params['limit'] = limit
 		return self.doCurl("POST","/entity/migrate_category",params)
   
 
@@ -563,24 +658,42 @@ class CentralIndex:
 	'''
 	def putBusiness(self,name='',address1='',address2='',address3='',district='',town='',county='',postcode='',country='',latitude='',longitude='',timezone='',telephone_number='',telephone_type='',email='',website='',category_id='',category_name=''):
 		params = {}
-		params['name'] = name
-		params['address1'] = address1
-		params['address2'] = address2
-		params['address3'] = address3
-		params['district'] = district
-		params['town'] = town
-		params['county'] = county
-		params['postcode'] = postcode
-		params['country'] = country
-		params['latitude'] = latitude
-		params['longitude'] = longitude
-		params['timezone'] = timezone
-		params['telephone_number'] = telephone_number
-		params['telephone_type'] = telephone_type
-		params['email'] = email
-		params['website'] = website
-		params['category_id'] = category_id
-		params['category_name'] = category_name
+		if(name != ''): 
+			params['name'] = name
+		if(address1 != ''): 
+			params['address1'] = address1
+		if(address2 != ''): 
+			params['address2'] = address2
+		if(address3 != ''): 
+			params['address3'] = address3
+		if(district != ''): 
+			params['district'] = district
+		if(town != ''): 
+			params['town'] = town
+		if(county != ''): 
+			params['county'] = county
+		if(postcode != ''): 
+			params['postcode'] = postcode
+		if(country != ''): 
+			params['country'] = country
+		if(latitude != ''): 
+			params['latitude'] = latitude
+		if(longitude != ''): 
+			params['longitude'] = longitude
+		if(timezone != ''): 
+			params['timezone'] = timezone
+		if(telephone_number != ''): 
+			params['telephone_number'] = telephone_number
+		if(telephone_type != ''): 
+			params['telephone_type'] = telephone_type
+		if(email != ''): 
+			params['email'] = email
+		if(website != ''): 
+			params['website'] = website
+		if(category_id != ''): 
+			params['category_id'] = category_id
+		if(category_name != ''): 
+			params['category_name'] = category_name
 		return self.doCurl("PUT","/business",params)
   
 
@@ -592,7 +705,8 @@ class CentralIndex:
 	'''
 	def getEntityAdd(self,language=''):
 		params = {}
-		params['language'] = language
+		if(language != ''): 
+			params['language'] = language
 		return self.doCurl("GET","/entity/add",params)
   
 
@@ -605,8 +719,10 @@ class CentralIndex:
 	'''
 	def getLookupLocation(self,string='',country=''):
 		params = {}
-		params['string'] = string
-		params['country'] = country
+		if(string != ''): 
+			params['string'] = string
+		if(country != ''): 
+			params['country'] = country
 		return self.doCurl("GET","/lookup/location",params)
   
 
@@ -619,8 +735,10 @@ class CentralIndex:
 	'''
 	def getLookupCategory(self,string='',language=''):
 		params = {}
-		params['string'] = string
-		params['language'] = language
+		if(string != ''): 
+			params['string'] = string
+		if(language != ''): 
+			params['language'] = language
 		return self.doCurl("GET","/lookup/category",params)
   
 
@@ -633,8 +751,10 @@ class CentralIndex:
 	'''
 	def getLookupLegacyCategory(self,id='',type=''):
 		params = {}
-		params['id'] = id
-		params['type'] = type
+		if(id != ''): 
+			params['id'] = id
+		if(type != ''): 
+			params['type'] = type
 		return self.doCurl("GET","/lookup/legacy/category",params)
   
 
@@ -648,9 +768,12 @@ class CentralIndex:
 	'''
 	def postEntityName(self,entity_id='',name='',formal_name=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['name'] = name
-		params['formal_name'] = formal_name
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(name != ''): 
+			params['name'] = name
+		if(formal_name != ''): 
+			params['formal_name'] = formal_name
 		return self.doCurl("POST","/entity/name",params)
   
 
@@ -668,13 +791,20 @@ class CentralIndex:
 	'''
 	def postEntityBackground(self,entity_id='',number_of_employees='',turnover='',net_profit='',vat_number='',duns_number='',registered_company_number=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['number_of_employees'] = number_of_employees
-		params['turnover'] = turnover
-		params['net_profit'] = net_profit
-		params['vat_number'] = vat_number
-		params['duns_number'] = duns_number
-		params['registered_company_number'] = registered_company_number
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(number_of_employees != ''): 
+			params['number_of_employees'] = number_of_employees
+		if(turnover != ''): 
+			params['turnover'] = turnover
+		if(net_profit != ''): 
+			params['net_profit'] = net_profit
+		if(vat_number != ''): 
+			params['vat_number'] = vat_number
+		if(duns_number != ''): 
+			params['duns_number'] = duns_number
+		if(registered_company_number != ''): 
+			params['registered_company_number'] = registered_company_number
 		return self.doCurl("POST","/entity/background",params)
   
 
@@ -693,14 +823,22 @@ class CentralIndex:
 	'''
 	def postEntityEmployee(self,entity_id='',title='',forename='',surname='',job_title='',description='',email='',phone_number=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['title'] = title
-		params['forename'] = forename
-		params['surname'] = surname
-		params['job_title'] = job_title
-		params['description'] = description
-		params['email'] = email
-		params['phone_number'] = phone_number
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(title != ''): 
+			params['title'] = title
+		if(forename != ''): 
+			params['forename'] = forename
+		if(surname != ''): 
+			params['surname'] = surname
+		if(job_title != ''): 
+			params['job_title'] = job_title
+		if(description != ''): 
+			params['description'] = description
+		if(email != ''): 
+			params['email'] = email
+		if(phone_number != ''): 
+			params['phone_number'] = phone_number
 		return self.doCurl("POST","/entity/employee",params)
   
 
@@ -713,8 +851,10 @@ class CentralIndex:
 	'''
 	def deleteEntityEmployee(self,entity_id='',gen_id=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['gen_id'] = gen_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
 		return self.doCurl("DELETE","/entity/employee",params)
   
 
@@ -732,13 +872,20 @@ class CentralIndex:
 	'''
 	def postEntityPhone(self,entity_id='',number='',description='',premium_rate='',telephone_type='',tps='',ctps=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['number'] = number
-		params['description'] = description
-		params['premium_rate'] = premium_rate
-		params['telephone_type'] = telephone_type
-		params['tps'] = tps
-		params['ctps'] = ctps
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(number != ''): 
+			params['number'] = number
+		if(description != ''): 
+			params['description'] = description
+		if(premium_rate != ''): 
+			params['premium_rate'] = premium_rate
+		if(telephone_type != ''): 
+			params['telephone_type'] = telephone_type
+		if(tps != ''): 
+			params['tps'] = tps
+		if(ctps != ''): 
+			params['ctps'] = ctps
 		return self.doCurl("POST","/entity/phone",params)
   
 
@@ -751,8 +898,10 @@ class CentralIndex:
 	'''
 	def deleteEntityPhone(self,entity_id='',gen_id=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['gen_id'] = gen_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
 		return self.doCurl("DELETE","/entity/phone",params)
   
 
@@ -767,10 +916,14 @@ class CentralIndex:
 	'''
 	def postEntityFax(self,entity_id='',number='',description='',premium_rate=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['number'] = number
-		params['description'] = description
-		params['premium_rate'] = premium_rate
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(number != ''): 
+			params['number'] = number
+		if(description != ''): 
+			params['description'] = description
+		if(premium_rate != ''): 
+			params['premium_rate'] = premium_rate
 		return self.doCurl("POST","/entity/fax",params)
   
 
@@ -783,8 +936,10 @@ class CentralIndex:
 	'''
 	def deleteEntityFax(self,entity_id='',gen_id=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['gen_id'] = gen_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
 		return self.doCurl("DELETE","/entity/fax",params)
   
 
@@ -798,9 +953,12 @@ class CentralIndex:
 	'''
 	def putCategory(self,category_id='',language='',name=''):
 		params = {}
-		params['category_id'] = category_id
-		params['language'] = language
-		params['name'] = name
+		if(category_id != ''): 
+			params['category_id'] = category_id
+		if(language != ''): 
+			params['language'] = language
+		if(name != ''): 
+			params['name'] = name
 		return self.doCurl("PUT","/category",params)
   
 
@@ -815,10 +973,14 @@ class CentralIndex:
 	'''
 	def postCategoryMappings(self,category_id='',type='',id='',name=''):
 		params = {}
-		params['category_id'] = category_id
-		params['type'] = type
-		params['id'] = id
-		params['name'] = name
+		if(category_id != ''): 
+			params['category_id'] = category_id
+		if(type != ''): 
+			params['type'] = type
+		if(id != ''): 
+			params['id'] = id
+		if(name != ''): 
+			params['name'] = name
 		return self.doCurl("POST","/category/mappings",params)
   
 
@@ -832,9 +994,12 @@ class CentralIndex:
 	'''
 	def postCategorySynonym(self,category_id='',synonym='',language=''):
 		params = {}
-		params['category_id'] = category_id
-		params['synonym'] = synonym
-		params['language'] = language
+		if(category_id != ''): 
+			params['category_id'] = category_id
+		if(synonym != ''): 
+			params['synonym'] = synonym
+		if(language != ''): 
+			params['language'] = language
 		return self.doCurl("POST","/category/synonym",params)
   
 
@@ -848,9 +1013,12 @@ class CentralIndex:
 	'''
 	def deleteCategorySynonym(self,category_id='',synonym='',language=''):
 		params = {}
-		params['category_id'] = category_id
-		params['synonym'] = synonym
-		params['language'] = language
+		if(category_id != ''): 
+			params['category_id'] = category_id
+		if(synonym != ''): 
+			params['synonym'] = synonym
+		if(language != ''): 
+			params['language'] = language
 		return self.doCurl("DELETE","/category/synonym",params)
   
 
@@ -863,8 +1031,10 @@ class CentralIndex:
 	'''
 	def postCategoryMerge(self,from2='',to=''):
 		params = {}
-		params['from2'] = from2
-		params['to'] = to
+		if(from2 != ''): 
+			params['from2'] = from2
+		if(to != ''): 
+			params['to'] = to
 		return self.doCurl("POST","/category/merge",params)
   
 
@@ -878,9 +1048,12 @@ class CentralIndex:
 	'''
 	def postEntityCategory(self,entity_id='',category_id='',category_name=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['category_id'] = category_id
-		params['category_name'] = category_name
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(category_id != ''): 
+			params['category_id'] = category_id
+		if(category_name != ''): 
+			params['category_name'] = category_name
 		return self.doCurl("POST","/entity/category",params)
   
 
@@ -893,8 +1066,10 @@ class CentralIndex:
 	'''
 	def deleteEntityCategory(self,entity_id='',gen_id=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['gen_id'] = gen_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
 		return self.doCurl("DELETE","/entity/category",params)
   
 
@@ -909,10 +1084,14 @@ class CentralIndex:
 	'''
 	def postEntityGeopoint(self,entity_id='',longitude='',latitude='',accuracy=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['longitude'] = longitude
-		params['latitude'] = latitude
-		params['accuracy'] = accuracy
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(longitude != ''): 
+			params['longitude'] = longitude
+		if(latitude != ''): 
+			params['latitude'] = latitude
+		if(accuracy != ''): 
+			params['accuracy'] = accuracy
 		return self.doCurl("POST","/entity/geopoint",params)
   
 
@@ -929,12 +1108,18 @@ class CentralIndex:
 	'''
 	def getMatchByphone(self,phone='',company_name='',latitude='',longitude='',name_strictness='',location_strictness=''):
 		params = {}
-		params['phone'] = phone
-		params['company_name'] = company_name
-		params['latitude'] = latitude
-		params['longitude'] = longitude
-		params['name_strictness'] = name_strictness
-		params['location_strictness'] = location_strictness
+		if(phone != ''): 
+			params['phone'] = phone
+		if(company_name != ''): 
+			params['company_name'] = company_name
+		if(latitude != ''): 
+			params['latitude'] = latitude
+		if(longitude != ''): 
+			params['longitude'] = longitude
+		if(name_strictness != ''): 
+			params['name_strictness'] = name_strictness
+		if(location_strictness != ''): 
+			params['location_strictness'] = location_strictness
 		return self.doCurl("GET","/match/byphone",params)
   
 
@@ -950,11 +1135,16 @@ class CentralIndex:
 	'''
 	def getMatchBylocation(self,company_name='',latitude='',longitude='',name_strictness='',location_strictness=''):
 		params = {}
-		params['company_name'] = company_name
-		params['latitude'] = latitude
-		params['longitude'] = longitude
-		params['name_strictness'] = name_strictness
-		params['location_strictness'] = location_strictness
+		if(company_name != ''): 
+			params['company_name'] = company_name
+		if(latitude != ''): 
+			params['latitude'] = latitude
+		if(longitude != ''): 
+			params['longitude'] = longitude
+		if(name_strictness != ''): 
+			params['name_strictness'] = name_strictness
+		if(location_strictness != ''): 
+			params['location_strictness'] = location_strictness
 		return self.doCurl("GET","/match/bylocation",params)
   
 
@@ -966,7 +1156,8 @@ class CentralIndex:
 	'''
 	def getToolsStopwords(self,text=''):
 		params = {}
-		params['text'] = text
+		if(text != ''): 
+			params['text'] = text
 		return self.doCurl("GET","/tools/stopwords",params)
   
 
@@ -978,7 +1169,8 @@ class CentralIndex:
 	'''
 	def getToolsStem(self,text=''):
 		params = {}
-		params['text'] = text
+		if(text != ''): 
+			params['text'] = text
 		return self.doCurl("GET","/tools/stem",params)
   
 
@@ -990,7 +1182,8 @@ class CentralIndex:
 	'''
 	def getToolsPhonetic(self,text=''):
 		params = {}
-		params['text'] = text
+		if(text != ''): 
+			params['text'] = text
 		return self.doCurl("GET","/tools/phonetic",params)
   
 
@@ -1002,7 +1195,8 @@ class CentralIndex:
 	'''
 	def getToolsProcess_string(self,text=''):
 		params = {}
-		params['text'] = text
+		if(text != ''): 
+			params['text'] = text
 		return self.doCurl("GET","/tools/process_string",params)
   
 
@@ -1014,7 +1208,8 @@ class CentralIndex:
 	'''
 	def getToolsProcess_phone(self,number=''):
 		params = {}
-		params['number'] = number
+		if(number != ''): 
+			params['number'] = number
 		return self.doCurl("GET","/tools/process_phone",params)
   
 
@@ -1026,7 +1221,8 @@ class CentralIndex:
 	'''
 	def getToolsSpider(self,url=''):
 		params = {}
-		params['url'] = url
+		if(url != ''): 
+			params['url'] = url
 		return self.doCurl("GET","/tools/spider",params)
   
 
@@ -1038,7 +1234,8 @@ class CentralIndex:
 	'''
 	def getToolsGeocode(self,address=''):
 		params = {}
-		params['address'] = address
+		if(address != ''): 
+			params['address'] = address
 		return self.doCurl("GET","/tools/geocode",params)
   
 
@@ -1053,10 +1250,14 @@ class CentralIndex:
 	'''
 	def getToolsIodocs(self,mode='',path='',endpoint='',doctype=''):
 		params = {}
-		params['mode'] = mode
-		params['path'] = path
-		params['endpoint'] = endpoint
-		params['doctype'] = doctype
+		if(mode != ''): 
+			params['mode'] = mode
+		if(path != ''): 
+			params['path'] = path
+		if(endpoint != ''): 
+			params['endpoint'] = endpoint
+		if(doctype != ''): 
+			params['doctype'] = doctype
 		return self.doCurl("GET","/tools/iodocs",params)
   
 
@@ -1069,8 +1270,10 @@ class CentralIndex:
 	'''
 	def getToolsDocs(self,object='',format=''):
 		params = {}
-		params['object'] = object
-		params['format'] = format
+		if(object != ''): 
+			params['object'] = object
+		if(format != ''): 
+			params['format'] = format
 		return self.doCurl("GET","/tools/docs",params)
   
 
@@ -1083,8 +1286,10 @@ class CentralIndex:
 	'''
 	def getToolsFormatPhone(self,number='',country=''):
 		params = {}
-		params['number'] = number
-		params['country'] = country
+		if(number != ''): 
+			params['number'] = number
+		if(country != ''): 
+			params['country'] = country
 		return self.doCurl("GET","/tools/format/phone",params)
   
 
@@ -1097,8 +1302,10 @@ class CentralIndex:
 	'''
 	def getToolsFormatAddress(self,address='',country=''):
 		params = {}
-		params['address'] = address
-		params['country'] = country
+		if(address != ''): 
+			params['address'] = address
+		if(country != ''): 
+			params['country'] = country
 		return self.doCurl("GET","/tools/format/address",params)
   
 
@@ -1118,15 +1325,24 @@ class CentralIndex:
 	'''
 	def postEntityInvoice_address(self,entity_id='',address1='',address2='',address3='',district='',town='',county='',postcode='',address_type=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['address1'] = address1
-		params['address2'] = address2
-		params['address3'] = address3
-		params['district'] = district
-		params['town'] = town
-		params['county'] = county
-		params['postcode'] = postcode
-		params['address_type'] = address_type
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(address1 != ''): 
+			params['address1'] = address1
+		if(address2 != ''): 
+			params['address2'] = address2
+		if(address3 != ''): 
+			params['address3'] = address3
+		if(district != ''): 
+			params['district'] = district
+		if(town != ''): 
+			params['town'] = town
+		if(county != ''): 
+			params['county'] = county
+		if(postcode != ''): 
+			params['postcode'] = postcode
+		if(address_type != ''): 
+			params['address_type'] = address_type
 		return self.doCurl("POST","/entity/invoice_address",params)
   
 
@@ -1138,7 +1354,8 @@ class CentralIndex:
 	'''
 	def deleteEntityInvoice_address(self,entity_id=''):
 		params = {}
-		params['entity_id'] = entity_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
 		return self.doCurl("DELETE","/entity/invoice_address",params)
   
 
@@ -1152,9 +1369,12 @@ class CentralIndex:
 	'''
 	def postEntityTag(self,entity_id='',tag='',language=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['tag'] = tag
-		params['language'] = language
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(tag != ''): 
+			params['tag'] = tag
+		if(language != ''): 
+			params['language'] = language
 		return self.doCurl("POST","/entity/tag",params)
   
 
@@ -1167,8 +1387,10 @@ class CentralIndex:
 	'''
 	def deleteEntityTag(self,entity_id='',gen_id=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['gen_id'] = gen_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
 		return self.doCurl("DELETE","/entity/tag",params)
   
 
@@ -1188,15 +1410,24 @@ class CentralIndex:
 	'''
 	def postEntityPostal_address(self,entity_id='',address1='',address2='',address3='',district='',town='',county='',postcode='',address_type=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['address1'] = address1
-		params['address2'] = address2
-		params['address3'] = address3
-		params['district'] = district
-		params['town'] = town
-		params['county'] = county
-		params['postcode'] = postcode
-		params['address_type'] = address_type
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(address1 != ''): 
+			params['address1'] = address1
+		if(address2 != ''): 
+			params['address2'] = address2
+		if(address3 != ''): 
+			params['address3'] = address3
+		if(district != ''): 
+			params['district'] = district
+		if(town != ''): 
+			params['town'] = town
+		if(county != ''): 
+			params['county'] = county
+		if(postcode != ''): 
+			params['postcode'] = postcode
+		if(address_type != ''): 
+			params['address_type'] = address_type
 		return self.doCurl("POST","/entity/postal_address",params)
   
 
@@ -1213,12 +1444,18 @@ class CentralIndex:
 	'''
 	def postEntityAdvertiser(self,entity_id='',tags='',locations='',expiry='',is_national='',language=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['tags'] = tags
-		params['locations'] = locations
-		params['expiry'] = expiry
-		params['is_national'] = is_national
-		params['language'] = language
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(tags != ''): 
+			params['tags'] = tags
+		if(locations != ''): 
+			params['locations'] = locations
+		if(expiry != ''): 
+			params['expiry'] = expiry
+		if(is_national != ''): 
+			params['is_national'] = is_national
+		if(language != ''): 
+			params['language'] = language
 		return self.doCurl("POST","/entity/advertiser",params)
   
 
@@ -1231,8 +1468,10 @@ class CentralIndex:
 	'''
 	def deleteEntityAdvertiser(self,entity_id='',gen_id=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['gen_id'] = gen_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
 		return self.doCurl("DELETE","/entity/advertiser",params)
   
 
@@ -1246,9 +1485,12 @@ class CentralIndex:
 	'''
 	def postEntityEmail(self,entity_id='',email_address='',email_description=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['email_address'] = email_address
-		params['email_description'] = email_description
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(email_address != ''): 
+			params['email_address'] = email_address
+		if(email_description != ''): 
+			params['email_description'] = email_description
 		return self.doCurl("POST","/entity/email",params)
   
 
@@ -1261,8 +1503,10 @@ class CentralIndex:
 	'''
 	def deleteEntityEmail(self,entity_id='',gen_id=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['gen_id'] = gen_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
 		return self.doCurl("DELETE","/entity/email",params)
   
 
@@ -1277,10 +1521,14 @@ class CentralIndex:
 	'''
 	def postEntityWebsite(self,entity_id='',website_url='',display_url='',website_description=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['website_url'] = website_url
-		params['display_url'] = display_url
-		params['website_description'] = website_description
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(website_url != ''): 
+			params['website_url'] = website_url
+		if(display_url != ''): 
+			params['display_url'] = display_url
+		if(website_description != ''): 
+			params['website_description'] = website_description
 		return self.doCurl("POST","/entity/website",params)
   
 
@@ -1293,8 +1541,10 @@ class CentralIndex:
 	'''
 	def deleteEntityWebsite(self,entity_id='',gen_id=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['gen_id'] = gen_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
 		return self.doCurl("DELETE","/entity/website",params)
   
 
@@ -1308,9 +1558,12 @@ class CentralIndex:
 	'''
 	def postEntityImage(self,entity_id='',filedata='',image_name=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['filedata'] = filedata
-		params['image_name'] = image_name
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(filedata != ''): 
+			params['filedata'] = filedata
+		if(image_name != ''): 
+			params['image_name'] = image_name
 		return self.doCurl("POST","/entity/image",params)
   
 
@@ -1323,8 +1576,10 @@ class CentralIndex:
 	'''
 	def deleteEntityImage(self,entity_id='',gen_id=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['gen_id'] = gen_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
 		return self.doCurl("DELETE","/entity/image",params)
   
 
@@ -1336,7 +1591,8 @@ class CentralIndex:
 	'''
 	def getLocation(self,location_id=''):
 		params = {}
-		params['location_id'] = location_id
+		if(location_id != ''): 
+			params['location_id'] = location_id
 		return self.doCurl("GET","/location",params)
   
 
@@ -1359,18 +1615,30 @@ class CentralIndex:
 	'''
 	def postLocation(self,location_id='',name='',formal_name='',latitude='',longitude='',resolution='',country='',population='',description='',timezone='',is_duplicate='',is_default=''):
 		params = {}
-		params['location_id'] = location_id
-		params['name'] = name
-		params['formal_name'] = formal_name
-		params['latitude'] = latitude
-		params['longitude'] = longitude
-		params['resolution'] = resolution
-		params['country'] = country
-		params['population'] = population
-		params['description'] = description
-		params['timezone'] = timezone
-		params['is_duplicate'] = is_duplicate
-		params['is_default'] = is_default
+		if(location_id != ''): 
+			params['location_id'] = location_id
+		if(name != ''): 
+			params['name'] = name
+		if(formal_name != ''): 
+			params['formal_name'] = formal_name
+		if(latitude != ''): 
+			params['latitude'] = latitude
+		if(longitude != ''): 
+			params['longitude'] = longitude
+		if(resolution != ''): 
+			params['resolution'] = resolution
+		if(country != ''): 
+			params['country'] = country
+		if(population != ''): 
+			params['population'] = population
+		if(description != ''): 
+			params['description'] = description
+		if(timezone != ''): 
+			params['timezone'] = timezone
+		if(is_duplicate != ''): 
+			params['is_duplicate'] = is_duplicate
+		if(is_default != ''): 
+			params['is_default'] = is_default
 		return self.doCurl("POST","/location",params)
   
 
@@ -1384,9 +1652,12 @@ class CentralIndex:
 	'''
 	def postLocationSynonym(self,location_id='',synonym='',language=''):
 		params = {}
-		params['location_id'] = location_id
-		params['synonym'] = synonym
-		params['language'] = language
+		if(location_id != ''): 
+			params['location_id'] = location_id
+		if(synonym != ''): 
+			params['synonym'] = synonym
+		if(language != ''): 
+			params['language'] = language
 		return self.doCurl("POST","/location/synonym",params)
   
 
@@ -1400,9 +1671,12 @@ class CentralIndex:
 	'''
 	def deleteLocationSynonym(self,location_id='',synonym='',language=''):
 		params = {}
-		params['location_id'] = location_id
-		params['synonym'] = synonym
-		params['language'] = language
+		if(location_id != ''): 
+			params['location_id'] = location_id
+		if(synonym != ''): 
+			params['synonym'] = synonym
+		if(language != ''): 
+			params['language'] = language
 		return self.doCurl("DELETE","/location/synonym",params)
   
 
@@ -1417,10 +1691,14 @@ class CentralIndex:
 	'''
 	def postLocationSource(self,location_id='',type='',url='',ref=''):
 		params = {}
-		params['location_id'] = location_id
-		params['type'] = type
-		params['url'] = url
-		params['ref'] = ref
+		if(location_id != ''): 
+			params['location_id'] = location_id
+		if(type != ''): 
+			params['type'] = type
+		if(url != ''): 
+			params['url'] = url
+		if(ref != ''): 
+			params['ref'] = ref
 		return self.doCurl("POST","/location/source",params)
   
 
@@ -1433,8 +1711,10 @@ class CentralIndex:
 	'''
 	def postEntityStatus(self,entity_id='',status=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['status'] = status
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(status != ''): 
+			params['status'] = status
 		return self.doCurl("POST","/entity/status",params)
   
 
@@ -1448,9 +1728,12 @@ class CentralIndex:
 	'''
 	def postEntityLogo(self,entity_id='',filedata='',logo_name=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['filedata'] = filedata
-		params['logo_name'] = logo_name
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(filedata != ''): 
+			params['filedata'] = filedata
+		if(logo_name != ''): 
+			params['logo_name'] = logo_name
 		return self.doCurl("POST","/entity/logo",params)
   
 
@@ -1463,8 +1746,10 @@ class CentralIndex:
 	'''
 	def deleteEntityLogo(self,entity_id='',gen_id=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['gen_id'] = gen_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
 		return self.doCurl("DELETE","/entity/logo",params)
   
 
@@ -1480,11 +1765,16 @@ class CentralIndex:
 	'''
 	def postEntityVideo(self,entity_id='',title='',description='',thumbnail='',embed_code=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['title'] = title
-		params['description'] = description
-		params['thumbnail'] = thumbnail
-		params['embed_code'] = embed_code
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(title != ''): 
+			params['title'] = title
+		if(description != ''): 
+			params['description'] = description
+		if(thumbnail != ''): 
+			params['thumbnail'] = thumbnail
+		if(embed_code != ''): 
+			params['embed_code'] = embed_code
 		return self.doCurl("POST","/entity/video",params)
   
 
@@ -1497,8 +1787,10 @@ class CentralIndex:
 	'''
 	def deleteEntityVideo(self,entity_id='',gen_id=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['gen_id'] = gen_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
 		return self.doCurl("DELETE","/entity/video",params)
   
 
@@ -1514,11 +1806,16 @@ class CentralIndex:
 	'''
 	def postEntityAffiliate_link(self,entity_id='',affiliate_name='',affiliate_link='',affiliate_message='',affiliate_logo=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['affiliate_name'] = affiliate_name
-		params['affiliate_link'] = affiliate_link
-		params['affiliate_message'] = affiliate_message
-		params['affiliate_logo'] = affiliate_logo
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(affiliate_name != ''): 
+			params['affiliate_name'] = affiliate_name
+		if(affiliate_link != ''): 
+			params['affiliate_link'] = affiliate_link
+		if(affiliate_message != ''): 
+			params['affiliate_message'] = affiliate_message
+		if(affiliate_logo != ''): 
+			params['affiliate_logo'] = affiliate_logo
 		return self.doCurl("POST","/entity/affiliate_link",params)
   
 
@@ -1531,8 +1828,10 @@ class CentralIndex:
 	'''
 	def deleteEntityAffiliate_link(self,entity_id='',gen_id=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['gen_id'] = gen_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
 		return self.doCurl("DELETE","/entity/affiliate_link",params)
   
 
@@ -1546,9 +1845,12 @@ class CentralIndex:
 	'''
 	def postEntityDescription(self,entity_id='',headline='',body=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['headline'] = headline
-		params['body'] = body
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(headline != ''): 
+			params['headline'] = headline
+		if(body != ''): 
+			params['body'] = body
 		return self.doCurl("POST","/entity/description",params)
   
 
@@ -1561,8 +1863,10 @@ class CentralIndex:
 	'''
 	def deleteEntityDescription(self,entity_id='',gen_id=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['gen_id'] = gen_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
 		return self.doCurl("DELETE","/entity/description",params)
   
 
@@ -1576,9 +1880,12 @@ class CentralIndex:
 	'''
 	def postEntityList(self,entity_id='',headline='',body=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['headline'] = headline
-		params['body'] = body
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(headline != ''): 
+			params['headline'] = headline
+		if(body != ''): 
+			params['body'] = body
 		return self.doCurl("POST","/entity/list",params)
   
 
@@ -1591,8 +1898,10 @@ class CentralIndex:
 	'''
 	def deleteEntityList(self,gen_id='',entity_id=''):
 		params = {}
-		params['gen_id'] = gen_id
-		params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
 		return self.doCurl("DELETE","/entity/list",params)
   
 
@@ -1606,9 +1915,12 @@ class CentralIndex:
 	'''
 	def postEntityDocument(self,entity_id='',name='',filedata=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['name'] = name
-		params['filedata'] = filedata
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(name != ''): 
+			params['name'] = name
+		if(filedata != ''): 
+			params['filedata'] = filedata
 		return self.doCurl("POST","/entity/document",params)
   
 
@@ -1621,8 +1933,10 @@ class CentralIndex:
 	'''
 	def deleteEntityDocument(self,entity_id='',gen_id=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['gen_id'] = gen_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
 		return self.doCurl("DELETE","/entity/document",params)
   
 
@@ -1638,11 +1952,16 @@ class CentralIndex:
 	'''
 	def postEntityTestimonial(self,entity_id='',title='',text='',date='',testifier_name=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['title'] = title
-		params['text'] = text
-		params['date'] = date
-		params['testifier_name'] = testifier_name
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(title != ''): 
+			params['title'] = title
+		if(text != ''): 
+			params['text'] = text
+		if(date != ''): 
+			params['date'] = date
+		if(testifier_name != ''): 
+			params['testifier_name'] = testifier_name
 		return self.doCurl("POST","/entity/testimonial",params)
   
 
@@ -1655,8 +1974,10 @@ class CentralIndex:
 	'''
 	def deleteEntityTestimonial(self,entity_id='',gen_id=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['gen_id'] = gen_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
 		return self.doCurl("DELETE","/entity/testimonial",params)
   
 
@@ -1677,16 +1998,26 @@ class CentralIndex:
 	'''
 	def postEntityOpening_times(self,entity_id='',monday='',tuesday='',wednesday='',thursday='',friday='',saturday='',sunday='',closed='',closed_public_holidays=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['monday'] = monday
-		params['tuesday'] = tuesday
-		params['wednesday'] = wednesday
-		params['thursday'] = thursday
-		params['friday'] = friday
-		params['saturday'] = saturday
-		params['sunday'] = sunday
-		params['closed'] = closed
-		params['closed_public_holidays'] = closed_public_holidays
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(monday != ''): 
+			params['monday'] = monday
+		if(tuesday != ''): 
+			params['tuesday'] = tuesday
+		if(wednesday != ''): 
+			params['wednesday'] = wednesday
+		if(thursday != ''): 
+			params['thursday'] = thursday
+		if(friday != ''): 
+			params['friday'] = friday
+		if(saturday != ''): 
+			params['saturday'] = saturday
+		if(sunday != ''): 
+			params['sunday'] = sunday
+		if(closed != ''): 
+			params['closed'] = closed
+		if(closed_public_holidays != ''): 
+			params['closed_public_holidays'] = closed_public_holidays
 		return self.doCurl("POST","/entity/opening_times",params)
   
 
@@ -1705,14 +2036,22 @@ class CentralIndex:
 	'''
 	def postEntitySpecial_offer(self,entity_id='',title='',description='',terms='',start_date='',expiry_date='',url='',image_url=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['title'] = title
-		params['description'] = description
-		params['terms'] = terms
-		params['start_date'] = start_date
-		params['expiry_date'] = expiry_date
-		params['url'] = url
-		params['image_url'] = image_url
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(title != ''): 
+			params['title'] = title
+		if(description != ''): 
+			params['description'] = description
+		if(terms != ''): 
+			params['terms'] = terms
+		if(start_date != ''): 
+			params['start_date'] = start_date
+		if(expiry_date != ''): 
+			params['expiry_date'] = expiry_date
+		if(url != ''): 
+			params['url'] = url
+		if(image_url != ''): 
+			params['image_url'] = image_url
 		return self.doCurl("POST","/entity/special_offer",params)
   
 
@@ -1725,8 +2064,10 @@ class CentralIndex:
 	'''
 	def deleteEntitySpecial_offer(self,entity_id='',gen_id=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['gen_id'] = gen_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
 		return self.doCurl("DELETE","/entity/special_offer",params)
   
 
@@ -1746,15 +2087,24 @@ class CentralIndex:
 	'''
 	def postUser(self,email='',first_name='',last_name='',active='',trust='',creation_date='',user_type='',social_network='',social_network_id=''):
 		params = {}
-		params['email'] = email
-		params['first_name'] = first_name
-		params['last_name'] = last_name
-		params['active'] = active
-		params['trust'] = trust
-		params['creation_date'] = creation_date
-		params['user_type'] = user_type
-		params['social_network'] = social_network
-		params['social_network_id'] = social_network_id
+		if(email != ''): 
+			params['email'] = email
+		if(first_name != ''): 
+			params['first_name'] = first_name
+		if(last_name != ''): 
+			params['last_name'] = last_name
+		if(active != ''): 
+			params['active'] = active
+		if(trust != ''): 
+			params['trust'] = trust
+		if(creation_date != ''): 
+			params['creation_date'] = creation_date
+		if(user_type != ''): 
+			params['user_type'] = user_type
+		if(social_network != ''): 
+			params['social_network'] = social_network
+		if(social_network_id != ''): 
+			params['social_network_id'] = social_network_id
 		return self.doCurl("POST","/user",params)
   
 
@@ -1766,7 +2116,8 @@ class CentralIndex:
 	'''
 	def getUserBy_email(self,email=''):
 		params = {}
-		params['email'] = email
+		if(email != ''): 
+			params['email'] = email
 		return self.doCurl("GET","/user/by_email",params)
   
 
@@ -1778,7 +2129,8 @@ class CentralIndex:
 	'''
 	def getUser(self,user_id=''):
 		params = {}
-		params['user_id'] = user_id
+		if(user_id != ''): 
+			params['user_id'] = user_id
 		return self.doCurl("GET","/user",params)
   
 
@@ -1791,8 +2143,10 @@ class CentralIndex:
 	'''
 	def getUserBy_social_media(self,name='',id=''):
 		params = {}
-		params['name'] = name
-		params['id'] = id
+		if(name != ''): 
+			params['name'] = name
+		if(id != ''): 
+			params['id'] = id
 		return self.doCurl("GET","/user/by_social_media",params)
   
 
@@ -1805,8 +2159,10 @@ class CentralIndex:
 	'''
 	def getAutocompleteCategory(self,str='',language=''):
 		params = {}
-		params['str'] = str
-		params['language'] = language
+		if(str != ''): 
+			params['str'] = str
+		if(language != ''): 
+			params['language'] = language
 		return self.doCurl("GET","/autocomplete/category",params)
   
 
@@ -1819,8 +2175,10 @@ class CentralIndex:
 	'''
 	def getAutocompleteLocation(self,str='',country=''):
 		params = {}
-		params['str'] = str
-		params['country'] = country
+		if(str != ''): 
+			params['str'] = str
+		if(country != ''): 
+			params['country'] = country
 		return self.doCurl("GET","/autocomplete/location",params)
   
 
@@ -1833,8 +2191,10 @@ class CentralIndex:
 	'''
 	def putQueue(self,queue_name='',data=''):
 		params = {}
-		params['queue_name'] = queue_name
-		params['data'] = data
+		if(queue_name != ''): 
+			params['queue_name'] = queue_name
+		if(data != ''): 
+			params['data'] = data
 		return self.doCurl("PUT","/queue",params)
   
 
@@ -1846,7 +2206,8 @@ class CentralIndex:
 	'''
 	def deleteQueue(self,queue_id=''):
 		params = {}
-		params['queue_id'] = queue_id
+		if(queue_id != ''): 
+			params['queue_id'] = queue_id
 		return self.doCurl("DELETE","/queue",params)
   
 
@@ -1859,8 +2220,10 @@ class CentralIndex:
 	'''
 	def getQueue(self,limit='',queue_name=''):
 		params = {}
-		params['limit'] = limit
-		params['queue_name'] = queue_name
+		if(limit != ''): 
+			params['limit'] = limit
+		if(queue_name != ''): 
+			params['queue_name'] = queue_name
 		return self.doCurl("GET","/queue",params)
   
 
@@ -1873,8 +2236,10 @@ class CentralIndex:
 	'''
 	def postQueueUnlock(self,queue_name='',seconds=''):
 		params = {}
-		params['queue_name'] = queue_name
-		params['seconds'] = seconds
+		if(queue_name != ''): 
+			params['queue_name'] = queue_name
+		if(seconds != ''): 
+			params['seconds'] = seconds
 		return self.doCurl("POST","/queue/unlock",params)
   
 
@@ -1887,8 +2252,10 @@ class CentralIndex:
 	'''
 	def postQueueError(self,queue_id='',error=''):
 		params = {}
-		params['queue_id'] = queue_id
-		params['error'] = error
+		if(queue_id != ''): 
+			params['queue_id'] = queue_id
+		if(error != ''): 
+			params['error'] = error
 		return self.doCurl("POST","/queue/error",params)
   
 
@@ -1901,8 +2268,10 @@ class CentralIndex:
 	'''
 	def getQueueSearch(self,type='',id=''):
 		params = {}
-		params['type'] = type
-		params['id'] = id
+		if(type != ''): 
+			params['type'] = type
+		if(id != ''): 
+			params['id'] = id
 		return self.doCurl("GET","/queue/search",params)
   
 
@@ -1919,12 +2288,18 @@ class CentralIndex:
 	'''
 	def putTransaction(self,entity_id='',user_id='',basket_total='',basket='',currency='',notes=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['user_id'] = user_id
-		params['basket_total'] = basket_total
-		params['basket'] = basket
-		params['currency'] = currency
-		params['notes'] = notes
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(user_id != ''): 
+			params['user_id'] = user_id
+		if(basket_total != ''): 
+			params['basket_total'] = basket_total
+		if(basket != ''): 
+			params['basket'] = basket
+		if(currency != ''): 
+			params['currency'] = currency
+		if(notes != ''): 
+			params['notes'] = notes
 		return self.doCurl("PUT","/transaction",params)
   
 
@@ -1937,8 +2312,10 @@ class CentralIndex:
 	'''
 	def postTransactionInprogress(self,transaction_id='',paypal_setexpresscheckout=''):
 		params = {}
-		params['transaction_id'] = transaction_id
-		params['paypal_setexpresscheckout'] = paypal_setexpresscheckout
+		if(transaction_id != ''): 
+			params['transaction_id'] = transaction_id
+		if(paypal_setexpresscheckout != ''): 
+			params['paypal_setexpresscheckout'] = paypal_setexpresscheckout
 		return self.doCurl("POST","/transaction/inprogress",params)
   
 
@@ -1951,8 +2328,10 @@ class CentralIndex:
 	'''
 	def postTransactionAuthorised(self,transaction_id='',paypal_getexpresscheckoutdetails=''):
 		params = {}
-		params['transaction_id'] = transaction_id
-		params['paypal_getexpresscheckoutdetails'] = paypal_getexpresscheckoutdetails
+		if(transaction_id != ''): 
+			params['transaction_id'] = transaction_id
+		if(paypal_getexpresscheckoutdetails != ''): 
+			params['paypal_getexpresscheckoutdetails'] = paypal_getexpresscheckoutdetails
 		return self.doCurl("POST","/transaction/authorised",params)
   
 
@@ -1967,10 +2346,14 @@ class CentralIndex:
 	'''
 	def postTransactionComplete(self,transaction_id='',paypal_doexpresscheckoutpayment='',user_id='',entity_id=''):
 		params = {}
-		params['transaction_id'] = transaction_id
-		params['paypal_doexpresscheckoutpayment'] = paypal_doexpresscheckoutpayment
-		params['user_id'] = user_id
-		params['entity_id'] = entity_id
+		if(transaction_id != ''): 
+			params['transaction_id'] = transaction_id
+		if(paypal_doexpresscheckoutpayment != ''): 
+			params['paypal_doexpresscheckoutpayment'] = paypal_doexpresscheckoutpayment
+		if(user_id != ''): 
+			params['user_id'] = user_id
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
 		return self.doCurl("POST","/transaction/complete",params)
   
 
@@ -1982,7 +2365,8 @@ class CentralIndex:
 	'''
 	def postTransactionCancelled(self,transaction_id=''):
 		params = {}
-		params['transaction_id'] = transaction_id
+		if(transaction_id != ''): 
+			params['transaction_id'] = transaction_id
 		return self.doCurl("POST","/transaction/cancelled",params)
   
 
@@ -1994,7 +2378,8 @@ class CentralIndex:
 	'''
 	def getTransaction(self,transaction_id=''):
 		params = {}
-		params['transaction_id'] = transaction_id
+		if(transaction_id != ''): 
+			params['transaction_id'] = transaction_id
 		return self.doCurl("GET","/transaction",params)
   
 
@@ -2006,7 +2391,8 @@ class CentralIndex:
 	'''
 	def getTransactionBy_paypal_transaction_id(self,paypal_transaction_id=''):
 		params = {}
-		params['paypal_transaction_id'] = paypal_transaction_id
+		if(paypal_transaction_id != ''): 
+			params['paypal_transaction_id'] = paypal_transaction_id
 		return self.doCurl("GET","/transaction/by_paypal_transaction_id",params)
   
 
@@ -2020,9 +2406,12 @@ class CentralIndex:
 	'''
 	def postEntityClaim(self,entity_id='',claimed_user_id='',claimed_date=''):
 		params = {}
-		params['entity_id'] = entity_id
-		params['claimed_user_id'] = claimed_user_id
-		params['claimed_date'] = claimed_date
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(claimed_user_id != ''): 
+			params['claimed_user_id'] = claimed_user_id
+		if(claimed_date != ''): 
+			params['claimed_date'] = claimed_date
 		return self.doCurl("POST","/entity/claim",params)
   
 
