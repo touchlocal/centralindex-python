@@ -649,14 +649,13 @@ class CentralIndex:
 	@param longitude
 	@param timezone
 	@param telephone_number
-	@param telephone_type
 	@param email
 	@param website
 	@param category_id
 	@param category_name
 	@return - the data from the api
 	'''
-	def putBusiness(self,name='',address1='',address2='',address3='',district='',town='',county='',postcode='',country='',latitude='',longitude='',timezone='',telephone_number='',telephone_type='',email='',website='',category_id='',category_name=''):
+	def putBusiness(self,name='',address1='',address2='',address3='',district='',town='',county='',postcode='',country='',latitude='',longitude='',timezone='',telephone_number='',email='',website='',category_id='',category_name=''):
 		params = {}
 		if(name != ''): 
 			params['name'] = name
@@ -684,8 +683,6 @@ class CentralIndex:
 			params['timezone'] = timezone
 		if(telephone_number != ''): 
 			params['telephone_number'] = telephone_number
-		if(telephone_type != ''): 
-			params['telephone_type'] = telephone_type
 		if(email != ''): 
 			params['email'] = email
 		if(website != ''): 
@@ -700,13 +697,16 @@ class CentralIndex:
 
 	'''
 	Provides a personalised URL to redirect a user to add an entity to Central Index
-	@param language - The language to use to render the add path
+	@param language - The language to use to render the add path e.g. en
+	@param portal_name - The name of the website that data is to be added on e.g. YourLocal
 	@return - the data from the api
 	'''
-	def getEntityAdd(self,language=''):
+	def getEntityAdd(self,language='',portal_name=''):
 		params = {}
 		if(language != ''): 
 			params['language'] = language
+		if(portal_name != ''): 
+			params['portal_name'] = portal_name
 		return self.doCurl("GET","/entity/add",params)
   
 
@@ -864,13 +864,9 @@ class CentralIndex:
 	@param entity_id
 	@param number
 	@param description
-	@param premium_rate
-	@param telephone_type
-	@param tps
-	@param ctps
 	@return - the data from the api
 	'''
-	def postEntityPhone(self,entity_id='',number='',description='',premium_rate='',telephone_type='',tps='',ctps=''):
+	def postEntityPhone(self,entity_id='',number='',description=''):
 		params = {}
 		if(entity_id != ''): 
 			params['entity_id'] = entity_id
@@ -878,14 +874,6 @@ class CentralIndex:
 			params['number'] = number
 		if(description != ''): 
 			params['description'] = description
-		if(premium_rate != ''): 
-			params['premium_rate'] = premium_rate
-		if(telephone_type != ''): 
-			params['telephone_type'] = telephone_type
-		if(tps != ''): 
-			params['tps'] = tps
-		if(ctps != ''): 
-			params['ctps'] = ctps
 		return self.doCurl("POST","/entity/phone",params)
   
 
@@ -911,10 +899,9 @@ class CentralIndex:
 	@param entity_id
 	@param number
 	@param description
-	@param premium_rate
 	@return - the data from the api
 	'''
-	def postEntityFax(self,entity_id='',number='',description='',premium_rate=''):
+	def postEntityFax(self,entity_id='',number='',description=''):
 		params = {}
 		if(entity_id != ''): 
 			params['entity_id'] = entity_id
@@ -922,8 +909,6 @@ class CentralIndex:
 			params['number'] = number
 		if(description != ''): 
 			params['description'] = description
-		if(premium_rate != ''): 
-			params['premium_rate'] = premium_rate
 		return self.doCurl("POST","/entity/fax",params)
   
 
