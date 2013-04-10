@@ -1,3 +1,4 @@
+Starting Wolf using 'dev' configuration
 #!/usr/bin/python
 
 '''
@@ -708,6 +709,25 @@ class CentralIndex:
 		if(portal_name != ''): 
 			params['portal_name'] = portal_name
 		return self.doCurl("GET","/entity/add",params)
+  
+
+
+	'''
+	Provides a personalised URL to redirect a user to claim an entity in the Central Index
+	@param language - The language to use to render the add path e.g. en
+	@param portal_name - The name of the website that data is to be added on e.g. YourLocal
+	@param entity_id - The id of the index card that is being claimed e.g. 379236808425472
+	@return - the data from the api
+	'''
+	def getEntityClaim(self,language='',portal_name='',entity_id=''):
+		params = {}
+		if(language != ''): 
+			params['language'] = language
+		if(portal_name != ''): 
+			params['portal_name'] = portal_name
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		return self.doCurl("GET","/entity/claim",params)
   
 
 
@@ -2568,6 +2588,83 @@ class CentralIndex:
 		if(entity_id != ''): 
 			params['entity_id'] = entity_id
 		return self.doCurl("GET","/publisher/byEntityId",params)
+  
+
+
+	'''
+	Update/Add a country
+	@param country_id
+	@param name
+	@param synonyms
+	@param continentName
+	@param continent
+	@param geonameId
+	@param dbpediaURL
+	@param freebaseURL
+	@param population
+	@param currencyCode
+	@param languages
+	@param areaInSqKm
+	@param capital
+	@param east
+	@param west
+	@param north
+	@param south
+	@param claimPrice
+	@return - the data from the api
+	'''
+	def postCountry(self,country_id='',name='',synonyms='',continentName='',continent='',geonameId='',dbpediaURL='',freebaseURL='',population='',currencyCode='',languages='',areaInSqKm='',capital='',east='',west='',north='',south='',claimPrice=''):
+		params = {}
+		if(country_id != ''): 
+			params['country_id'] = country_id
+		if(name != ''): 
+			params['name'] = name
+		if(synonyms != ''): 
+			params['synonyms'] = synonyms
+		if(continentName != ''): 
+			params['continentName'] = continentName
+		if(continent != ''): 
+			params['continent'] = continent
+		if(geonameId != ''): 
+			params['geonameId'] = geonameId
+		if(dbpediaURL != ''): 
+			params['dbpediaURL'] = dbpediaURL
+		if(freebaseURL != ''): 
+			params['freebaseURL'] = freebaseURL
+		if(population != ''): 
+			params['population'] = population
+		if(currencyCode != ''): 
+			params['currencyCode'] = currencyCode
+		if(languages != ''): 
+			params['languages'] = languages
+		if(areaInSqKm != ''): 
+			params['areaInSqKm'] = areaInSqKm
+		if(capital != ''): 
+			params['capital'] = capital
+		if(east != ''): 
+			params['east'] = east
+		if(west != ''): 
+			params['west'] = west
+		if(north != ''): 
+			params['north'] = north
+		if(south != ''): 
+			params['south'] = south
+		if(claimPrice != ''): 
+			params['claimPrice'] = claimPrice
+		return self.doCurl("POST","/country",params)
+  
+
+
+	'''
+	Fetching a country
+	@param country_id
+	@return - the data from the api
+	'''
+	def getCountry(self,country_id=''):
+		params = {}
+		if(country_id != ''): 
+			params['country_id'] = country_id
+		return self.doCurl("GET","/country",params)
   
 
 
