@@ -129,6 +129,19 @@ class CentralIndex:
 
 
 	'''
+	Uploads a JSON file of known format and bulk inserts into DB
+	@param data
+	@return - the data from the api
+	'''
+	def postEntityBulkJson(self,data=''):
+		params = {}
+		if(data != ''): 
+			params['data'] = data
+		return self.doCurl("POST","/entity/bulk/json",params)
+  
+
+
+	'''
 	Shows the current status of a bulk upload
 	@param upload_id
 	@return - the data from the api
@@ -138,6 +151,19 @@ class CentralIndex:
 		if(upload_id != ''): 
 			params['upload_id'] = upload_id
 		return self.doCurl("GET","/entity/bulk/csv/status",params)
+  
+
+
+	'''
+	Shows the current status of a bulk JSON upload
+	@param upload_id
+	@return - the data from the api
+	'''
+	def getEntityBulkJsonStatus(self,upload_id=''):
+		params = {}
+		if(upload_id != ''): 
+			params['upload_id'] = upload_id
+		return self.doCurl("GET","/entity/bulk/json/status",params)
   
 
 
@@ -653,10 +679,10 @@ class CentralIndex:
 	@param email
 	@param website
 	@param category_id
-	@param category_name
+	@param category_type
 	@return - the data from the api
 	'''
-	def putBusiness(self,name='',address1='',address2='',address3='',district='',town='',county='',postcode='',country='',latitude='',longitude='',timezone='',telephone_number='',email='',website='',category_id='',category_name=''):
+	def putBusiness(self,name='',address1='',address2='',address3='',district='',town='',county='',postcode='',country='',latitude='',longitude='',timezone='',telephone_number='',email='',website='',category_id='',category_type=''):
 		params = {}
 		if(name != ''): 
 			params['name'] = name
@@ -690,8 +716,8 @@ class CentralIndex:
 			params['website'] = website
 		if(category_id != ''): 
 			params['category_id'] = category_id
-		if(category_name != ''): 
-			params['category_name'] = category_name
+		if(category_type != ''): 
+			params['category_type'] = category_type
 		return self.doCurl("PUT","/business",params)
   
 
@@ -713,20 +739,20 @@ class CentralIndex:
 
 
 	'''
-	Provides a personalised URL to redirect a user to claim an entity in the Central Index
-	@param language - The language to use to render the add path e.g. en
-	@param portal_name - The name of the website that data is to be added on e.g. YourLocal
-	@param entity_id - The id of the index card that is being claimed e.g. 379236808425472
+	Provides a personalised URL to redirect a user to claim an entity on Central Index
+	@param entity_id - Entity ID to be claimed e.g. 380348266819584
+	@param language - The language to use to render the claim path e.g. en
+	@param portal_name - The name of the website that entity is being claimed on e.g. YourLocal
 	@return - the data from the api
 	'''
-	def getEntityClaim(self,language='',portal_name='',entity_id=''):
+	def getEntityClaim(self,entity_id='',language='',portal_name=''):
 		params = {}
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
 		if(language != ''): 
 			params['language'] = language
 		if(portal_name != ''): 
 			params['portal_name'] = portal_name
-		if(entity_id != ''): 
-			params['entity_id'] = entity_id
 		return self.doCurl("GET","/entity/claim",params)
   
 
@@ -1092,20 +1118,33 @@ class CentralIndex:
 
 
 	'''
+	Returns the supplied wolf category object by fetching the supplied category_id from our categories object.
+	@param category_id
+	@return - the data from the api
+	'''
+	def getCategory(self,category_id=''):
+		params = {}
+		if(category_id != ''): 
+			params['category_id'] = category_id
+		return self.doCurl("GET","/category",params)
+  
+
+
+	'''
 	With a known entity id, an category object can be added.
 	@param entity_id
 	@param category_id
-	@param category_name
+	@param category_type
 	@return - the data from the api
 	'''
-	def postEntityCategory(self,entity_id='',category_id='',category_name=''):
+	def postEntityCategory(self,entity_id='',category_id='',category_type=''):
 		params = {}
 		if(entity_id != ''): 
 			params['entity_id'] = entity_id
 		if(category_id != ''): 
 			params['category_id'] = category_id
-		if(category_name != ''): 
-			params['category_name'] = category_name
+		if(category_type != ''): 
+			params['category_type'] = category_type
 		return self.doCurl("POST","/entity/category",params)
   
 
@@ -1154,11 +1193,12 @@ class CentralIndex:
 	@param company_name
 	@param latitude
 	@param longitude
+	@param country
 	@param name_strictness
 	@param location_strictness
 	@return - the data from the api
 	'''
-	def getMatchByphone(self,phone='',company_name='',latitude='',longitude='',name_strictness='',location_strictness=''):
+	def getMatchByphone(self,phone='',company_name='',latitude='',longitude='',country='',name_strictness='',location_strictness=''):
 		params = {}
 		if(phone != ''): 
 			params['phone'] = phone
@@ -1168,6 +1208,8 @@ class CentralIndex:
 			params['latitude'] = latitude
 		if(longitude != ''): 
 			params['longitude'] = longitude
+		if(country != ''): 
+			params['country'] = country
 		if(name_strictness != ''): 
 			params['name_strictness'] = name_strictness
 		if(location_strictness != ''): 
@@ -2665,6 +2707,47 @@ class CentralIndex:
 		if(country_id != ''): 
 			params['country_id'] = country_id
 		return self.doCurl("GET","/country",params)
+  
+
+
+	'''
+	For insance, reporting a phone number as wrong
+	@param entity_id - A valid entity_id e.g. 379236608286720
+	@param gen_id - The gen_id for the item being reported
+	@param signal_type - The signal that is to be reported e.g. wrong
+	@param data_type - The type of data being reported
+	@return - the data from the api
+	'''
+	def postSignal(self,entity_id='',gen_id='',signal_type='',data_type=''):
+		params = {}
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
+		if(signal_type != ''): 
+			params['signal_type'] = signal_type
+		if(data_type != ''): 
+			params['data_type'] = data_type
+		return self.doCurl("POST","/signal",params)
+  
+
+
+	'''
+	Get the number of times an entity has been served out as an advert or on serps/bdp pages
+	@param entity_id - A valid entity_id e.g. 379236608286720
+	@param year - The year to report on
+	@param month - The month to report on
+	@return - the data from the api
+	'''
+	def getStatsEntityBy_date(self,entity_id='',year='',month=''):
+		params = {}
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(year != ''): 
+			params['year'] = year
+		if(month != ''): 
+			params['month'] = month
+		return self.doCurl("GET","/stats/entity/by_date",params)
   
 
 
