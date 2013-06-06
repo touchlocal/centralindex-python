@@ -1,4 +1,3 @@
-Starting Wolf using 'dev' configuration
 #!/usr/bin/python
 
 '''
@@ -2060,24 +2059,18 @@ class CentralIndex:
 	With a known entity id, avideo object can be added.
 	@param entity_id
 	@param title
-	@param description
-	@param thumbnail
 	@param embed_code
 	@return - the data from the api
 	'''
-	def postEntityVideo(self,entity_id='',title='',description='',thumbnail='',embed_code=''):
+	def postEntityVideoYoutube(self,entity_id='',title='',embed_code=''):
 		params = {}
 		if(entity_id != ''): 
 			params['entity_id'] = entity_id
 		if(title != ''): 
 			params['title'] = title
-		if(description != ''): 
-			params['description'] = description
-		if(thumbnail != ''): 
-			params['thumbnail'] = thumbnail
 		if(embed_code != ''): 
 			params['embed_code'] = embed_code
-		return self.doCurl("POST","/entity/video",params)
+		return self.doCurl("POST","/entity/video/youtube",params)
   
 
 
@@ -3133,8 +3126,6 @@ class CentralIndex:
 	@param less - the LESS configuration to use to overrides the Bootstrap CSS
 	@param language - the language in which to render the flatpack site
 	@param country - the country to use for searches etc
-	@param afsId - the adsense-for-search id to use for Google ads on serps
-	@param afcId - the adsense-for-content id to use for Google ads on bdps
 	@param mapsType - the type of maps to use
 	@param mapKey - the nokia map key to use to render maps
 	@param analyticsHTML - the html to insert to record page views
@@ -3160,10 +3151,12 @@ class CentralIndex:
 	@param footer_menu - the JSON that describes a navigation at the bottom of the page
 	@param bdpTitle - The page title of the entity business profile pages
 	@param bdpDescription - The meta description of entity business profile pages
+	@param bdpAds - The block of HTML/JS that renders Ads on BDPs
 	@param serpTitle - The page title of the serps
 	@param serpDescription - The meta description of serps
 	@param serpNumberResults - The number of results per search page
 	@param serpNumberAdverts - The number of adverts to show on the first search page
+	@param serpAds - The block of HTML/JS that renders Ads on Serps
 	@param cookiePolicyUrl - The cookie policy url of the flatpack
 	@param cookiePolicyNotice - Whether to show the cookie policy on this flatpack
 	@param addBusinessButtonText - The text used in the 'Add your business' button
@@ -3171,7 +3164,7 @@ class CentralIndex:
 	@param facebookUrl - Facebook link
 	@return - the data from the api
 	'''
-	def postFlatpack(self,flatpack_id='',domainName='',flatpackName='',less='',language='',country='',afsId='',afcId='',mapsType='',mapKey='',analyticsHTML='',searchFormShowOn='',searchFormShowKeywordsBox='',searchFormShowLocationBox='',searchFormKeywordsAutoComplete='',searchFormLocationsAutoComplete='',searchFormDefaultLocation='',searchFormPlaceholderKeywords='',searchFormPlaceholderLocation='',searchFormKeywordsLabel='',searchFormLocationLabel='',cannedLinksHeader='',homepageTitle='',homepageDescription='',homepageIntroTitle='',homepageIntroText='',adblockHeader='',adblock728x90='',adblock468x60='',header_menu='',footer_menu='',bdpTitle='',bdpDescription='',serpTitle='',serpDescription='',serpNumberResults='',serpNumberAdverts='',cookiePolicyUrl='',cookiePolicyNotice='',addBusinessButtonText='',twitterUrl='',facebookUrl=''):
+	def postFlatpack(self,flatpack_id='',domainName='',flatpackName='',less='',language='',country='',mapsType='',mapKey='',analyticsHTML='',searchFormShowOn='',searchFormShowKeywordsBox='',searchFormShowLocationBox='',searchFormKeywordsAutoComplete='',searchFormLocationsAutoComplete='',searchFormDefaultLocation='',searchFormPlaceholderKeywords='',searchFormPlaceholderLocation='',searchFormKeywordsLabel='',searchFormLocationLabel='',cannedLinksHeader='',homepageTitle='',homepageDescription='',homepageIntroTitle='',homepageIntroText='',adblockHeader='',adblock728x90='',adblock468x60='',header_menu='',footer_menu='',bdpTitle='',bdpDescription='',bdpAds='',serpTitle='',serpDescription='',serpNumberResults='',serpNumberAdverts='',serpAds='',cookiePolicyUrl='',cookiePolicyNotice='',addBusinessButtonText='',twitterUrl='',facebookUrl=''):
 		params = {}
 		if(flatpack_id != ''): 
 			params['flatpack_id'] = flatpack_id
@@ -3185,10 +3178,6 @@ class CentralIndex:
 			params['language'] = language
 		if(country != ''): 
 			params['country'] = country
-		if(afsId != ''): 
-			params['afsId'] = afsId
-		if(afcId != ''): 
-			params['afcId'] = afcId
 		if(mapsType != ''): 
 			params['mapsType'] = mapsType
 		if(mapKey != ''): 
@@ -3239,6 +3228,8 @@ class CentralIndex:
 			params['bdpTitle'] = bdpTitle
 		if(bdpDescription != ''): 
 			params['bdpDescription'] = bdpDescription
+		if(bdpAds != ''): 
+			params['bdpAds'] = bdpAds
 		if(serpTitle != ''): 
 			params['serpTitle'] = serpTitle
 		if(serpDescription != ''): 
@@ -3247,6 +3238,8 @@ class CentralIndex:
 			params['serpNumberResults'] = serpNumberResults
 		if(serpNumberAdverts != ''): 
 			params['serpNumberAdverts'] = serpNumberAdverts
+		if(serpAds != ''): 
+			params['serpAds'] = serpAds
 		if(cookiePolicyUrl != ''): 
 			params['cookiePolicyUrl'] = cookiePolicyUrl
 		if(cookiePolicyNotice != ''): 
