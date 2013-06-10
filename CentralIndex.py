@@ -3278,6 +3278,16 @@ class CentralIndex:
 
 
 	'''
+	Get flatpacks that match the supplied masheryid
+	@return - the data from the api
+	'''
+	def getFlatpackBy_masheryid(self):
+		params = {}
+		return self.doCurl("GET","/flatpack/by_masheryid",params)
+  
+
+
+	'''
 	Remove a flatpack using a supplied flatpack_id
 	@param flatpack_id - the id of the flatpack to delete
 	@return - the data from the api
@@ -3456,6 +3466,22 @@ class CentralIndex:
 		if(language != ''): 
 			params['language'] = language
 		return self.doCurl("GET","/token/message",params)
+  
+
+
+	'''
+	Fetch token for login path
+	@param portal_name - The name of the application that has initiated the login process, example: 'Your Local'
+	@param language - The language for the app
+	@return - the data from the api
+	'''
+	def getTokenLogin(self,portal_name='',language=''):
+		params = {}
+		if(portal_name != ''): 
+			params['portal_name'] = portal_name
+		if(language != ''): 
+			params['language'] = language
+		return self.doCurl("GET","/token/login",params)
   
 
 
