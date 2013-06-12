@@ -631,6 +631,7 @@ class CentralIndex:
 	'''
 	Create a new business entity with all it's objects
 	@param name
+	@param building_number
 	@param address1
 	@param address2
 	@param address3
@@ -650,10 +651,12 @@ class CentralIndex:
 	@param do_not_display
 	@return - the data from the api
 	'''
-	def putBusiness(self,name='',address1='',address2='',address3='',district='',town='',county='',postcode='',country='',latitude='',longitude='',timezone='',telephone_number='',email='',website='',category_id='',category_type='',do_not_display=''):
+	def putBusiness(self,name='',building_number='',address1='',address2='',address3='',district='',town='',county='',postcode='',country='',latitude='',longitude='',timezone='',telephone_number='',email='',website='',category_id='',category_type='',do_not_display=''):
 		params = {}
 		if(name != ''): 
 			params['name'] = name
+		if(building_number != ''): 
+			params['building_number'] = building_number
 		if(address1 != ''): 
 			params['address1'] = address1
 		if(address2 != ''): 
@@ -1271,6 +1274,7 @@ class CentralIndex:
 
 	'''
 	Supply an address to geocode - returns lat/lon and accuracy
+	@param building_number
 	@param address1
 	@param address2
 	@param address3
@@ -1281,8 +1285,10 @@ class CentralIndex:
 	@param country
 	@return - the data from the api
 	'''
-	def getToolsGeocode(self,address1='',address2='',address3='',district='',town='',county='',postcode='',country=''):
+	def getToolsGeocode(self,building_number='',address1='',address2='',address3='',district='',town='',county='',postcode='',country=''):
 		params = {}
+		if(building_number != ''): 
+			params['building_number'] = building_number
 		if(address1 != ''): 
 			params['address1'] = address1
 		if(address2 != ''): 
@@ -1453,6 +1459,7 @@ class CentralIndex:
 	'''
 	With a known entity id, an invoice_address object can be updated.
 	@param entity_id
+	@param building_number
 	@param address1
 	@param address2
 	@param address3
@@ -1463,10 +1470,12 @@ class CentralIndex:
 	@param address_type
 	@return - the data from the api
 	'''
-	def postEntityInvoice_address(self,entity_id='',address1='',address2='',address3='',district='',town='',county='',postcode='',address_type=''):
+	def postEntityInvoice_address(self,entity_id='',building_number='',address1='',address2='',address3='',district='',town='',county='',postcode='',address_type=''):
 		params = {}
 		if(entity_id != ''): 
 			params['entity_id'] = entity_id
+		if(building_number != ''): 
+			params['building_number'] = building_number
 		if(address1 != ''): 
 			params['address1'] = address1
 		if(address2 != ''): 
@@ -1538,6 +1547,7 @@ class CentralIndex:
 	'''
 	Create/Update a postal address
 	@param entity_id
+	@param building_number
 	@param address1
 	@param address2
 	@param address3
@@ -1549,10 +1559,12 @@ class CentralIndex:
 	@param do_not_display
 	@return - the data from the api
 	'''
-	def postEntityPostal_address(self,entity_id='',address1='',address2='',address3='',district='',town='',county='',postcode='',address_type='',do_not_display=''):
+	def postEntityPostal_address(self,entity_id='',building_number='',address1='',address2='',address3='',district='',town='',county='',postcode='',address_type='',do_not_display=''):
 		params = {}
 		if(entity_id != ''): 
 			params['entity_id'] = entity_id
+		if(building_number != ''): 
+			params['building_number'] = building_number
 		if(address1 != ''): 
 			params['address1'] = address1
 		if(address2 != ''): 
@@ -3400,14 +3412,17 @@ class CentralIndex:
 	Provides a tokenised URL to redirect a user so they can add an entity to Central Index
 	@param language - The language to use to render the add path e.g. en
 	@param portal_name - The name of the website that data is to be added on e.g. YourLocal
+	@param country - The country of the entity to be added e.g. gb
 	@return - the data from the api
 	'''
-	def getTokenAdd(self,language='',portal_name=''):
+	def getTokenAdd(self,language='',portal_name='',country=''):
 		params = {}
 		if(language != ''): 
 			params['language'] = language
 		if(portal_name != ''): 
 			params['portal_name'] = portal_name
+		if(country != ''): 
+			params['country'] = country
 		return self.doCurl("GET","/token/add",params)
   
 
@@ -3482,6 +3497,40 @@ class CentralIndex:
 		if(language != ''): 
 			params['language'] = language
 		return self.doCurl("GET","/token/login",params)
+  
+
+
+	'''
+	Fetch token for update path
+	@param entity_id - The id of the entity being upgraded
+	@param portal_name - The name of the application that has initiated the login process, example: 'Your Local'
+	@param language - The language for the app
+	@param price - The price of the advert in the entities native currency
+	@param max_tags - The number of tags attached to the advert
+	@param max_locations - The number of locations attached to the advert
+	@param contract_length - The number of days from the initial sale date that the contract is valid for
+	@param ref_id - The campaign or reference id
+	@return - the data from the api
+	'''
+	def getTokenUpgrade(self,entity_id='',portal_name='',language='',price='',max_tags='',max_locations='',contract_length='',ref_id=''):
+		params = {}
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(portal_name != ''): 
+			params['portal_name'] = portal_name
+		if(language != ''): 
+			params['language'] = language
+		if(price != ''): 
+			params['price'] = price
+		if(max_tags != ''): 
+			params['max_tags'] = max_tags
+		if(max_locations != ''): 
+			params['max_locations'] = max_locations
+		if(contract_length != ''): 
+			params['contract_length'] = contract_length
+		if(ref_id != ''): 
+			params['ref_id'] = ref_id
+		return self.doCurl("GET","/token/upgrade",params)
   
 
 
@@ -3723,6 +3772,25 @@ class CentralIndex:
 		if(gen_id != ''): 
 			params['gen_id'] = gen_id
 		return self.doCurl("DELETE","/entity/group",params)
+  
+
+
+	'''
+	Add an entityserve document
+	@param entity_id - The id of the entity to create the entityserve event for
+	@param country - the ISO code of the country
+	@param event_type - The event type being recorded
+	@return - the data from the api
+	'''
+	def putEntityserve(self,entity_id='',country='',event_type=''):
+		params = {}
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(country != ''): 
+			params['country'] = country
+		if(event_type != ''): 
+			params['event_type'] = event_type
+		return self.doCurl("PUT","/entityserve",params)
   
 
 
