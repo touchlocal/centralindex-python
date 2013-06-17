@@ -1441,6 +1441,28 @@ class CentralIndex:
 
 
 	'''
+	Ring the person and verify their account
+	@param to - The phone number to verify
+	@param from - The phone number to call from
+	@param pin - The pin to verify the phone number with
+	@param language - The language to read the verification in
+	@return - the data from the api
+	'''
+	def getToolsPhonecallVerify(self,to='',from2='',pin='',language=''):
+		params = {}
+		if(to != ''): 
+			params['to'] = to
+		if(from2 != ''): 
+			params['from2'] = from2
+		if(pin != ''): 
+			params['pin'] = pin
+		if(language != ''): 
+			params['language'] = language
+		return self.doCurl("GET","/tools/phonecall/verify",params)
+  
+
+
+	'''
 	Given a spreadsheet id add a row
 	@param spreadsheet_key - The key of the spreadsheet to edit
 	@param data - A comma separated list to add as cells
@@ -1752,6 +1774,22 @@ class CentralIndex:
 		if(locations_to_remove != ''): 
 			params['locations_to_remove'] = locations_to_remove
 		return self.doCurl("POST","/entity/advertiser/location",params)
+  
+
+
+	'''
+	Get all advertisers that have been updated from a give date for a given reseller
+	@param from_date
+	@param country
+	@return - the data from the api
+	'''
+	def getAdvertiserUpdated(self,from_date='',country=''):
+		params = {}
+		if(from_date != ''): 
+			params['from_date'] = from_date
+		if(country != ''): 
+			params['country'] = country
+		return self.doCurl("GET","/advertiser/updated",params)
   
 
 
