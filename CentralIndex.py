@@ -361,9 +361,11 @@ class CentralIndex:
 	@param nokia_country_code
 	@param twilio_sms
 	@param twilio_phone
+	@param currency_symbol - the symbol of this country's currency
+	@param currency_symbol_html - the html version of the symbol of this country's currency
 	@return - the data from the api
 	'''
-	def postCountry(self,country_id='',name='',synonyms='',continentName='',continent='',geonameId='',dbpediaURL='',freebaseURL='',population='',currencyCode='',languages='',areaInSqKm='',capital='',east='',west='',north='',south='',claimPrice='',claimMethods='',nokia_country_code='',twilio_sms='',twilio_phone=''):
+	def postCountry(self,country_id='',name='',synonyms='',continentName='',continent='',geonameId='',dbpediaURL='',freebaseURL='',population='',currencyCode='',languages='',areaInSqKm='',capital='',east='',west='',north='',south='',claimPrice='',claimMethods='',nokia_country_code='',twilio_sms='',twilio_phone='',currency_symbol='',currency_symbol_html=''):
 		params = {}
 		if(country_id != ''): 
 			params['country_id'] = country_id
@@ -409,6 +411,10 @@ class CentralIndex:
 			params['twilio_sms'] = twilio_sms
 		if(twilio_phone != ''): 
 			params['twilio_phone'] = twilio_phone
+		if(currency_symbol != ''): 
+			params['currency_symbol'] = currency_symbol
+		if(currency_symbol_html != ''): 
+			params['currency_symbol_html'] = currency_symbol_html
 		return self.doCurl("POST","/country",params)
   
 
@@ -3640,9 +3646,11 @@ class CentralIndex:
 	@param api_url
 	@param api_params
 	@param active
+	@param reseller_masheryid
+	@param description
 	@return - the data from the api
 	'''
-	def postTraction(self,traction_id='',trigger_type='',action_type='',country='',email_addresses='',title='',body='',api_method='',api_url='',api_params='',active=''):
+	def postTraction(self,traction_id='',trigger_type='',action_type='',country='',email_addresses='',title='',body='',api_method='',api_url='',api_params='',active='',reseller_masheryid='',description=''):
 		params = {}
 		if(traction_id != ''): 
 			params['traction_id'] = traction_id
@@ -3666,6 +3674,10 @@ class CentralIndex:
 			params['api_params'] = api_params
 		if(active != ''): 
 			params['active'] = active
+		if(reseller_masheryid != ''): 
+			params['reseller_masheryid'] = reseller_masheryid
+		if(description != ''): 
+			params['description'] = description
 		return self.doCurl("POST","/traction",params)
   
 
