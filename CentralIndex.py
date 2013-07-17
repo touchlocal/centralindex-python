@@ -3874,10 +3874,11 @@ class CentralIndex:
 	@param api_params
 	@param active
 	@param reseller_masheryid
+	@param publisher_masheryid
 	@param description
 	@return - the data from the api
 	'''
-	def postTraction(self,traction_id='',trigger_type='',action_type='',country='',email_addresses='',title='',body='',api_method='',api_url='',api_params='',active='',reseller_masheryid='',description=''):
+	def postTraction(self,traction_id='',trigger_type='',action_type='',country='',email_addresses='',title='',body='',api_method='',api_url='',api_params='',active='',reseller_masheryid='',publisher_masheryid='',description=''):
 		params = {}
 		if(traction_id != ''): 
 			params['traction_id'] = traction_id
@@ -3903,6 +3904,8 @@ class CentralIndex:
 			params['active'] = active
 		if(reseller_masheryid != ''): 
 			params['reseller_masheryid'] = reseller_masheryid
+		if(publisher_masheryid != ''): 
+			params['publisher_masheryid'] = publisher_masheryid
 		if(description != ''): 
 			params['description'] = description
 		return self.doCurl("POST","/traction",params)
