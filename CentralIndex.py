@@ -172,6 +172,7 @@ class CentralIndex:
 	@param longitude
 	@param timezone
 	@param telephone_number
+	@param additional_telephone_number
 	@param email
 	@param website
 	@param category_id
@@ -179,7 +180,7 @@ class CentralIndex:
 	@param do_not_display
 	@return - the data from the api
 	'''
-	def putBusiness(self,name='',building_number='',address1='',address2='',address3='',district='',town='',county='',province='',postcode='',country='',latitude='',longitude='',timezone='',telephone_number='',email='',website='',category_id='',category_type='',do_not_display=''):
+	def putBusiness(self,name='',building_number='',address1='',address2='',address3='',district='',town='',county='',province='',postcode='',country='',latitude='',longitude='',timezone='',telephone_number='',additional_telephone_number='',email='',website='',category_id='',category_type='',do_not_display=''):
 		params = {}
 		if(name != ''): 
 			params['name'] = name
@@ -211,6 +212,8 @@ class CentralIndex:
 			params['timezone'] = timezone
 		if(telephone_number != ''): 
 			params['telephone_number'] = telephone_number
+		if(additional_telephone_number != ''): 
+			params['additional_telephone_number'] = additional_telephone_number
 		if(email != ''): 
 			params['email'] = email
 		if(website != ''): 
@@ -222,6 +225,86 @@ class CentralIndex:
 		if(do_not_display != ''): 
 			params['do_not_display'] = do_not_display
 		return self.doCurl("PUT","/business",params)
+  
+
+
+	'''
+	Delete a business tool with a specified tool_id
+	@param tool_id
+	@return - the data from the api
+	'''
+	def deleteBusiness_tool(self,tool_id=''):
+		params = {}
+		if(tool_id != ''): 
+			params['tool_id'] = tool_id
+		return self.doCurl("DELETE","/business_tool",params)
+  
+
+
+	'''
+	Update/Add a Business Tool
+	@param tool_id
+	@param country
+	@param description
+	@param link_url
+	@param active
+	@return - the data from the api
+	'''
+	def postBusiness_tool(self,tool_id='',country='',description='',link_url='',active=''):
+		params = {}
+		if(tool_id != ''): 
+			params['tool_id'] = tool_id
+		if(country != ''): 
+			params['country'] = country
+		if(description != ''): 
+			params['description'] = description
+		if(link_url != ''): 
+			params['link_url'] = link_url
+		if(active != ''): 
+			params['active'] = active
+		return self.doCurl("POST","/business_tool",params)
+  
+
+
+	'''
+	Returns business tool that matches a given tool id
+	@param tool_id
+	@return - the data from the api
+	'''
+	def getBusiness_tool(self,tool_id=''):
+		params = {}
+		if(tool_id != ''): 
+			params['tool_id'] = tool_id
+		return self.doCurl("GET","/business_tool",params)
+  
+
+
+	'''
+	Returns active business tools for a specific masheryid in a given country
+	@param country
+	@return - the data from the api
+	'''
+	def getBusiness_toolBy_masheryid(self,country=''):
+		params = {}
+		if(country != ''): 
+			params['country'] = country
+		return self.doCurl("GET","/business_tool/by_masheryid",params)
+  
+
+
+	'''
+	Assigns a Business Tool image
+	@param tool_id
+	@param filedata
+	@return - the data from the api
+	'''
+	def postBusiness_toolImage(self,tool_id='',filedata=''):
+		params = {}
+		if(tool_id != ''): 
+			params['tool_id'] = tool_id
+		if(filedata != ''): 
+			params['filedata'] = filedata
+		return self.doCurl("POST","/business_tool/image",params)
   
 
 
@@ -306,25 +389,6 @@ class CentralIndex:
 
 
 	'''
-	With a known category id, a synonyms object can be removed.
-	@param category_id
-	@param synonym
-	@param language
-	@return - the data from the api
-	'''
-	def deleteCategorySynonym(self,category_id='',synonym='',language=''):
-		params = {}
-		if(category_id != ''): 
-			params['category_id'] = category_id
-		if(synonym != ''): 
-			params['synonym'] = synonym
-		if(language != ''): 
-			params['language'] = language
-		return self.doCurl("DELETE","/category/synonym",params)
-  
-
-
-	'''
 	With a known category id, an synonym object can be added.
 	@param category_id
 	@param synonym
@@ -344,15 +408,21 @@ class CentralIndex:
 
 
 	'''
-	Fetching a country
-	@param country_id
+	With a known category id, a synonyms object can be removed.
+	@param category_id
+	@param synonym
+	@param language
 	@return - the data from the api
 	'''
-	def getCountry(self,country_id=''):
+	def deleteCategorySynonym(self,category_id='',synonym='',language=''):
 		params = {}
-		if(country_id != ''): 
-			params['country_id'] = country_id
-		return self.doCurl("GET","/country",params)
+		if(category_id != ''): 
+			params['category_id'] = category_id
+		if(synonym != ''): 
+			params['synonym'] = synonym
+		if(language != ''): 
+			params['language'] = language
+		return self.doCurl("DELETE","/category/synonym",params)
   
 
 
@@ -438,6 +508,19 @@ class CentralIndex:
 		if(currency_symbol_html != ''): 
 			params['currency_symbol_html'] = currency_symbol_html
 		return self.doCurl("POST","/country",params)
+  
+
+
+	'''
+	Fetching a country
+	@param country_id
+	@return - the data from the api
+	'''
+	def getCountry(self,country_id=''):
+		params = {}
+		if(country_id != ''): 
+			params['country_id'] = country_id
+		return self.doCurl("GET","/country",params)
   
 
 
@@ -761,22 +844,6 @@ class CentralIndex:
 
 
 	'''
-	Allows an affiliate link object to be reduced in confidence
-	@param entity_id
-	@param gen_id
-	@return - the data from the api
-	'''
-	def deleteEntityAffiliate_link(self,entity_id='',gen_id=''):
-		params = {}
-		if(entity_id != ''): 
-			params['entity_id'] = entity_id
-		if(gen_id != ''): 
-			params['gen_id'] = gen_id
-		return self.doCurl("DELETE","/entity/affiliate_link",params)
-  
-
-
-	'''
 	With a known entity id, an affiliate link object can be added.
 	@param entity_id
 	@param affiliate_name
@@ -798,6 +865,22 @@ class CentralIndex:
 		if(affiliate_logo != ''): 
 			params['affiliate_logo'] = affiliate_logo
 		return self.doCurl("POST","/entity/affiliate_link",params)
+  
+
+
+	'''
+	Allows an affiliate link object to be reduced in confidence
+	@param entity_id
+	@param gen_id
+	@return - the data from the api
+	'''
+	def deleteEntityAffiliate_link(self,entity_id='',gen_id=''):
+		params = {}
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
+		return self.doCurl("DELETE","/entity/affiliate_link",params)
   
 
 
@@ -924,22 +1007,6 @@ class CentralIndex:
 
 
 	'''
-	Allows a category object to be reduced in confidence
-	@param entity_id
-	@param gen_id
-	@return - the data from the api
-	'''
-	def deleteEntityCategory(self,entity_id='',gen_id=''):
-		params = {}
-		if(entity_id != ''): 
-			params['entity_id'] = entity_id
-		if(gen_id != ''): 
-			params['gen_id'] = gen_id
-		return self.doCurl("DELETE","/entity/category",params)
-  
-
-
-	'''
 	With a known entity id, an category object can be added.
 	@param entity_id
 	@param category_id
@@ -955,6 +1022,22 @@ class CentralIndex:
 		if(category_type != ''): 
 			params['category_type'] = category_type
 		return self.doCurl("POST","/entity/category",params)
+  
+
+
+	'''
+	Allows a category object to be reduced in confidence
+	@param entity_id
+	@param gen_id
+	@return - the data from the api
+	'''
+	def deleteEntityCategory(self,entity_id='',gen_id=''):
+		params = {}
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
+		return self.doCurl("DELETE","/entity/category",params)
   
 
 
@@ -997,22 +1080,6 @@ class CentralIndex:
 
 
 	'''
-	Allows a description object to be reduced in confidence
-	@param entity_id
-	@param gen_id
-	@return - the data from the api
-	'''
-	def deleteEntityDescription(self,entity_id='',gen_id=''):
-		params = {}
-		if(entity_id != ''): 
-			params['entity_id'] = entity_id
-		if(gen_id != ''): 
-			params['gen_id'] = gen_id
-		return self.doCurl("DELETE","/entity/description",params)
-  
-
-
-	'''
 	With a known entity id, a description object can be added.
 	@param entity_id
 	@param headline
@@ -1028,6 +1095,22 @@ class CentralIndex:
 		if(body != ''): 
 			params['body'] = body
 		return self.doCurl("POST","/entity/description",params)
+  
+
+
+	'''
+	Allows a description object to be reduced in confidence
+	@param entity_id
+	@param gen_id
+	@return - the data from the api
+	'''
+	def deleteEntityDescription(self,entity_id='',gen_id=''):
+		params = {}
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
+		return self.doCurl("DELETE","/entity/description",params)
   
 
 
@@ -1102,22 +1185,6 @@ class CentralIndex:
 
 
 	'''
-	Allows an employee object to be reduced in confidence
-	@param entity_id
-	@param gen_id
-	@return - the data from the api
-	'''
-	def deleteEntityEmployee(self,entity_id='',gen_id=''):
-		params = {}
-		if(entity_id != ''): 
-			params['entity_id'] = entity_id
-		if(gen_id != ''): 
-			params['gen_id'] = gen_id
-		return self.doCurl("DELETE","/entity/employee",params)
-  
-
-
-	'''
 	With a known entity id, an employee object can be added.
 	@param entity_id
 	@param title
@@ -1148,6 +1215,22 @@ class CentralIndex:
 		if(phone_number != ''): 
 			params['phone_number'] = phone_number
 		return self.doCurl("POST","/entity/employee",params)
+  
+
+
+	'''
+	Allows an employee object to be reduced in confidence
+	@param entity_id
+	@param gen_id
+	@return - the data from the api
+	'''
+	def deleteEntityEmployee(self,entity_id='',gen_id=''):
+		params = {}
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
+		return self.doCurl("DELETE","/entity/employee",params)
   
 
 
@@ -1241,6 +1324,22 @@ class CentralIndex:
 
 
 	'''
+	Allows a image object to be reduced in confidence
+	@param entity_id
+	@param gen_id
+	@return - the data from the api
+	'''
+	def deleteEntityImage(self,entity_id='',gen_id=''):
+		params = {}
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
+		return self.doCurl("DELETE","/entity/image",params)
+  
+
+
+	'''
 	With a known entity id, a image object can be added.
 	@param entity_id
 	@param filedata
@@ -1260,18 +1359,15 @@ class CentralIndex:
 
 
 	'''
-	Allows a image object to be reduced in confidence
+	With a known entity id and a known invoice_address ID, we can delete a specific invoice_address object from an enitity.
 	@param entity_id
-	@param gen_id
 	@return - the data from the api
 	'''
-	def deleteEntityImage(self,entity_id='',gen_id=''):
+	def deleteEntityInvoice_address(self,entity_id=''):
 		params = {}
 		if(entity_id != ''): 
 			params['entity_id'] = entity_id
-		if(gen_id != ''): 
-			params['gen_id'] = gen_id
-		return self.doCurl("DELETE","/entity/image",params)
+		return self.doCurl("DELETE","/entity/invoice_address",params)
   
 
 
@@ -1315,19 +1411,6 @@ class CentralIndex:
 		if(address_type != ''): 
 			params['address_type'] = address_type
 		return self.doCurl("POST","/entity/invoice_address",params)
-  
-
-
-	'''
-	With a known entity id and a known invoice_address ID, we can delete a specific invoice_address object from an enitity.
-	@param entity_id
-	@return - the data from the api
-	'''
-	def deleteEntityInvoice_address(self,entity_id=''):
-		params = {}
-		if(entity_id != ''): 
-			params['entity_id'] = entity_id
-		return self.doCurl("DELETE","/entity/invoice_address",params)
   
 
 
@@ -1496,6 +1579,22 @@ class CentralIndex:
 
 
 	'''
+	Allows a phone object to be reduced in confidence
+	@param entity_id
+	@param gen_id
+	@return - the data from the api
+	'''
+	def deleteEntityPhone(self,entity_id='',gen_id=''):
+		params = {}
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
+		return self.doCurl("DELETE","/entity/phone",params)
+  
+
+
+	'''
 	Allows a new phone object to be added to a specified entity. A new object id will be calculated and returned to you if successful.
 	@param entity_id
 	@param number
@@ -1511,22 +1610,6 @@ class CentralIndex:
 		if(description != ''): 
 			params['description'] = description
 		return self.doCurl("POST","/entity/phone",params)
-  
-
-
-	'''
-	Allows a phone object to be reduced in confidence
-	@param entity_id
-	@param gen_id
-	@return - the data from the api
-	'''
-	def deleteEntityPhone(self,entity_id='',gen_id=''):
-		params = {}
-		if(entity_id != ''): 
-			params['entity_id'] = entity_id
-		if(gen_id != ''): 
-			params['gen_id'] = gen_id
-		return self.doCurl("DELETE","/entity/phone",params)
   
 
 
@@ -1933,22 +2016,6 @@ class CentralIndex:
 
 
 	'''
-	Allows a special offer object to be reduced in confidence
-	@param entity_id
-	@param gen_id
-	@return - the data from the api
-	'''
-	def deleteEntitySpecial_offer(self,entity_id='',gen_id=''):
-		params = {}
-		if(entity_id != ''): 
-			params['entity_id'] = entity_id
-		if(gen_id != ''): 
-			params['gen_id'] = gen_id
-		return self.doCurl("DELETE","/entity/special_offer",params)
-  
-
-
-	'''
 	With a known entity id, a website object can be added.
 	@param entity_id
 	@param title
@@ -1983,6 +2050,22 @@ class CentralIndex:
 
 
 	'''
+	Allows a special offer object to be reduced in confidence
+	@param entity_id
+	@param gen_id
+	@return - the data from the api
+	'''
+	def deleteEntitySpecial_offer(self,entity_id='',gen_id=''):
+		params = {}
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
+		return self.doCurl("DELETE","/entity/special_offer",params)
+  
+
+
+	'''
 	With a known entity id, a status object can be updated.
 	@param entity_id
 	@param status
@@ -1995,6 +2078,25 @@ class CentralIndex:
 		if(status != ''): 
 			params['status'] = status
 		return self.doCurl("POST","/entity/status",params)
+  
+
+
+	'''
+	With a known entity id, an tag object can be added.
+	@param entity_id
+	@param tag
+	@param language
+	@return - the data from the api
+	'''
+	def postEntityTag(self,entity_id='',tag='',language=''):
+		params = {}
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		if(tag != ''): 
+			params['tag'] = tag
+		if(language != ''): 
+			params['language'] = language
+		return self.doCurl("POST","/entity/tag",params)
   
 
 
@@ -2015,21 +2117,18 @@ class CentralIndex:
 
 
 	'''
-	With a known entity id, an tag object can be added.
+	Allows a testimonial object to be reduced in confidence
 	@param entity_id
-	@param tag
-	@param language
+	@param gen_id
 	@return - the data from the api
 	'''
-	def postEntityTag(self,entity_id='',tag='',language=''):
+	def deleteEntityTestimonial(self,entity_id='',gen_id=''):
 		params = {}
 		if(entity_id != ''): 
 			params['entity_id'] = entity_id
-		if(tag != ''): 
-			params['tag'] = tag
-		if(language != ''): 
-			params['language'] = language
-		return self.doCurl("POST","/entity/tag",params)
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
+		return self.doCurl("DELETE","/entity/testimonial",params)
   
 
 
@@ -2055,22 +2154,6 @@ class CentralIndex:
 		if(testifier_name != ''): 
 			params['testifier_name'] = testifier_name
 		return self.doCurl("POST","/entity/testimonial",params)
-  
-
-
-	'''
-	Allows a testimonial object to be reduced in confidence
-	@param entity_id
-	@param gen_id
-	@return - the data from the api
-	'''
-	def deleteEntityTestimonial(self,entity_id='',gen_id=''):
-		params = {}
-		if(entity_id != ''): 
-			params['entity_id'] = entity_id
-		if(gen_id != ''): 
-			params['gen_id'] = gen_id
-		return self.doCurl("DELETE","/entity/testimonial",params)
   
 
 
@@ -2179,32 +2262,6 @@ class CentralIndex:
 		if(event_type != ''): 
 			params['event_type'] = event_type
 		return self.doCurl("PUT","/entityserve",params)
-  
-
-
-	'''
-	Get a flatpack
-	@param flatpack_id - the unique id to search for
-	@return - the data from the api
-	'''
-	def getFlatpack(self,flatpack_id=''):
-		params = {}
-		if(flatpack_id != ''): 
-			params['flatpack_id'] = flatpack_id
-		return self.doCurl("GET","/flatpack",params)
-  
-
-
-	'''
-	Remove a flatpack using a supplied flatpack_id
-	@param flatpack_id - the id of the flatpack to delete
-	@return - the data from the api
-	'''
-	def deleteFlatpack(self,flatpack_id=''):
-		params = {}
-		if(flatpack_id != ''): 
-			params['flatpack_id'] = flatpack_id
-		return self.doCurl("DELETE","/flatpack",params)
   
 
 
@@ -2375,6 +2432,32 @@ class CentralIndex:
 
 
 	'''
+	Get a flatpack
+	@param flatpack_id - the unique id to search for
+	@return - the data from the api
+	'''
+	def getFlatpack(self,flatpack_id=''):
+		params = {}
+		if(flatpack_id != ''): 
+			params['flatpack_id'] = flatpack_id
+		return self.doCurl("GET","/flatpack",params)
+  
+
+
+	'''
+	Remove a flatpack using a supplied flatpack_id
+	@param flatpack_id - the id of the flatpack to delete
+	@return - the data from the api
+	'''
+	def deleteFlatpack(self,flatpack_id=''):
+		params = {}
+		if(flatpack_id != ''): 
+			params['flatpack_id'] = flatpack_id
+		return self.doCurl("DELETE","/flatpack",params)
+  
+
+
+	'''
 	Upload a CSS file for the Admin for this flatpack
 	@param flatpack_id - the id of the flatpack to update
 	@param filedata
@@ -2516,6 +2599,22 @@ class CentralIndex:
 
 
 	'''
+	Upload a TXT file to act as the sitemap for this flatpack
+	@param flatpack_id - the id of the flatpack to update
+	@param filedata
+	@return - the data from the api
+	'''
+	def postFlatpackSitemap(self,flatpack_id='',filedata=''):
+		params = {}
+		if(flatpack_id != ''): 
+			params['flatpack_id'] = flatpack_id
+		if(filedata != ''): 
+			params['filedata'] = filedata
+		return self.doCurl("POST","/flatpack/sitemap",params)
+  
+
+
+	'''
 	Upload a file to our asset server and return the url
 	@param filedata
 	@return - the data from the api
@@ -2525,6 +2624,19 @@ class CentralIndex:
 		if(filedata != ''): 
 			params['filedata'] = filedata
 		return self.doCurl("POST","/flatpack/upload",params)
+  
+
+
+	'''
+	Returns group that matches a given group id
+	@param group_id
+	@return - the data from the api
+	'''
+	def getGroup(self,group_id=''):
+		params = {}
+		if(group_id != ''): 
+			params['group_id'] = group_id
+		return self.doCurl("GET","/group",params)
   
 
 
@@ -2564,19 +2676,6 @@ class CentralIndex:
 
 
 	'''
-	Returns group that matches a given group id
-	@param group_id
-	@return - the data from the api
-	'''
-	def getGroup(self,group_id=''):
-		params = {}
-		if(group_id != ''): 
-			params['group_id'] = group_id
-		return self.doCurl("GET","/group",params)
-  
-
-
-	'''
 	Bulk update entities with a specified group
 	@param group_id
 	@param data
@@ -2589,6 +2688,19 @@ class CentralIndex:
 		if(data != ''): 
 			params['data'] = data
 		return self.doCurl("POST","/group/bulk_update",params)
+  
+
+
+	'''
+	Read a location with the supplied ID in the locations reference database.
+	@param location_id
+	@return - the data from the api
+	'''
+	def getLocation(self,location_id=''):
+		params = {}
+		if(location_id != ''): 
+			params['location_id'] = location_id
+		return self.doCurl("GET","/location",params)
   
 
 
@@ -2660,19 +2772,6 @@ class CentralIndex:
 
 
 	'''
-	Read a location with the supplied ID in the locations reference database.
-	@param location_id
-	@return - the data from the api
-	'''
-	def getLocation(self,location_id=''):
-		params = {}
-		if(location_id != ''): 
-			params['location_id'] = location_id
-		return self.doCurl("GET","/location",params)
-  
-
-
-	'''
 	Read multiple locations with the supplied ID in the locations reference database.
 	@param location_ids
 	@return - the data from the api
@@ -2708,25 +2807,6 @@ class CentralIndex:
 
 
 	'''
-	Add a new synonym to a known location
-	@param location_id
-	@param synonym
-	@param language
-	@return - the data from the api
-	'''
-	def postLocationSynonym(self,location_id='',synonym='',language=''):
-		params = {}
-		if(location_id != ''): 
-			params['location_id'] = location_id
-		if(synonym != ''): 
-			params['synonym'] = synonym
-		if(language != ''): 
-			params['language'] = language
-		return self.doCurl("POST","/location/synonym",params)
-  
-
-
-	'''
 	Remove a new synonym from a known location
 	@param location_id
 	@param synonym
@@ -2742,6 +2822,25 @@ class CentralIndex:
 		if(language != ''): 
 			params['language'] = language
 		return self.doCurl("DELETE","/location/synonym",params)
+  
+
+
+	'''
+	Add a new synonym to a known location
+	@param location_id
+	@param synonym
+	@param language
+	@return - the data from the api
+	'''
+	def postLocationSynonym(self,location_id='',synonym='',language=''):
+		params = {}
+		if(location_id != ''): 
+			params['location_id'] = location_id
+		if(synonym != ''): 
+			params['synonym'] = synonym
+		if(language != ''): 
+			params['language'] = language
+		return self.doCurl("POST","/location/synonym",params)
   
 
 
@@ -2914,6 +3013,19 @@ class CentralIndex:
 
 
 	'''
+	Fetching a message
+	@param message_id - The message id to pull the message for
+	@return - the data from the api
+	'''
+	def getMessage(self,message_id=''):
+		params = {}
+		if(message_id != ''): 
+			params['message_id'] = message_id
+		return self.doCurl("GET","/message",params)
+  
+
+
+	'''
 	Update/Add a message
 	@param message_id - Message id to pull
 	@param ses_id - Aamazon email id
@@ -2951,19 +3063,6 @@ class CentralIndex:
 
 
 	'''
-	Fetching a message
-	@param message_id - The message id to pull the message for
-	@return - the data from the api
-	'''
-	def getMessage(self,message_id=''):
-		params = {}
-		if(message_id != ''): 
-			params['message_id'] = message_id
-		return self.doCurl("GET","/message",params)
-  
-
-
-	'''
 	Fetching messages by ses_id
 	@param ses_id - The amazon id to pull the message for
 	@return - the data from the api
@@ -2973,19 +3072,6 @@ class CentralIndex:
 		if(ses_id != ''): 
 			params['ses_id'] = ses_id
 		return self.doCurl("GET","/message/by_ses_id",params)
-  
-
-
-	'''
-	Allows a private object to be removed
-	@param private_object_id - The id of the private object to remove
-	@return - the data from the api
-	'''
-	def deletePrivate_object(self,private_object_id=''):
-		params = {}
-		if(private_object_id != ''): 
-			params['private_object_id'] = private_object_id
-		return self.doCurl("DELETE","/private_object",params)
   
 
 
@@ -3002,6 +3088,19 @@ class CentralIndex:
 		if(data != ''): 
 			params['data'] = data
 		return self.doCurl("PUT","/private_object",params)
+  
+
+
+	'''
+	Allows a private object to be removed
+	@param private_object_id - The id of the private object to remove
+	@return - the data from the api
+	'''
+	def deletePrivate_object(self,private_object_id=''):
+		params = {}
+		if(private_object_id != ''): 
+			params['private_object_id'] = private_object_id
+		return self.doCurl("DELETE","/private_object",params)
   
 
 
@@ -3204,19 +3303,6 @@ class CentralIndex:
 
 
 	'''
-	With a known queue id, a queue item can be removed.
-	@param queue_id
-	@return - the data from the api
-	'''
-	def deleteQueue(self,queue_id=''):
-		params = {}
-		if(queue_id != ''): 
-			params['queue_id'] = queue_id
-		return self.doCurl("DELETE","/queue",params)
-  
-
-
-	'''
 	Create a queue item
 	@param queue_name
 	@param data
@@ -3229,6 +3315,19 @@ class CentralIndex:
 		if(data != ''): 
 			params['data'] = data
 		return self.doCurl("PUT","/queue",params)
+  
+
+
+	'''
+	With a known queue id, a queue item can be removed.
+	@param queue_id
+	@return - the data from the api
+	'''
+	def deleteQueue(self,queue_id=''):
+		params = {}
+		if(queue_id != ''): 
+			params['queue_id'] = queue_id
+		return self.doCurl("DELETE","/queue",params)
   
 
 
@@ -3861,6 +3960,19 @@ class CentralIndex:
 
 
 	'''
+	Fetching a traction
+	@param traction_id
+	@return - the data from the api
+	'''
+	def getTraction(self,traction_id=''):
+		params = {}
+		if(traction_id != ''): 
+			params['traction_id'] = traction_id
+		return self.doCurl("GET","/traction",params)
+  
+
+
+	'''
 	Update/Add a traction
 	@param traction_id
 	@param trigger_type
@@ -3909,19 +4021,6 @@ class CentralIndex:
 		if(description != ''): 
 			params['description'] = description
 		return self.doCurl("POST","/traction",params)
-  
-
-
-	'''
-	Fetching a traction
-	@param traction_id
-	@return - the data from the api
-	'''
-	def getTraction(self,traction_id=''):
-		params = {}
-		if(traction_id != ''): 
-			params['traction_id'] = traction_id
-		return self.doCurl("GET","/traction",params)
   
 
 
@@ -4057,19 +4156,6 @@ class CentralIndex:
 
 
 	'''
-	With a unique ID address an user can be retrieved
-	@param user_id
-	@return - the data from the api
-	'''
-	def getUser(self,user_id=''):
-		params = {}
-		if(user_id != ''): 
-			params['user_id'] = user_id
-		return self.doCurl("GET","/user",params)
-  
-
-
-	'''
 	Update user based on email address or social_network/social_network_id
 	@param email
 	@param first_name
@@ -4109,6 +4195,19 @@ class CentralIndex:
 		if(group_id != ''): 
 			params['group_id'] = group_id
 		return self.doCurl("POST","/user",params)
+  
+
+
+	'''
+	With a unique ID address an user can be retrieved
+	@param user_id
+	@return - the data from the api
+	'''
+	def getUser(self,user_id=''):
+		params = {}
+		if(user_id != ''): 
+			params['user_id'] = user_id
+		return self.doCurl("GET","/user",params)
   
 
 
