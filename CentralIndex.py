@@ -3363,12 +3363,15 @@ class CentralIndex:
 	'''
 	Perform the whole PTB process on the supplied entity
 	@param entity_id
+	@param destructive
 	@return - the data from the api
 	'''
-	def getPtbAll(self,entity_id=''):
+	def getPtbAll(self,entity_id='',destructive=''):
 		params = {}
 		if(entity_id != ''): 
 			params['entity_id'] = entity_id
+		if(destructive != ''): 
+			params['destructive'] = destructive
 		return self.doCurl("GET","/ptb/all",params)
   
 
@@ -3396,14 +3399,17 @@ class CentralIndex:
 	Process an entity with a specific PTB module
 	@param entity_id
 	@param module
+	@param destructive
 	@return - the data from the api
 	'''
-	def getPtbModule(self,entity_id='',module=''):
+	def getPtbModule(self,entity_id='',module='',destructive=''):
 		params = {}
 		if(entity_id != ''): 
 			params['entity_id'] = entity_id
 		if(module != ''): 
 			params['module'] = module
+		if(destructive != ''): 
+			params['destructive'] = destructive
 		return self.doCurl("GET","/ptb/module",params)
   
 
