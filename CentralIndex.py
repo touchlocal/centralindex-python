@@ -2894,14 +2894,17 @@ class CentralIndex:
 	Get number of claims today
 	@param from_date
 	@param to_date
+	@param country_id
 	@return - the data from the api
 	'''
-	def getHeartbeatBy_date(self,from_date='',to_date=''):
+	def getHeartbeatBy_date(self,from_date='',to_date='',country_id=''):
 		params = {}
 		if(from_date != ''): 
 			params['from_date'] = from_date
 		if(to_date != ''): 
 			params['to_date'] = to_date
+		if(country_id != ''): 
+			params['country_id'] = country_id
 		return self.doCurl("GET","/heartbeat/by_date",params)
   
 
