@@ -562,9 +562,11 @@ class CentralIndex:
 	@param addressFields - Whether fields are activated for this country
 	@param addressMatching - The configurable matching algorithm
 	@param dateFormat - The format of the date for this country
+	@param iso_3166_alpha_3
+	@param iso_3166_numeric
 	@return - the data from the api
 	'''
-	def postCountry(self,country_id='',name='',synonyms='',continentName='',continent='',geonameId='',dbpediaURL='',freebaseURL='',population='',currencyCode='',languages='',areaInSqKm='',capital='',east='',west='',north='',south='',claimPrice='',claimMethods='',nokia_country_code='',twilio_sms='',twilio_phone='',twilio_voice='',currency_symbol='',currency_symbol_html='',postcodeLookupActive='',addressFields='',addressMatching='',dateFormat=''):
+	def postCountry(self,country_id='',name='',synonyms='',continentName='',continent='',geonameId='',dbpediaURL='',freebaseURL='',population='',currencyCode='',languages='',areaInSqKm='',capital='',east='',west='',north='',south='',claimPrice='',claimMethods='',nokia_country_code='',twilio_sms='',twilio_phone='',twilio_voice='',currency_symbol='',currency_symbol_html='',postcodeLookupActive='',addressFields='',addressMatching='',dateFormat='',iso_3166_alpha_3='',iso_3166_numeric=''):
 		params = {}
 		if(country_id != ''): 
 			params['country_id'] = country_id
@@ -624,6 +626,10 @@ class CentralIndex:
 			params['addressMatching'] = addressMatching
 		if(dateFormat != ''): 
 			params['dateFormat'] = dateFormat
+		if(iso_3166_alpha_3 != ''): 
+			params['iso_3166_alpha_3'] = iso_3166_alpha_3
+		if(iso_3166_numeric != ''): 
+			params['iso_3166_numeric'] = iso_3166_numeric
 		return self.doCurl("POST","/country",params)
   
 
