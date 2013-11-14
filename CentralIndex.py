@@ -1,3 +1,4 @@
+#!/usr/bin/python
 
 '''
 Central Index
