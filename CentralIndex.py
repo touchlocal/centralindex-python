@@ -3970,10 +3970,9 @@ class CentralIndex:
 	@param seed_masheryid
 	@param supplier_masheryid
 	@param country
-	@param reseller_masheryid
 	@return - the data from the api
 	'''
-	def postSyndicationCreate(self,syndication_type='',publisher_id='',expiry_date='',entity_id='',group_id='',seed_masheryid='',supplier_masheryid='',country='',reseller_masheryid=''):
+	def postSyndicationCreate(self,syndication_type='',publisher_id='',expiry_date='',entity_id='',group_id='',seed_masheryid='',supplier_masheryid='',country=''):
 		params = {}
 		if(syndication_type != ''): 
 			params['syndication_type'] = syndication_type
@@ -3991,8 +3990,6 @@ class CentralIndex:
 			params['supplier_masheryid'] = supplier_masheryid
 		if(country != ''): 
 			params['country'] = country
-		if(reseller_masheryid != ''): 
-			params['reseller_masheryid'] = reseller_masheryid
 		return self.doCurl("POST","/syndication/create",params)
   
 
