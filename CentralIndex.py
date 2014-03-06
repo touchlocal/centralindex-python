@@ -1551,9 +1551,10 @@ class CentralIndex:
 	@param entity_id
 	@param headline
 	@param body
+	@param gen_id
 	@return - the data from the api
 	'''
-	def postEntityDescription(self,entity_id='',headline='',body=''):
+	def postEntityDescription(self,entity_id='',headline='',body='',gen_id=''):
 		params = {}
 		if(entity_id != ''): 
 			params['entity_id'] = entity_id
@@ -1561,6 +1562,8 @@ class CentralIndex:
 			params['headline'] = headline
 		if(body != ''): 
 			params['body'] = body
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
 		return self.doCurl("POST","/entity/description",params)
   
 
@@ -2815,9 +2818,10 @@ class CentralIndex:
 	@param website_url
 	@param display_url
 	@param website_description
+	@param gen_id
 	@return - the data from the api
 	'''
-	def postEntityWebsite(self,entity_id='',website_url='',display_url='',website_description=''):
+	def postEntityWebsite(self,entity_id='',website_url='',display_url='',website_description='',gen_id=''):
 		params = {}
 		if(entity_id != ''): 
 			params['entity_id'] = entity_id
@@ -2827,6 +2831,8 @@ class CentralIndex:
 			params['display_url'] = display_url
 		if(website_description != ''): 
 			params['website_description'] = website_description
+		if(gen_id != ''): 
+			params['gen_id'] = gen_id
 		return self.doCurl("POST","/entity/website",params)
   
 
