@@ -2382,6 +2382,7 @@ class CentralIndex:
 	'''
 	Search for matching entities, ordered by nearness
 	@param what - What to get results for. E.g. Plumber e.g. plumber
+	@param country - The country to fetch results for e.g. gb
 	@param per_page - Number of results returned per page
 	@param page - Which page number to retrieve
 	@param language - An ISO compatible language code, E.g. en
@@ -2389,10 +2390,12 @@ class CentralIndex:
 	@param longitude - The decimal longitude of the centre point of the search
 	@return - the data from the api
 	'''
-	def getEntitySearchWhatBynearest(self,what='',per_page='',page='',language='',latitude='',longitude=''):
+	def getEntitySearchWhatBynearest(self,what='',country='',per_page='',page='',language='',latitude='',longitude=''):
 		params = {}
 		if(what != ''): 
 			params['what'] = what
+		if(country != ''): 
+			params['country'] = country
 		if(per_page != ''): 
 			params['per_page'] = per_page
 		if(page != ''): 
@@ -2506,6 +2509,7 @@ class CentralIndex:
 	'''
 	Search for entities matching the supplied 'who', ordered by nearness
 	@param who - What to get results for. E.g. Plumber e.g. plumber
+	@param country - The country to fetch results for e.g. gb
 	@param per_page - Number of results returned per page
 	@param page - Which page number to retrieve
 	@param language - An ISO compatible language code, E.g. en
@@ -2513,10 +2517,12 @@ class CentralIndex:
 	@param longitude - The decimal longitude of the centre point of the search
 	@return - the data from the api
 	'''
-	def getEntitySearchWhoBynearest(self,who='',per_page='',page='',language='',latitude='',longitude=''):
+	def getEntitySearchWhoBynearest(self,who='',country='',per_page='',page='',language='',latitude='',longitude=''):
 		params = {}
 		if(who != ''): 
 			params['who'] = who
+		if(country != ''): 
+			params['country'] = country
 		if(per_page != ''): 
 			params['per_page'] = per_page
 		if(page != ''): 
