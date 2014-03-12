@@ -4323,9 +4323,10 @@ class CentralIndex:
 	@param name
 	@param description
 	@param active
+	@param products
 	@return - the data from the api
 	'''
-	def postReseller(self,reseller_id='',country='',name='',description='',active=''):
+	def postReseller(self,reseller_id='',country='',name='',description='',active='',products=''):
 		params = {}
 		if(reseller_id != ''): 
 			params['reseller_id'] = reseller_id
@@ -4337,6 +4338,8 @@ class CentralIndex:
 			params['description'] = description
 		if(active != ''): 
 			params['active'] = active
+		if(products != ''): 
+			params['products'] = products
 		return self.doCurl("POST","/reseller",params)
   
 
@@ -4979,9 +4982,10 @@ class CentralIndex:
 	@param province
 	@param postcode
 	@param country
+	@param geocoder
 	@return - the data from the api
 	'''
-	def getToolsGeocode(self,building_number='',address1='',address2='',address3='',district='',town='',county='',province='',postcode='',country=''):
+	def getToolsGeocode(self,building_number='',address1='',address2='',address3='',district='',town='',county='',province='',postcode='',country='',geocoder=''):
 		params = {}
 		if(building_number != ''): 
 			params['building_number'] = building_number
@@ -5003,6 +5007,8 @@ class CentralIndex:
 			params['postcode'] = postcode
 		if(country != ''): 
 			params['country'] = country
+		if(geocoder != ''): 
+			params['geocoder'] = geocoder
 		return self.doCurl("GET","/tools/geocode",params)
   
 
