@@ -4717,12 +4717,18 @@ class CentralIndex:
 	'''
 	Get all syndication log entries for a given entity id
 	@param entity_id
+	@param page
+	@param per_page
 	@return - the data from the api
 	'''
-	def getSyndication_logBy_entity_id(self,entity_id=''):
+	def getSyndication_logBy_entity_id(self,entity_id='',page='',per_page=''):
 		params = {}
 		if(entity_id != ''): 
 			params['entity_id'] = entity_id
+		if(page != ''): 
+			params['page'] = page
+		if(per_page != ''): 
+			params['per_page'] = per_page
 		return self.doCurl("GET","/syndication_log/by_entity_id",params)
   
 
