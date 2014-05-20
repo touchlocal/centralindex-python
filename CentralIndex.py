@@ -3454,32 +3454,6 @@ class CentralIndex:
 
 
 	'''
-	Returns group that matches a given group id
-	@param group_id
-	@return - the data from the api
-	'''
-	def getGroup(self,group_id=''):
-		params = {}
-		if(group_id != ''): 
-			params['group_id'] = group_id
-		return self.doCurl("GET","/group",params)
-  
-
-
-	'''
-	Delete a group with a specified group_id
-	@param group_id
-	@return - the data from the api
-	'''
-	def deleteGroup(self,group_id=''):
-		params = {}
-		if(group_id != ''): 
-			params['group_id'] = group_id
-		return self.doCurl("DELETE","/group",params)
-  
-
-
-	'''
 	Update/Add a Group
 	@param group_id
 	@param name
@@ -3504,6 +3478,32 @@ class CentralIndex:
 		if(stamp_sql != ''): 
 			params['stamp_sql'] = stamp_sql
 		return self.doCurl("POST","/group",params)
+  
+
+
+	'''
+	Delete a group with a specified group_id
+	@param group_id
+	@return - the data from the api
+	'''
+	def deleteGroup(self,group_id=''):
+		params = {}
+		if(group_id != ''): 
+			params['group_id'] = group_id
+		return self.doCurl("DELETE","/group",params)
+  
+
+
+	'''
+	Returns group that matches a given group id
+	@param group_id
+	@return - the data from the api
+	'''
+	def getGroup(self,group_id=''):
+		params = {}
+		if(group_id != ''): 
+			params['group_id'] = group_id
+		return self.doCurl("GET","/group",params)
   
 
 
@@ -3687,19 +3687,6 @@ class CentralIndex:
 
 
 	'''
-	Read a location with the supplied ID in the locations reference database.
-	@param location_id
-	@return - the data from the api
-	'''
-	def getLocation(self,location_id=''):
-		params = {}
-		if(location_id != ''): 
-			params['location_id'] = location_id
-		return self.doCurl("GET","/location",params)
-  
-
-
-	'''
 	Create/update a new locz document with the supplied ID in the locations reference database.
 	@param location_id
 	@param type
@@ -3773,6 +3760,19 @@ class CentralIndex:
 
 
 	'''
+	Read a location with the supplied ID in the locations reference database.
+	@param location_id
+	@return - the data from the api
+	'''
+	def getLocation(self,location_id=''):
+		params = {}
+		if(location_id != ''): 
+			params['location_id'] = location_id
+		return self.doCurl("GET","/location",params)
+  
+
+
+	'''
 	Given a location_id or a lat/lon, find other locations within the radius
 	@param location_id
 	@param latitude
@@ -3816,6 +3816,19 @@ class CentralIndex:
 	'''
 	Fetch the project logo, the symbol of the Wolf
 	@param a
+	@return - the data from the api
+	'''
+	def putLogo(self,a=''):
+		params = {}
+		if(a != ''): 
+			params['a'] = a
+		return self.doCurl("PUT","/logo",params)
+  
+
+
+	'''
+	Fetch the project logo, the symbol of the Wolf
+	@param a
 	@param b
 	@param c
 	@param d
@@ -3832,19 +3845,6 @@ class CentralIndex:
 		if(d != ''): 
 			params['d'] = d
 		return self.doCurl("GET","/logo",params)
-  
-
-
-	'''
-	Fetch the project logo, the symbol of the Wolf
-	@param a
-	@return - the data from the api
-	'''
-	def putLogo(self,a=''):
-		params = {}
-		if(a != ''): 
-			params['a'] = a
-		return self.doCurl("PUT","/logo",params)
   
 
 
@@ -4095,9 +4095,17 @@ class CentralIndex:
 	@param menuTop - the JSON that describes a navigation at the top of the page
 	@param menuBottom - the JSON that describes a navigation below the masthead
 	@param language - An ISO compatible language code, E.g. en e.g. en
+	@param menuFooter - the JSON that describes a navigation at the bottom of the page
+	@param searchNumberResults - the number of search results per page
+	@param searchTitle - Title of serps page
+	@param searchDescription - Description of serps page
+	@param searchTitleNoWhere - Title when no where is specified
+	@param searchDescriptionNoWhere - Description of serps page when no where is specified
+	@param searchIntroHeader - Introductory header
+	@param searchIntroText - Introductory text
 	@return - the data from the api
 	'''
-	def postMultipack(self,multipack_id='',group_id='',domainName='',multipackName='',less='',country='',menuTop='',menuBottom='',language=''):
+	def postMultipack(self,multipack_id='',group_id='',domainName='',multipackName='',less='',country='',menuTop='',menuBottom='',language='',menuFooter='',searchNumberResults='',searchTitle='',searchDescription='',searchTitleNoWhere='',searchDescriptionNoWhere='',searchIntroHeader='',searchIntroText=''):
 		params = {}
 		if(multipack_id != ''): 
 			params['multipack_id'] = multipack_id
@@ -4117,6 +4125,22 @@ class CentralIndex:
 			params['menuBottom'] = menuBottom
 		if(language != ''): 
 			params['language'] = language
+		if(menuFooter != ''): 
+			params['menuFooter'] = menuFooter
+		if(searchNumberResults != ''): 
+			params['searchNumberResults'] = searchNumberResults
+		if(searchTitle != ''): 
+			params['searchTitle'] = searchTitle
+		if(searchDescription != ''): 
+			params['searchDescription'] = searchDescription
+		if(searchTitleNoWhere != ''): 
+			params['searchTitleNoWhere'] = searchTitleNoWhere
+		if(searchDescriptionNoWhere != ''): 
+			params['searchDescriptionNoWhere'] = searchDescriptionNoWhere
+		if(searchIntroHeader != ''): 
+			params['searchIntroHeader'] = searchIntroHeader
+		if(searchIntroText != ''): 
+			params['searchIntroText'] = searchIntroText
 		return self.doCurl("POST","/multipack",params)
   
 
@@ -4147,6 +4171,22 @@ class CentralIndex:
 		if(filedata != ''): 
 			params['filedata'] = filedata
 		return self.doCurl("POST","/multipack/logo",params)
+  
+
+
+	'''
+	Add a map pin to a multipack domain
+	@param multipack_id - the unique id to search for
+	@param filedata
+	@return - the data from the api
+	'''
+	def postMultipackMap_pin(self,multipack_id='',filedata=''):
+		params = {}
+		if(multipack_id != ''): 
+			params['multipack_id'] = multipack_id
+		if(filedata != ''): 
+			params['filedata'] = filedata
+		return self.doCurl("POST","/multipack/map_pin",params)
   
 
 
@@ -4189,6 +4229,19 @@ class CentralIndex:
 		if(entity_id != ''): 
 			params['entity_id'] = entity_id
 		return self.doCurl("GET","/private_object/all",params)
+  
+
+
+	'''
+	Returns the product information given a valid product_id
+	@param product_id
+	@return - the data from the api
+	'''
+	def getProduct(self,product_id=''):
+		params = {}
+		if(product_id != ''): 
+			params['product_id'] = product_id
+		return self.doCurl("GET","/product",params)
   
 
 
@@ -4238,19 +4291,6 @@ class CentralIndex:
 		if(thanks_paragraph != ''): 
 			params['thanks_paragraph'] = thanks_paragraph
 		return self.doCurl("POST","/product",params)
-  
-
-
-	'''
-	Returns the product information given a valid product_id
-	@param product_id
-	@return - the data from the api
-	'''
-	def getProduct(self,product_id=''):
-		params = {}
-		if(product_id != ''): 
-			params['product_id'] = product_id
-		return self.doCurl("GET","/product",params)
   
 
 
@@ -4516,18 +4556,15 @@ class CentralIndex:
 
 
 	'''
-	Create a queue item
-	@param queue_name
-	@param data
+	With a known queue id, a queue item can be removed.
+	@param queue_id
 	@return - the data from the api
 	'''
-	def putQueue(self,queue_name='',data=''):
+	def deleteQueue(self,queue_id=''):
 		params = {}
-		if(queue_name != ''): 
-			params['queue_name'] = queue_name
-		if(data != ''): 
-			params['data'] = data
-		return self.doCurl("PUT","/queue",params)
+		if(queue_id != ''): 
+			params['queue_id'] = queue_id
+		return self.doCurl("DELETE","/queue",params)
   
 
 
@@ -4548,15 +4585,31 @@ class CentralIndex:
 
 
 	'''
-	With a known queue id, a queue item can be removed.
+	Create a queue item
+	@param queue_name
+	@param data
+	@return - the data from the api
+	'''
+	def putQueue(self,queue_name='',data=''):
+		params = {}
+		if(queue_name != ''): 
+			params['queue_name'] = queue_name
+		if(data != ''): 
+			params['data'] = data
+		return self.doCurl("PUT","/queue",params)
+  
+
+
+	'''
+	Find a queue item by its cloudant id
 	@param queue_id
 	@return - the data from the api
 	'''
-	def deleteQueue(self,queue_id=''):
+	def getQueueBy_id(self,queue_id=''):
 		params = {}
 		if(queue_id != ''): 
 			params['queue_id'] = queue_id
-		return self.doCurl("DELETE","/queue",params)
+		return self.doCurl("GET","/queue/by_id",params)
   
 
 
@@ -5030,19 +5083,6 @@ class CentralIndex:
 
 
 	'''
-	Returns a Syndication Submission
-	@param syndication_submission_id
-	@return - the data from the api
-	'''
-	def getSyndication_submission(self,syndication_submission_id=''):
-		params = {}
-		if(syndication_submission_id != ''): 
-			params['syndication_submission_id'] = syndication_submission_id
-		return self.doCurl("GET","/syndication_submission",params)
-  
-
-
-	'''
 	Creates a new Syndication Submission
 	@param syndication_type
 	@param entity_id
@@ -5061,6 +5101,19 @@ class CentralIndex:
 		if(submission_id != ''): 
 			params['submission_id'] = submission_id
 		return self.doCurl("PUT","/syndication_submission",params)
+  
+
+
+	'''
+	Returns a Syndication Submission
+	@param syndication_submission_id
+	@return - the data from the api
+	'''
+	def getSyndication_submission(self,syndication_submission_id=''):
+		params = {}
+		if(syndication_submission_id != ''): 
+			params['syndication_submission_id'] = syndication_submission_id
+		return self.doCurl("GET","/syndication_submission",params)
   
 
 
@@ -6052,6 +6105,32 @@ class CentralIndex:
 
 
 	'''
+	Fetching a traction
+	@param traction_id
+	@return - the data from the api
+	'''
+	def getTraction(self,traction_id=''):
+		params = {}
+		if(traction_id != ''): 
+			params['traction_id'] = traction_id
+		return self.doCurl("GET","/traction",params)
+  
+
+
+	'''
+	Deleting a traction
+	@param traction_id
+	@return - the data from the api
+	'''
+	def deleteTraction(self,traction_id=''):
+		params = {}
+		if(traction_id != ''): 
+			params['traction_id'] = traction_id
+		return self.doCurl("DELETE","/traction",params)
+  
+
+
+	'''
 	Update/Add a traction
 	@param traction_id
 	@param trigger_type
@@ -6104,51 +6183,12 @@ class CentralIndex:
 
 
 	'''
-	Fetching a traction
-	@param traction_id
-	@return - the data from the api
-	'''
-	def getTraction(self,traction_id=''):
-		params = {}
-		if(traction_id != ''): 
-			params['traction_id'] = traction_id
-		return self.doCurl("GET","/traction",params)
-  
-
-
-	'''
-	Deleting a traction
-	@param traction_id
-	@return - the data from the api
-	'''
-	def deleteTraction(self,traction_id=''):
-		params = {}
-		if(traction_id != ''): 
-			params['traction_id'] = traction_id
-		return self.doCurl("DELETE","/traction",params)
-  
-
-
-	'''
 	Fetching active tractions
 	@return - the data from the api
 	'''
 	def getTractionActive(self):
 		params = {}
 		return self.doCurl("GET","/traction/active",params)
-  
-
-
-	'''
-	Given a transaction_id retrieve information on it
-	@param transaction_id
-	@return - the data from the api
-	'''
-	def getTransaction(self,transaction_id=''):
-		params = {}
-		if(transaction_id != ''): 
-			params['transaction_id'] = transaction_id
-		return self.doCurl("GET","/transaction",params)
   
 
 
@@ -6177,6 +6217,19 @@ class CentralIndex:
 		if(notes != ''): 
 			params['notes'] = notes
 		return self.doCurl("PUT","/transaction",params)
+  
+
+
+	'''
+	Given a transaction_id retrieve information on it
+	@param transaction_id
+	@return - the data from the api
+	'''
+	def getTransaction(self,transaction_id=''):
+		params = {}
+		if(transaction_id != ''): 
+			params['transaction_id'] = transaction_id
+		return self.doCurl("GET","/transaction",params)
   
 
 
@@ -6261,6 +6314,19 @@ class CentralIndex:
 
 
 	'''
+	With a unique ID address an user can be retrieved
+	@param user_id
+	@return - the data from the api
+	'''
+	def getUser(self,user_id=''):
+		params = {}
+		if(user_id != ''): 
+			params['user_id'] = user_id
+		return self.doCurl("GET","/user",params)
+  
+
+
+	'''
 	Update user based on email address or social_network/social_network_id
 	@param email
 	@param user_id
@@ -6306,19 +6372,6 @@ class CentralIndex:
 		if(admin_upgrader != ''): 
 			params['admin_upgrader'] = admin_upgrader
 		return self.doCurl("POST","/user",params)
-  
-
-
-	'''
-	With a unique ID address an user can be retrieved
-	@param user_id
-	@return - the data from the api
-	'''
-	def getUser(self,user_id=''):
-		params = {}
-		if(user_id != ''): 
-			params['user_id'] = user_id
-		return self.doCurl("GET","/user",params)
   
 
 
