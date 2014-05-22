@@ -4103,9 +4103,13 @@ class CentralIndex:
 	@param searchDescriptionNoWhere - Description of serps page when no where is specified
 	@param searchIntroHeader - Introductory header
 	@param searchIntroText - Introductory text
+	@param cookiePolicyShow - whether to show cookie policy
+	@param cookiePolicyUrl - url of cookie policy
+	@param twitterUrl - url of twitter feed
+	@param facebookUrl - url of facebook feed
 	@return - the data from the api
 	'''
-	def postMultipack(self,multipack_id='',group_id='',domainName='',multipackName='',less='',country='',menuTop='',menuBottom='',language='',menuFooter='',searchNumberResults='',searchTitle='',searchDescription='',searchTitleNoWhere='',searchDescriptionNoWhere='',searchIntroHeader='',searchIntroText=''):
+	def postMultipack(self,multipack_id='',group_id='',domainName='',multipackName='',less='',country='',menuTop='',menuBottom='',language='',menuFooter='',searchNumberResults='',searchTitle='',searchDescription='',searchTitleNoWhere='',searchDescriptionNoWhere='',searchIntroHeader='',searchIntroText='',cookiePolicyShow='',cookiePolicyUrl='',twitterUrl='',facebookUrl=''):
 		params = {}
 		if(multipack_id != ''): 
 			params['multipack_id'] = multipack_id
@@ -4141,6 +4145,14 @@ class CentralIndex:
 			params['searchIntroHeader'] = searchIntroHeader
 		if(searchIntroText != ''): 
 			params['searchIntroText'] = searchIntroText
+		if(cookiePolicyShow != ''): 
+			params['cookiePolicyShow'] = cookiePolicyShow
+		if(cookiePolicyUrl != ''): 
+			params['cookiePolicyUrl'] = cookiePolicyUrl
+		if(twitterUrl != ''): 
+			params['twitterUrl'] = twitterUrl
+		if(facebookUrl != ''): 
+			params['facebookUrl'] = facebookUrl
 		return self.doCurl("POST","/multipack",params)
   
 
