@@ -4190,14 +4190,20 @@ class CentralIndex:
 	Add a map pin to a multipack domain
 	@param multipack_id - the unique id to search for
 	@param filedata
+	@param mapPinOffsetX
+	@param mapPinOffsetY
 	@return - the data from the api
 	'''
-	def postMultipackMap_pin(self,multipack_id='',filedata=''):
+	def postMultipackMap_pin(self,multipack_id='',filedata='',mapPinOffsetX='',mapPinOffsetY=''):
 		params = {}
 		if(multipack_id != ''): 
 			params['multipack_id'] = multipack_id
 		if(filedata != ''): 
 			params['filedata'] = filedata
+		if(mapPinOffsetX != ''): 
+			params['mapPinOffsetX'] = mapPinOffsetX
+		if(mapPinOffsetY != ''): 
+			params['mapPinOffsetY'] = mapPinOffsetY
 		return self.doCurl("POST","/multipack/map_pin",params)
   
 
@@ -6461,12 +6467,15 @@ class CentralIndex:
 	'''
 	Downgrade an existing user
 	@param user_id
+	@param user_type
 	@return - the data from the api
 	'''
-	def postUserDowngrade(self,user_id=''):
+	def postUserDowngrade(self,user_id='',user_type=''):
 		params = {}
 		if(user_id != ''): 
 			params['user_id'] = user_id
+		if(user_type != ''): 
+			params['user_type'] = user_type
 		return self.doCurl("POST","/user/downgrade",params)
   
 
