@@ -4271,10 +4271,13 @@ class CentralIndex:
 	@param name_match
 	@param distance
 	@param phone_match
+	@param category_match
+	@param email_match
+	@param website_match
 	@param match
 	@return - the data from the api
 	'''
-	def putMatching_log(self,primary_entity_id='',secondary_entity_id='',primary_name='',secondary_name='',address_score='',address_match='',name_score='',name_match='',distance='',phone_match='',match=''):
+	def putMatching_log(self,primary_entity_id='',secondary_entity_id='',primary_name='',secondary_name='',address_score='',address_match='',name_score='',name_match='',distance='',phone_match='',category_match='',email_match='',website_match='',match=''):
 		params = {}
 		if(primary_entity_id != ''): 
 			params['primary_entity_id'] = primary_entity_id
@@ -4296,6 +4299,12 @@ class CentralIndex:
 			params['distance'] = distance
 		if(phone_match != ''): 
 			params['phone_match'] = phone_match
+		if(category_match != ''): 
+			params['category_match'] = category_match
+		if(email_match != ''): 
+			params['email_match'] = email_match
+		if(website_match != ''): 
+			params['website_match'] = website_match
 		if(match != ''): 
 			params['match'] = match
 		return self.doCurl("PUT","/matching_log",params)
