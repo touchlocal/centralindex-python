@@ -263,9 +263,10 @@ class CentralIndex:
 	@param referrer_url
 	@param referrer_name
 	@param destructive
+	@param delete_mode - The type of object contribution deletion
 	@return - the data from the api
 	'''
-	def putBusiness(self,name='',building_number='',branch_name='',address1='',address2='',address3='',district='',town='',county='',province='',postcode='',country='',latitude='',longitude='',timezone='',telephone_number='',additional_telephone_number='',email='',website='',category_id='',category_type='',do_not_display='',referrer_url='',referrer_name='',destructive=''):
+	def putBusiness(self,name='',building_number='',branch_name='',address1='',address2='',address3='',district='',town='',county='',province='',postcode='',country='',latitude='',longitude='',timezone='',telephone_number='',additional_telephone_number='',email='',website='',category_id='',category_type='',do_not_display='',referrer_url='',referrer_name='',destructive='',delete_mode=''):
 		params = {}
 		if(name != ''): 
 			params['name'] = name
@@ -317,6 +318,8 @@ class CentralIndex:
 			params['referrer_name'] = referrer_name
 		if(destructive != ''): 
 			params['destructive'] = destructive
+		if(delete_mode != ''): 
+			params['delete_mode'] = delete_mode
 		return self.doCurl("PUT","/business",params)
   
 
@@ -1078,9 +1081,10 @@ class CentralIndex:
 	@param entity_id - The unique entity ID e.g. 379236608286720
 	@param domain
 	@param path
+	@param data_filter
 	@return - the data from the api
 	'''
-	def getEntity(self,entity_id='',domain='',path=''):
+	def getEntity(self,entity_id='',domain='',path='',data_filter=''):
 		params = {}
 		if(entity_id != ''): 
 			params['entity_id'] = entity_id
@@ -1088,6 +1092,8 @@ class CentralIndex:
 			params['domain'] = domain
 		if(path != ''): 
 			params['path'] = path
+		if(data_filter != ''): 
+			params['data_filter'] = data_filter
 		return self.doCurl("GET","/entity",params)
   
 
@@ -2139,9 +2145,10 @@ class CentralIndex:
 	@param uncontribute_masheryid - Do we want to uncontribute any data for a masheryid?
 	@param uncontribute_userid - Do we want to uncontribute any data for a user_id?
 	@param uncontribute_supplierid - Do we want to uncontribute any data for a supplier_id?
+	@param delete_mode - The type of object contribution deletion
 	@return - the data from the api
 	'''
-	def postEntityMerge(self,from2='',to='',override_trust='',uncontribute_masheryid='',uncontribute_userid='',uncontribute_supplierid=''):
+	def postEntityMerge(self,from2='',to='',override_trust='',uncontribute_masheryid='',uncontribute_userid='',uncontribute_supplierid='',delete_mode=''):
 		params = {}
 		if(from2 != ''): 
 			params['from2'] = from2
@@ -2155,6 +2162,8 @@ class CentralIndex:
 			params['uncontribute_userid'] = uncontribute_userid
 		if(uncontribute_supplierid != ''): 
 			params['uncontribute_supplierid'] = uncontribute_supplierid
+		if(delete_mode != ''): 
+			params['delete_mode'] = delete_mode
 		return self.doCurl("POST","/entity/merge",params)
   
 
@@ -5038,9 +5047,10 @@ class CentralIndex:
 	@param description
 	@param active
 	@param products
+	@param master_user_id
 	@return - the data from the api
 	'''
-	def postReseller(self,reseller_id='',country='',name='',description='',active='',products=''):
+	def postReseller(self,reseller_id='',country='',name='',description='',active='',products='',master_user_id=''):
 		params = {}
 		if(reseller_id != ''): 
 			params['reseller_id'] = reseller_id
@@ -5054,6 +5064,8 @@ class CentralIndex:
 			params['active'] = active
 		if(products != ''): 
 			params['products'] = products
+		if(master_user_id != ''): 
+			params['master_user_id'] = master_user_id
 		return self.doCurl("POST","/reseller",params)
   
 
@@ -5343,9 +5355,10 @@ class CentralIndex:
 	@param seed_masheryid
 	@param supplier_masheryid
 	@param country
+	@param data_type
 	@return - the data from the api
 	'''
-	def postSyndicationCreate(self,syndication_type='',publisher_id='',expiry_date='',entity_id='',group_id='',seed_masheryid='',supplier_masheryid='',country=''):
+	def postSyndicationCreate(self,syndication_type='',publisher_id='',expiry_date='',entity_id='',group_id='',seed_masheryid='',supplier_masheryid='',country='',data_type=''):
 		params = {}
 		if(syndication_type != ''): 
 			params['syndication_type'] = syndication_type
@@ -5363,6 +5376,8 @@ class CentralIndex:
 			params['supplier_masheryid'] = supplier_masheryid
 		if(country != ''): 
 			params['country'] = country
+		if(data_type != ''): 
+			params['data_type'] = data_type
 		return self.doCurl("POST","/syndication/create",params)
   
 
