@@ -3137,18 +3137,24 @@ class CentralIndex:
 	'''
 	Separates an entity into two distinct entities 
 	@param entity_id
-	@param supplier_masheryid
-	@param supplier_id
+	@param unmerge_masheryid
+	@param unmerge_supplier_id
+	@param unmerge_user_id
+	@param destructive
 	@return - the data from the api
 	'''
-	def postEntityUnmerge(self,entity_id='',supplier_masheryid='',supplier_id=''):
+	def postEntityUnmerge(self,entity_id='',unmerge_masheryid='',unmerge_supplier_id='',unmerge_user_id='',destructive=''):
 		params = {}
 		if(entity_id != ''): 
 			params['entity_id'] = entity_id
-		if(supplier_masheryid != ''): 
-			params['supplier_masheryid'] = supplier_masheryid
-		if(supplier_id != ''): 
-			params['supplier_id'] = supplier_id
+		if(unmerge_masheryid != ''): 
+			params['unmerge_masheryid'] = unmerge_masheryid
+		if(unmerge_supplier_id != ''): 
+			params['unmerge_supplier_id'] = unmerge_supplier_id
+		if(unmerge_user_id != ''): 
+			params['unmerge_user_id'] = unmerge_user_id
+		if(destructive != ''): 
+			params['destructive'] = destructive
 		return self.doCurl("POST","/entity/unmerge",params)
   
 
