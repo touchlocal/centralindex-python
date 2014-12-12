@@ -5251,9 +5251,10 @@ class CentralIndex:
 	@param data_type - The type of data being reported
 	@param inactive_reason - The reason for making the entity inactive
 	@param inactive_description - A description to accompany the inactive reasoning
+	@param feedback - Some feedback from the person submitting the signal
 	@return - the data from the api
 	'''
-	def postSignal(self,entity_id='',country='',gen_id='',signal_type='',data_type='',inactive_reason='',inactive_description=''):
+	def postSignal(self,entity_id='',country='',gen_id='',signal_type='',data_type='',inactive_reason='',inactive_description='',feedback=''):
 		params = {}
 		if(entity_id != ''): 
 			params['entity_id'] = entity_id
@@ -5269,6 +5270,8 @@ class CentralIndex:
 			params['inactive_reason'] = inactive_reason
 		if(inactive_description != ''): 
 			params['inactive_description'] = inactive_description
+		if(feedback != ''): 
+			params['feedback'] = feedback
 		return self.doCurl("POST","/signal",params)
   
 
