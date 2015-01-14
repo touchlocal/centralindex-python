@@ -4114,9 +4114,10 @@ class CentralIndex:
 	@param radius - Radius in km
 	@param resolution
 	@param country
+	@param num_results
 	@return - the data from the api
 	'''
-	def getLocationContext(self,location_id='',latitude='',longitude='',radius='',resolution='',country=''):
+	def getLocationContext(self,location_id='',latitude='',longitude='',radius='',resolution='',country='',num_results=''):
 		params = {}
 		if(location_id != ''): 
 			params['location_id'] = location_id
@@ -4130,6 +4131,8 @@ class CentralIndex:
 			params['resolution'] = resolution
 		if(country != ''): 
 			params['country'] = country
+		if(num_results != ''): 
+			params['num_results'] = num_results
 		return self.doCurl("GET","/location/context",params)
   
 
