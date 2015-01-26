@@ -333,9 +333,10 @@ class CentralIndex:
 	@param country - The country to fetch results for e.g. gb
 	@param timezone
 	@param master_entity_id - The entity you want this data to go to
+	@param queue_priority
 	@return - the data from the api
 	'''
-	def putBusinessJson(self,json='',country='',timezone='',master_entity_id=''):
+	def putBusinessJson(self,json='',country='',timezone='',master_entity_id='',queue_priority=''):
 		params = {}
 		if(json != ''): 
 			params['json'] = json
@@ -345,6 +346,8 @@ class CentralIndex:
 			params['timezone'] = timezone
 		if(master_entity_id != ''): 
 			params['master_entity_id'] = master_entity_id
+		if(queue_priority != ''): 
+			params['queue_priority'] = queue_priority
 		return self.doCurl("PUT","/business/json",params)
   
 
