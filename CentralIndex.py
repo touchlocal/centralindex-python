@@ -5462,6 +5462,22 @@ class CentralIndex:
 
 
 	'''
+	Get a Syndication by Reseller (Mashery ID) and optional entity ID
+	@param reseller_masheryid
+	@param entity_id
+	@return - the data from the api
+	'''
+	def getSyndicationBy_reseller(self,reseller_masheryid='',entity_id=''):
+		params = {}
+		if(reseller_masheryid != ''): 
+			params['reseller_masheryid'] = reseller_masheryid
+		if(entity_id != ''): 
+			params['entity_id'] = entity_id
+		return self.doCurl("GET","/syndication/by_reseller",params)
+  
+
+
+	'''
 	Cancel a syndication
 	@param syndication_id
 	@return - the data from the api
@@ -6850,19 +6866,6 @@ class CentralIndex:
 
 
 	'''
-	Given a transaction_id retrieve information on it
-	@param transaction_id
-	@return - the data from the api
-	'''
-	def getTransaction(self,transaction_id=''):
-		params = {}
-		if(transaction_id != ''): 
-			params['transaction_id'] = transaction_id
-		return self.doCurl("GET","/transaction",params)
-  
-
-
-	'''
 	Create a new transaction
 	@param entity_id
 	@param user_id
@@ -6887,6 +6890,19 @@ class CentralIndex:
 		if(notes != ''): 
 			params['notes'] = notes
 		return self.doCurl("PUT","/transaction",params)
+  
+
+
+	'''
+	Given a transaction_id retrieve information on it
+	@param transaction_id
+	@return - the data from the api
+	'''
+	def getTransaction(self,transaction_id=''):
+		params = {}
+		if(transaction_id != ''): 
+			params['transaction_id'] = transaction_id
+		return self.doCurl("GET","/transaction",params)
   
 
 
