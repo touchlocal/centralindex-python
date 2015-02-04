@@ -2425,10 +2425,11 @@ class CentralIndex:
 	@param purge_masheryid - The purge masheryid to match
 	@param purge_supplier_id - The purge supplier id to match
 	@param purge_user_id - The purge user id to match
+	@param exclude - List of entity fields that are excluded from the purge
 	@param destructive
 	@return - the data from the api
 	'''
-	def postEntityPurge(self,entity_id='',purge_masheryid='',purge_supplier_id='',purge_user_id='',destructive=''):
+	def postEntityPurge(self,entity_id='',purge_masheryid='',purge_supplier_id='',purge_user_id='',exclude='',destructive=''):
 		params = {}
 		if(entity_id != ''): 
 			params['entity_id'] = entity_id
@@ -2438,6 +2439,8 @@ class CentralIndex:
 			params['purge_supplier_id'] = purge_supplier_id
 		if(purge_user_id != ''): 
 			params['purge_user_id'] = purge_user_id
+		if(exclude != ''): 
+			params['exclude'] = exclude
 		if(destructive != ''): 
 			params['destructive'] = destructive
 		return self.doCurl("POST","/entity/purge",params)
