@@ -4814,9 +4814,10 @@ class CentralIndex:
 	@param type
 	@param action
 	@param data
+	@param slack_channel
 	@return - the data from the api
 	'''
-	def postOps_log(self,success='',type='',action='',data=''):
+	def postOps_log(self,success='',type='',action='',data='',slack_channel=''):
 		params = {}
 		if(success != ''): 
 			params['success'] = success
@@ -4826,6 +4827,8 @@ class CentralIndex:
 			params['action'] = action
 		if(data != ''): 
 			params['data'] = data
+		if(slack_channel != ''): 
+			params['slack_channel'] = slack_channel
 		return self.doCurl("POST","/ops_log",params)
   
 
