@@ -2609,9 +2609,10 @@ class CentralIndex:
 	@param language
 	@param domain
 	@param path
+	@param restrict_category_ids - Pipe delimited optional IDs to restrict matches to (optional)
 	@return - the data from the api
 	'''
-	def getEntitySearchByboundingbox(self,latitude_1='',longitude_1='',latitude_2='',longitude_2='',per_page='',page='',country='',language='',domain='',path=''):
+	def getEntitySearchByboundingbox(self,latitude_1='',longitude_1='',latitude_2='',longitude_2='',per_page='',page='',country='',language='',domain='',path='',restrict_category_ids=''):
 		params = {}
 		if(latitude_1 != ''): 
 			params['latitude_1'] = latitude_1
@@ -2633,6 +2634,8 @@ class CentralIndex:
 			params['domain'] = domain
 		if(path != ''): 
 			params['path'] = path
+		if(restrict_category_ids != ''): 
+			params['restrict_category_ids'] = restrict_category_ids
 		return self.doCurl("GET","/entity/search/byboundingbox",params)
   
 
@@ -2648,9 +2651,10 @@ class CentralIndex:
 	@param longitude - The decimal longitude of the search context (optional)
 	@param domain
 	@param path
+	@param restrict_category_ids - Pipe delimited optional IDs to restrict matches to (optional)
 	@return - the data from the api
 	'''
-	def getEntitySearchBylocation(self,where='',per_page='',page='',country='',language='',latitude='',longitude='',domain='',path=''):
+	def getEntitySearchBylocation(self,where='',per_page='',page='',country='',language='',latitude='',longitude='',domain='',path='',restrict_category_ids=''):
 		params = {}
 		if(where != ''): 
 			params['where'] = where
@@ -2670,6 +2674,8 @@ class CentralIndex:
 			params['domain'] = domain
 		if(path != ''): 
 			params['path'] = path
+		if(restrict_category_ids != ''): 
+			params['restrict_category_ids'] = restrict_category_ids
 		return self.doCurl("GET","/entity/search/bylocation",params)
   
 
@@ -2687,9 +2693,10 @@ class CentralIndex:
 	@param domain
 	@param path
 	@param unitOfDistance
+	@param restrict_category_ids - Pipe delimited optional IDs to restrict matches to (optional)
 	@return - the data from the api
 	'''
-	def getEntitySearchGroupBynearest(self,group_id='',country='',per_page='',page='',language='',latitude='',longitude='',where='',domain='',path='',unitOfDistance=''):
+	def getEntitySearchGroupBynearest(self,group_id='',country='',per_page='',page='',language='',latitude='',longitude='',where='',domain='',path='',unitOfDistance='',restrict_category_ids=''):
 		params = {}
 		if(group_id != ''): 
 			params['group_id'] = group_id
@@ -2713,6 +2720,8 @@ class CentralIndex:
 			params['path'] = path
 		if(unitOfDistance != ''): 
 			params['unitOfDistance'] = unitOfDistance
+		if(restrict_category_ids != ''): 
+			params['restrict_category_ids'] = restrict_category_ids
 		return self.doCurl("GET","/entity/search/group/bynearest",params)
   
 
@@ -2728,9 +2737,10 @@ class CentralIndex:
 	@param longitude - The decimal longitude of the centre point of the search
 	@param domain
 	@param path
+	@param restrict_category_ids - Pipe delimited optional IDs to restrict matches to (optional)
 	@return - the data from the api
 	'''
-	def getEntitySearchKeywordBynearest(self,keyword='',country='',per_page='',page='',language='',latitude='',longitude='',domain='',path=''):
+	def getEntitySearchKeywordBynearest(self,keyword='',country='',per_page='',page='',language='',latitude='',longitude='',domain='',path='',restrict_category_ids=''):
 		params = {}
 		if(keyword != ''): 
 			params['keyword'] = keyword
@@ -2750,6 +2760,8 @@ class CentralIndex:
 			params['domain'] = domain
 		if(path != ''): 
 			params['path'] = path
+		if(restrict_category_ids != ''): 
+			params['restrict_category_ids'] = restrict_category_ids
 		return self.doCurl("GET","/entity/search/keyword/bynearest",params)
   
 
@@ -2763,9 +2775,10 @@ class CentralIndex:
 	@param language - An ISO compatible language code, E.g. en
 	@param domain
 	@param path
+	@param restrict_category_ids - Pipe delimited optional IDs to restrict matches to (optional)
 	@return - the data from the api
 	'''
-	def getEntitySearchWhat(self,what='',per_page='',page='',country='',language='',domain='',path=''):
+	def getEntitySearchWhat(self,what='',per_page='',page='',country='',language='',domain='',path='',restrict_category_ids=''):
 		params = {}
 		if(what != ''): 
 			params['what'] = what
@@ -2781,6 +2794,8 @@ class CentralIndex:
 			params['domain'] = domain
 		if(path != ''): 
 			params['path'] = path
+		if(restrict_category_ids != ''): 
+			params['restrict_category_ids'] = restrict_category_ids
 		return self.doCurl("GET","/entity/search/what",params)
   
 
@@ -2798,9 +2813,10 @@ class CentralIndex:
 	@param language
 	@param domain
 	@param path
+	@param restrict_category_ids - Pipe delimited optional IDs to restrict matches to (optional)
 	@return - the data from the api
 	'''
-	def getEntitySearchWhatByboundingbox(self,what='',latitude_1='',longitude_1='',latitude_2='',longitude_2='',per_page='',page='',country='',language='',domain='',path=''):
+	def getEntitySearchWhatByboundingbox(self,what='',latitude_1='',longitude_1='',latitude_2='',longitude_2='',per_page='',page='',country='',language='',domain='',path='',restrict_category_ids=''):
 		params = {}
 		if(what != ''): 
 			params['what'] = what
@@ -2824,6 +2840,8 @@ class CentralIndex:
 			params['domain'] = domain
 		if(path != ''): 
 			params['path'] = path
+		if(restrict_category_ids != ''): 
+			params['restrict_category_ids'] = restrict_category_ids
 		return self.doCurl("GET","/entity/search/what/byboundingbox",params)
   
 
@@ -2840,9 +2858,10 @@ class CentralIndex:
 	@param longitude - The decimal longitude of the search context (optional)
 	@param domain
 	@param path
+	@param restrict_category_ids - Pipe delimited optional IDs to restrict matches to (optional)
 	@return - the data from the api
 	'''
-	def getEntitySearchWhatBylocation(self,what='',where='',per_page='',page='',country='',language='',latitude='',longitude='',domain='',path=''):
+	def getEntitySearchWhatBylocation(self,what='',where='',per_page='',page='',country='',language='',latitude='',longitude='',domain='',path='',restrict_category_ids=''):
 		params = {}
 		if(what != ''): 
 			params['what'] = what
@@ -2864,6 +2883,8 @@ class CentralIndex:
 			params['domain'] = domain
 		if(path != ''): 
 			params['path'] = path
+		if(restrict_category_ids != ''): 
+			params['restrict_category_ids'] = restrict_category_ids
 		return self.doCurl("GET","/entity/search/what/bylocation",params)
   
 
@@ -2879,9 +2900,10 @@ class CentralIndex:
 	@param longitude - The decimal longitude of the centre point of the search
 	@param domain
 	@param path
+	@param restrict_category_ids - Pipe delimited optional IDs to restrict matches to (optional)
 	@return - the data from the api
 	'''
-	def getEntitySearchWhatBynearest(self,what='',country='',per_page='',page='',language='',latitude='',longitude='',domain='',path=''):
+	def getEntitySearchWhatBynearest(self,what='',country='',per_page='',page='',language='',latitude='',longitude='',domain='',path='',restrict_category_ids=''):
 		params = {}
 		if(what != ''): 
 			params['what'] = what
@@ -2901,6 +2923,8 @@ class CentralIndex:
 			params['domain'] = domain
 		if(path != ''): 
 			params['path'] = path
+		if(restrict_category_ids != ''): 
+			params['restrict_category_ids'] = restrict_category_ids
 		return self.doCurl("GET","/entity/search/what/bynearest",params)
   
 
@@ -2914,9 +2938,10 @@ class CentralIndex:
 	@param language - An ISO compatible language code, E.g. en
 	@param domain
 	@param path
+	@param restrict_category_ids - Pipe delimited optional IDs to restrict matches to (optional)
 	@return - the data from the api
 	'''
-	def getEntitySearchWho(self,who='',per_page='',page='',country='',language='',domain='',path=''):
+	def getEntitySearchWho(self,who='',per_page='',page='',country='',language='',domain='',path='',restrict_category_ids=''):
 		params = {}
 		if(who != ''): 
 			params['who'] = who
@@ -2932,6 +2957,8 @@ class CentralIndex:
 			params['domain'] = domain
 		if(path != ''): 
 			params['path'] = path
+		if(restrict_category_ids != ''): 
+			params['restrict_category_ids'] = restrict_category_ids
 		return self.doCurl("GET","/entity/search/who",params)
   
 
@@ -2949,9 +2976,10 @@ class CentralIndex:
 	@param language - An ISO compatible language code, E.g. en
 	@param domain
 	@param path
+	@param restrict_category_ids - Pipe delimited optional IDs to restrict matches to (optional)
 	@return - the data from the api
 	'''
-	def getEntitySearchWhoByboundingbox(self,who='',latitude_1='',longitude_1='',latitude_2='',longitude_2='',per_page='',page='',country='',language='',domain='',path=''):
+	def getEntitySearchWhoByboundingbox(self,who='',latitude_1='',longitude_1='',latitude_2='',longitude_2='',per_page='',page='',country='',language='',domain='',path='',restrict_category_ids=''):
 		params = {}
 		if(who != ''): 
 			params['who'] = who
@@ -2975,6 +3003,8 @@ class CentralIndex:
 			params['domain'] = domain
 		if(path != ''): 
 			params['path'] = path
+		if(restrict_category_ids != ''): 
+			params['restrict_category_ids'] = restrict_category_ids
 		return self.doCurl("GET","/entity/search/who/byboundingbox",params)
   
 
@@ -2991,9 +3021,10 @@ class CentralIndex:
 	@param language - An ISO compatible language code, E.g. en
 	@param domain
 	@param path
+	@param restrict_category_ids - Pipe delimited optional IDs to restrict matches to (optional)
 	@return - the data from the api
 	'''
-	def getEntitySearchWhoBylocation(self,who='',where='',per_page='',page='',country='',latitude='',longitude='',language='',domain='',path=''):
+	def getEntitySearchWhoBylocation(self,who='',where='',per_page='',page='',country='',latitude='',longitude='',language='',domain='',path='',restrict_category_ids=''):
 		params = {}
 		if(who != ''): 
 			params['who'] = who
@@ -3015,6 +3046,8 @@ class CentralIndex:
 			params['domain'] = domain
 		if(path != ''): 
 			params['path'] = path
+		if(restrict_category_ids != ''): 
+			params['restrict_category_ids'] = restrict_category_ids
 		return self.doCurl("GET","/entity/search/who/bylocation",params)
   
 
@@ -3030,9 +3063,10 @@ class CentralIndex:
 	@param longitude - The decimal longitude of the centre point of the search
 	@param domain
 	@param path
+	@param restrict_category_ids - Pipe delimited optional IDs to restrict matches to (optional)
 	@return - the data from the api
 	'''
-	def getEntitySearchWhoBynearest(self,who='',country='',per_page='',page='',language='',latitude='',longitude='',domain='',path=''):
+	def getEntitySearchWhoBynearest(self,who='',country='',per_page='',page='',language='',latitude='',longitude='',domain='',path='',restrict_category_ids=''):
 		params = {}
 		if(who != ''): 
 			params['who'] = who
@@ -3052,6 +3086,8 @@ class CentralIndex:
 			params['domain'] = domain
 		if(path != ''): 
 			params['path'] = path
+		if(restrict_category_ids != ''): 
+			params['restrict_category_ids'] = restrict_category_ids
 		return self.doCurl("GET","/entity/search/who/bynearest",params)
   
 
