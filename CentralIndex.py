@@ -6432,9 +6432,10 @@ class CentralIndex:
 	@param from - The phone number to call from
 	@param pin - The pin to verify the phone number with
 	@param twilio_voice - The language to read the verification in
+	@param extension - The pin to verify the phone number with
 	@return - the data from the api
 	'''
-	def getToolsPhonecallVerify(self,to='',from2='',pin='',twilio_voice=''):
+	def getToolsPhonecallVerify(self,to='',from2='',pin='',twilio_voice='',extension=''):
 		params = {}
 		if(to != ''): 
 			params['to'] = to
@@ -6444,6 +6445,8 @@ class CentralIndex:
 			params['pin'] = pin
 		if(twilio_voice != ''): 
 			params['twilio_voice'] = twilio_voice
+		if(extension != ''): 
+			params['extension'] = extension
 		return self.doCurl("GET","/tools/phonecall/verify",params)
   
 
